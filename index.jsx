@@ -3329,8 +3329,8 @@ function PortfolioWebsite() {
               </div>
 
               <div className="cta-actions">
-                <a className="button-primary" href="mailto:hello@northlinestudio.co">
-                  hello@northlinestudio.co
+                <a className="button-primary" href="mailto:sales@trizenstudio.com">
+                  sales@trizenstudio.com
                 </a>
                 <a className="button-secondary" href="#services">
                   Explore Services
