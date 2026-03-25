@@ -654,16 +654,15 @@ const styles = `
     font-size: clamp(3rem, 7vw, 5.6rem);
     line-height: 0.96;
     letter-spacing: -0.05em;
-    max-width: 10.5ch;
+    max-width: 13ch;
   }
 
   .hero-copy h1 span {
     display: block;
-    font-size: 50px;
-    text-shadow: 5px 4px 3px #373636;
+    font-size: clamp(1.5rem, 3vw, 2.45rem);
     line-height: 1.1;
-    margin-top: 4px;
-    color: #e9e9e9;
+    margin-top: 10px;
+    color: var(--muted);
   }
 
   .hero-copy p {
@@ -2662,7 +2661,7 @@ function PortfolioWebsite() {
   }, [isDarkMode]);
 
   useEffect(() => {
-    document.title = 'TriZen Studio | Professional Website Maker';
+    document.title = 'Web Design Malaysia | TriZen Studio';
 
     let ticking = false;
     const handleScroll = () => {
@@ -2818,7 +2817,7 @@ function PortfolioWebsite() {
   <img src="/img/Logo.png" alt="TriZen Logo" style={{ width: '160%', height: '160%', objectFit: 'contain' }} />
 </div>              <div className="brand-copy">
                 <div className="brand-name">TriZen Studio</div>
-                <div className="brand-subtitle">Professional websites for modern businesses</div>
+                <div className="brand-subtitle">Web design Malaysia for modern businesses</div>
               </div>
             </div>
 
@@ -2850,17 +2849,17 @@ function PortfolioWebsite() {
           <div className="hero-copy">
             <div className="eyebrow" data-reveal style={{ '--delay': '0ms' }}>
               <span className="eyebrow-dot" />
-              Website maker for brands that need to look credible fast
+              Affordable web design in Malaysia
             </div>
 
             <h1 data-reveal style={{ '--delay': '80ms' }}>
-              Clean websites
-              <span>with premium presence.</span>
+              Web Design Malaysia
+              <span>| TriZen Studio</span>
             </h1>
 
             <p data-reveal style={{ '--delay': '160ms' }}>
-              We design and build professional websites that present your business clearly, feel polished on every screen,
-              and guide visitors through a stronger story as they scroll.
+              TriZen Studio provides affordable web design in Malaysia for React websites, business websites, and
+              student project support. We build fast, modern pages that help your brand look credible online.
             </p>
 
             <div className="hero-actions" data-reveal style={{ '--delay': '240ms' }}>
@@ -2889,7 +2888,7 @@ function PortfolioWebsite() {
                   <span />
                   <span />
                 </div>
-                <div className="browser-url">northlinestudio.co/professional-web-presence</div>
+                <div className="browser-url">trizenstudio.com/web-design-malaysia</div>
               </div>
 
               <div className="screen">
@@ -2975,7 +2974,7 @@ function PortfolioWebsite() {
         <section className="section">
           <div className="container">
             <div className="trust-band" data-reveal>
-              <strong>Built for businesses that want a more professional digital presence</strong>
+              <strong>Affordable web design in Malaysia for businesses that want a stronger digital presence</strong>
               <div className="trust-tags">
                 <span>Consultants</span>
                 <span>Studios</span>
@@ -2998,18 +2997,20 @@ function PortfolioWebsite() {
             <div className="services-left" data-reveal="left">
               <div className="eyebrow">
                 <span className="eyebrow-dot" />
-                What We Provide
+                Web Design Services in Malaysia
               </div>
               <h2>
-                Everything needed
-                <span>for a clean and convincing website.</span>
+                Affordable websites built
+                <span>for businesses, brands, and student projects.</span>
               </h2>
             </div>
 
             <div className="services-right">
               <div className="services-intro" data-reveal style={{ marginBottom: '32px' }}>
                 <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.82, fontSize: '1rem' }}>
-                  We design and build professional websites that present your business clearly, feel polished on every screen, and guide visitors through a stronger story as they scroll. And We do more than decorate a page. We structure the message, shape the visual system, and build the final experience so your business looks premium, clear, and ready for clients.
+                  Our web design services in Malaysia focus on clear messaging, responsive layouts, and modern React
+                  development. Whether you need a business website or student project support, we build pages that feel
+                  credible, fast, and easy to use.
                 </p>
               </div>
 
@@ -3379,8 +3380,8 @@ function PortfolioWebsite() {
 
         <footer>
           <div className="footer-bar">
-            <span>Northline Studio</span>
-            <span>Professional website maker in React</span>
+            <span>TriZen Studio</span>
+            <span>Affordable web design in Malaysia</span>
           </div>
         </footer>
 
