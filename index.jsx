@@ -654,16 +654,15 @@ const styles = `
     font-size: clamp(3rem, 7vw, 5.6rem);
     line-height: 0.96;
     letter-spacing: -0.05em;
-    max-width: 10.5ch;
+    max-width: 13ch;
   }
 
   .hero-copy h1 span {
     display: block;
-    font-size: 50px;
-    text-shadow: 5px 4px 3px #373636;
+    font-size: clamp(1.5rem, 3vw, 2.45rem);
     line-height: 1.1;
-    margin-top: 4px;
-    color: #e9e9e9;
+    margin-top: 10px;
+    color: var(--muted);
   }
 
   .hero-copy p {
@@ -2625,7 +2624,7 @@ function PortfolioWebsite() {
   }, [isDarkMode]);
 
   useEffect(() => {
-    document.title = 'TriZen Studio | Professional Website Maker';
+    document.title = 'Web Design Malaysia | TriZen Studio';
 
     let ticking = false;
     const handleScroll = () => {
@@ -2813,17 +2812,17 @@ function PortfolioWebsite() {
           <div className="hero-copy">
             <div className="eyebrow" data-reveal style={{ '--delay': '0ms' }}>
               <span className="eyebrow-dot" />
-              Website maker for brands that need to look credible fast
+              Affordable web design and development services in Malaysia
             </div>
 
             <h1 data-reveal style={{ '--delay': '80ms' }}>
-              Clean websites
-              <span>with premium presence.</span>
+              Web Design Malaysia
+              <span>| TriZen Studio</span>
             </h1>
 
             <p data-reveal style={{ '--delay': '160ms' }}>
-              We design and build professional websites that present your business clearly, feel polished on every screen,
-              and guide visitors through a stronger story as they scroll.
+              We provide affordable web design and development services in Malaysia. Specializing in React websites,
+              business websites, and student project support.
             </p>
 
             <div className="hero-actions" data-reveal style={{ '--delay': '240ms' }}>
@@ -2852,7 +2851,7 @@ function PortfolioWebsite() {
                   <span />
                   <span />
                 </div>
-                <div className="browser-url">northlinestudio.co/professional-web-presence</div>
+                <div className="browser-url">trizenstudio.com/web-design-malaysia</div>
               </div>
 
               <div className="screen">
@@ -3342,8 +3341,8 @@ function PortfolioWebsite() {
 
         <footer>
           <div className="footer-bar">
-            <span>Northline Studio</span>
-            <span>Professional website maker in React</span>
+            <span>TriZen Studio</span>
+            <span>Web design and development in Malaysia</span>
           </div>
         </footer>
 
