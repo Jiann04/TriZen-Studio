@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trizenstudio.com/sitemap.xml
