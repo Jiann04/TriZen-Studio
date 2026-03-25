@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
-import logoImg from './img/Logo.png'; 
-import laptopImg from './img/laptop.png';
-import starImg from './img/star.png';
-import crownImg from './img/crown.png';
+
 const services = [
   {
     title: 'Brand Positioning',
@@ -44,21 +41,21 @@ const caseStudies = [
     name: 'FlyEase Booking Engine',
     summary: 'A calm, premium layout built to make flight management and bookings feel credible, focused, and effortless.',
     result: 'Sharper positioning for high-value travel',
-    images: Array.from({ length: 7 }, (_, i) => `./img/TravelManagement (${i + 1}).png`)  
+    images: Array.from({ length: 7 }, (_, i) => `img/TravelManagement (${i + 1}).png`)  
   },
   {
     sector: 'Creative Engineering',
     name: 'Interactive 3D WebGL Portfolio',
     summary: 'A gamified, physics-driven experience built with Three.js and GSAP, featuring a dynamic 3D card sphere and immersive scrolling architecture.',
     result: 'A high-impact technical showcase for premium web apps',
-    images: Array.from({ length: 7 }, (_, i) => `./img/PortFolio (${i + 1}).png`)  
+    images: Array.from({ length: 7 }, (_, i) => `img/PortFolio (${i + 1}).png`)  
   },
   {
     sector: 'Property Tech',
     name: 'TrustNest Secure Portal',
     summary: 'A clean, split-screen authentication flow designed to establish trust instantly. Built for seamless, highly secure user logins and protected access.',
     result: 'Elevated user confidence and frictionless onboarding',
-    images: Array.from({ length: 7 }, (_, i) => `./img/TrustNest.png`)  
+    images: Array.from({ length: 7 }, (_, i) => `img/TrustNest.png`)  
   },
 ];
 
@@ -2781,7 +2778,7 @@ function PortfolioWebsite() {
           <nav className="nav">
             <div className="brand">
 <div className="brand-mark" style={{ background: 'transparent' }}>
-  <img src="./img/Logo.png" alt="TriZen Logo" style={{ width: '160%', height: '160%', objectFit: 'contain' }} />
+  <img src="img/Logo.png" alt="TriZen Logo" style={{ width: '160%', height: '160%', objectFit: 'contain' }} />
 </div>              <div className="brand-copy">
                 <div className="brand-name">TriZen Studio</div>
                 <div className="brand-subtitle">Professional websites for modern businesses</div>
@@ -3250,7 +3247,7 @@ function PortfolioWebsite() {
             
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px' }}>
               <div className="pricing-card" data-reveal style={{ '--delay': '0ms' }}>
-                <div className="pricing-icon pricing-laptop"><img src="./img/laptop.png" alt="Basic Laptop" /></div>
+                <div className="pricing-icon pricing-laptop"><img src="img/laptop.png" alt="Basic Laptop" /></div>
                 <h3>Basic Plan</h3>
                 <div className="pricing-price">RM1,500 – RM2,500</div>
                 <p>Perfect for consultants or early-stage brands needing a high-trust, single-page presentation fast.</p>
@@ -3265,7 +3262,7 @@ function PortfolioWebsite() {
               </div>
               
               <div className="pricing-card" data-reveal style={{ '--delay': '90ms' }}>
-                <div className="pricing-icon"><img src="./img/star.png" alt="Business Car" /></div>
+                <div className="pricing-icon"><img src="img/star.png" alt="Business Car" /></div>
                 <h3>Business Core</h3>
                 <div className="pricing-price">RM3,500 – RM5,500</div>
                 <p>Designed for established studios or agencies requiring deeper service explanation and visual depth.</p>
@@ -3280,7 +3277,7 @@ function PortfolioWebsite() {
               </div>
               
               <div className="pricing-card" data-reveal style={{ '--delay': '180ms' }}>
-                <div className="pricing-icon"><img src="./img/crown.png" alt="Advanced Crown" /></div>
+                <div className="pricing-icon"><img src="img/crown.png" alt="Advanced Crown" /></div>
                 <h3>Advanced Growth</h3>
                 <div className="pricing-price">RM6,000 – RM9,000+</div>
                 <p>For complex offers needing motion narrative, interactive blocks, or launch support to win high-value clients.</p>
