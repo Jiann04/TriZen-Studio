@@ -2527,7 +2527,18 @@ const styles = `
       letter-spacing: -0.02em;
     }
 
+    .nav-wrap {
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    }
+
+    .nav-wrap.header-hidden {
+      transform: translateY(-120%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .nav {
+      padding: 10px 15px;
       flex-wrap: wrap;
       justify-content: center;
       text-align: center;
@@ -2536,6 +2547,11 @@ const styles = `
     .brand {
       width: 100%;
       justify-content: center;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
     }
 
     .nav-links {
@@ -2615,7 +2631,28 @@ function PortfolioWebsite() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [lightbox, setLightbox] = useState({ isOpen: false, images: [], currentIndex: 0 });
   const [isNoteVisible, setIsNoteVisible] = useState(true);
+// 1. Add these states at the top of your function
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
 
+  // 2. Add this scroll effect for the header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // If scrolling down and past the hero, hide. If scrolling up, show.
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setShowHeader(false);
+      } else {
+        setShowHeader(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark');
@@ -2774,7 +2811,7 @@ function PortfolioWebsite() {
 
         <div className="grid-fade" />
 
-        <div className="nav-wrap">
+        <div className={`nav-wrap${showHeader ? '' : ' header-hidden'}`}>
           <nav className="nav">
             <div className="brand">
 <div className="brand-mark" style={{ background: 'transparent' }}>
@@ -3046,7 +3083,7 @@ function PortfolioWebsite() {
 
         <section
           className="section"
-          id="portfolio"
+          id="portfolio-intro"
           data-note-title="Concepts Opened"
           data-note-body="The portfolio section has entered, with each concept revealed in order."
         ><section className="section" id="experience">
@@ -3106,7 +3143,7 @@ function PortfolioWebsite() {
 
           </div>
         </section>
-          <div className="container">
+          <div className="container" id="portfolio">
             <div className="section-head" data-reveal>
               <div className="section-label">Portfolio Direction</div>
               <h2>Professional concepts designed to attract the right client.</h2>
