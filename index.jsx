@@ -2886,7 +2886,7 @@ function PortfolioWebsite() {
                   <span />
                   <span />
                 </div>
-                <div className="browser-url">northlinestudio.co/professional-web-presence</div>
+                <div className="browser-url">trizenstudio.com/web-design-malaysia</div>
               </div>
 
               <div className="screen">
@@ -3376,8 +3376,8 @@ function PortfolioWebsite() {
 
         <footer>
           <div className="footer-bar">
-            <span>Northline Studio</span>
-            <span>Professional website maker in React</span>
+            <span>TriZen Studio</span>
+            <span>Affordable web design in Malaysia</span>
           </div>
         </footer>
 
