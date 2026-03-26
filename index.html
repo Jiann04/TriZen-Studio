@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-MY">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,7 +34,7 @@
         "@type": "ProfessionalService",
         "name": "TriZen Studio",
         "url": "https://trizenstudio.com/",
-        "logo": "https:/img/Logo.png",
+        "logo": "https://trizenstudio.com/img/Logo.png",
         "image": "https://trizenstudio.com/img/Logo.png",
         "description": "Affordable web design in Malaysia for React websites, business websites, and student project sites. TriZen Studio builds modern, fast-loading pages.",
         "email": "sales@trizenstudio.com",
@@ -47,142 +47,31 @@
           "Student project support"
         ]
       }
-    </style>
+    </script>
   </head>
   <body>
-    <div class="entry-loader" id="entry-loader" role="status" aria-live="polite" aria-label="Loading TriZen Studio">
-      <div class="entry-loader__stage">
-        <div class="entry-loader__headline">Design Intelligence</div>
-        <div class="entry-loader__status">
-          <span id="entry-loader-progress">Loading 00%</span>
-          <span id="entry-loader-clock">00:00:00</span>
-        </div>
-        <div class="entry-loader__menu">Menu</div>
-        <h1 class="entry-loader__brand">TriZen Studio</h1>
-        <div class="entry-loader__diagram" aria-hidden="true">
-          <span class="entry-loader__line entry-loader__line--vertical"></span>
-          <span class="entry-loader__line entry-loader__line--horizontal"></span>
-          <span class="entry-loader__line entry-loader__line--diagonal"></span>
-        </div>
-        <div class="entry-loader__scroll">Scroll</div>
-      </div>
+    <div id="root">
+      <main
+        style="max-width:960px;margin:0 auto;padding:56px 24px;font-family:Manrope,'Segoe UI',sans-serif;line-height:1.6;color:#111111;background:#fdfdfc;"
+      >
+        <p style="margin:0 0 12px;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;color:#555555;">
+          Affordable web design in Malaysia
+        </p>
+        <h1 style="margin:0 0 18px;font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.02;">
+          Web Design Malaysia | TriZen Studio
+        </h1>
+        <p style="margin:0;max-width:720px;font-size:1.05rem;color:#444444;">
+          TriZen Studio provides affordable web design in Malaysia for React websites, business websites, and student
+          project support. We build fast, modern pages that help your brand look credible online.
+        </p>
+      </main>
     </div>
 
-    <div id="root"></div>
-
-    <script>
-      (() => {
-        const loader = document.getElementById('entry-loader');
-
-        if (!loader) {
-          return;
-        }
-
-        const reduceMotion =
-          typeof window.matchMedia === 'function' &&
-          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        const body = document.body;
-        const progressEl = document.getElementById('entry-loader-progress');
-        const clockEl = document.getElementById('entry-loader-clock');
-        const startedAt = Date.now();
-        const minDuration = reduceMotion ? 120 : 1200;
-        const exitDuration = reduceMotion ? 40 : 1000;
-        let progress = reduceMotion ? 100 : 4;
-        let finished = false;
-        let clockTimer;
-
-        const renderClock = () => {
-          if (!clockEl) {
-            return;
-          }
-
-          const now = new Date();
-          const time = now.toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false,
-          });
-
-          clockEl.textContent = time;
-        };
-
-        const renderProgress = () => {
-          if (!progressEl) {
-            return;
-          }
-
-          progressEl.textContent = `Loading ${String(progress).padStart(2, '0')}%`;
-        };
-
-        body.classList.add('preload-lock');
-        renderClock();
-        renderProgress();
-
-        clockTimer = window.setInterval(renderClock, 1000);
-
-        const ticker = reduceMotion
-          ? null
-          : window.setInterval(() => {
-              if (finished || progress >= 96) {
-                return;
-              }
-
-              if (progress < 36) {
-                progress = Math.min(96, progress + 7);
-              } else if (progress < 72) {
-                progress = Math.min(96, progress + 4);
-              } else {
-                progress = Math.min(96, progress + 2);
-              }
-
-              renderProgress();
-            }, 90);
-
-        const cleanup = () => {
-          if (ticker) {
-            window.clearInterval(ticker);
-          }
-
-          if (clockTimer) {
-            window.clearInterval(clockTimer);
-          }
-        };
-
-        const finish = () => {
-          if (finished) {
-            return;
-          }
-
-          finished = true;
-          cleanup();
-
-          const remaining = Math.max(0, minDuration - (Date.now() - startedAt));
-
-          window.setTimeout(() => {
-            progress = 100;
-            renderProgress();
-            body.classList.add('preload-complete');
-            body.classList.remove('preload-lock');
-
-            window.setTimeout(() => {
-              loader.remove();
-            }, exitDuration);
-          }, remaining);
-        };
-
-        window.addEventListener('load', finish, { once: true });
-        window.setTimeout(finish, reduceMotion ? 200 : 4200);
-      })();
-    </script>
-
     <noscript>
-      <style>
-        #entry-loader {
-          display: none !important;
-        }
-      </style>
+      <div style="max-width:960px;margin:0 auto;padding:0 24px 48px;font-family:Manrope,'Segoe UI',sans-serif;color:#111111;">
+        JavaScript is disabled, but our affordable web design services in Malaysia are still available at
+        <a href="mailto:sales@trizenstudio.com">sales@trizenstudio.com</a>.
+      </div>
     </noscript>
 
     <script type="module" src="/index.jsx"></script>
