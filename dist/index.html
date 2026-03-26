@@ -5,245 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Northline Studio creates professional React websites with clean strategy, premium design, and scroll-led storytelling."
+      content="Affordable web design in Malaysia for React websites, business websites, and student project sites. TriZen Studio builds modern, fast-loading pages."
     />
-    <title>Northline Studio | Professional Website Maker</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        background: #d9d7d3;
-      }
-
-      body.preload-lock {
-        overflow: hidden;
-      }
-
-      #root {
-        min-height: 100vh;
-      }
-
-      .entry-loader {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        display: flex;
-        padding: clamp(18px, 2.4vw, 32px);
-        background: #d9d7d3;
-        transform: translateY(0);
-        transition: transform 0.95s cubic-bezier(0.77, 0, 0.175, 1);
-      }
-
-      body.preload-complete .entry-loader {
-        transform: translateY(-108%);
-      }
-
-      .entry-loader__stage {
-        position: relative;
-        flex: 1;
-        overflow: hidden;
-        background: #f7f6f2;
-        border: 1px solid rgba(17, 17, 17, 0.08);
-      }
-
-      .entry-loader__headline,
-      .entry-loader__status,
-      .entry-loader__menu,
-      .entry-loader__scroll,
-      .entry-loader__brand,
-      .entry-loader__diagram {
-        opacity: 0;
-        animation: loader-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      }
-
-      .entry-loader__headline {
-        position: absolute;
-        top: 14px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #111111;
-        font-family: "Segoe UI", sans-serif;
-        font-size: 0.76rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        animation-delay: 0.08s;
-      }
-
-      .entry-loader__status {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        display: grid;
-        justify-items: end;
-        gap: 2px;
-        color: rgba(17, 17, 17, 0.58);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 0.76rem;
-        line-height: 1.15;
-        text-align: right;
-        animation-delay: 0.14s;
-      }
-
-      .entry-loader__menu {
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #111111;
-        font-family: "Segoe UI", sans-serif;
-        font-size: 0.82rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        animation-delay: 0.22s;
-      }
-
-      .entry-loader__scroll {
-        position: absolute;
-        left: 50%;
-        bottom: 14px;
-        transform: translateX(-50%);
-        color: #111111;
-        font-family: "Segoe UI", sans-serif;
-        font-size: 0.82rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        animation-delay: 0.3s;
-      }
-
-      .entry-loader__brand {
-        position: absolute;
-        left: clamp(18px, 4.6vw, 72px);
-        top: 50%;
-        margin: 0;
-        transform: translateY(-8%);
-        max-width: 9ch;
-        color: #111111;
-        font-family: "Segoe UI", sans-serif;
-        font-size: clamp(2.4rem, 4.9vw, 4.1rem);
-        font-weight: 500;
-        line-height: 0.98;
-        letter-spacing: -0.05em;
-        animation-delay: 0.18s;
-      }
-
-      .entry-loader__diagram {
-        position: absolute;
-        left: 57%;
-        top: 50%;
-        width: min(18vw, 236px);
-        min-width: 170px;
-        aspect-ratio: 0.72;
-        transform: translate(-50%, -50%);
-        border: 1px solid rgba(17, 17, 17, 0.26);
-        animation-delay: 0.24s;
-      }
-
-      .entry-loader__line {
-        position: absolute;
-        background: rgba(17, 17, 17, 0.24);
-      }
-
-      .entry-loader__line--vertical {
-        top: 0;
-        bottom: 0;
-        left: 38%;
-        width: 1px;
-      }
-
-      .entry-loader__line--horizontal {
-        left: 0;
-        right: 0;
-        top: 50%;
-        height: 1px;
-      }
-
-      .entry-loader__line--diagonal {
-        left: 50%;
-        top: 50%;
-        width: 1px;
-        height: 146%;
-        transform: translate(-50%, -50%) rotate(-37deg);
-        transform-origin: center;
-        animation: loader-diagonal-shift 1.55s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
-      }
-
-      @keyframes loader-fade-up {
-        from {
-          opacity: 0;
-          filter: blur(6px);
-        }
-        to {
-          opacity: 1;
-          filter: blur(0);
-        }
-      }
-
-      @keyframes loader-diagonal-shift {
-        0% {
-          transform: translate(-50%, -50%) rotate(-37deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(42deg);
-        }
-      }
-
-      @media (max-width: 900px) {
-        .entry-loader__brand {
-          left: 24px;
-          top: calc(50% + 110px);
-          transform: translateY(0);
-          max-width: none;
-          font-size: clamp(2.2rem, 7vw, 3.4rem);
-        }
-
-        .entry-loader__diagram {
-          left: 50%;
-          top: 42%;
-          width: min(34vw, 220px);
-        }
-      }
-
-      @media (max-width: 640px) {
-        .entry-loader {
-          padding: 12px;
-        }
-
-        .entry-loader__headline,
-        .entry-loader__status,
-        .entry-loader__menu,
-        .entry-loader__scroll {
-          font-size: 0.72rem;
-        }
-
-        .entry-loader__brand {
-          left: 18px;
-          right: 18px;
-          top: auto;
-          bottom: 84px;
-          font-size: clamp(2rem, 10vw, 3rem);
-        }
-
-        .entry-loader__diagram {
-          left: 50%;
-          top: 42%;
-          width: min(48vw, 180px);
-          min-width: 150px;
-        }
-
-        .entry-loader__menu {
-          right: 12px;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .entry-loader,
-        .entry-loader * {
-          animation: none !important;
-          transition: none !important;
-        }
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://trizenstudio.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_MY" />
+    <meta property="og:url" content="https://trizenstudio.com/" />
+    <meta property="og:title" content="Web Design Malaysia | TriZen Studio" />
+    <meta property="og:image" content="https://trizenstudio.com/img/Logo.png" />
+    <meta
+      property="og:description"
+      content="Affordable web design in Malaysia for React websites, business websites, and student project sites. TriZen Studio builds modern, fast-loading pages."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Web Design Malaysia | TriZen Studio" />
+    <meta name="twitter:image" content="https://trizenstudio.com/img/Logo.png" />
+    <meta
+      name="twitter:description"
+      content="Affordable web design in Malaysia for React websites, business websites, and student project sites. TriZen Studio builds modern, fast-loading pages."
+    />
+    <title>Web Design Malaysia | TriZen Studio</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "TriZen Studio",
+        "url": "https://trizenstudio.com/",
+        "logo": "https://trizenstudio.com/img/Logo.png",
+        "image": "https://trizenstudio.com/img/Logo.png",
+        "description": "Affordable web design in Malaysia for React websites, business websites, and student project sites. TriZen Studio builds modern, fast-loading pages.",
+        "email": "sales@trizenstudio.com",
+        "areaServed": "Malaysia",
+        "serviceType": [
+          "Web design",
+          "Web development",
+          "React websites",
+          "Business websites",
+          "Student project support"
+        ]
       }
     </style>
     <script type="module" crossorigin src="/assets/index-C3JAnrWb.js"></script>
