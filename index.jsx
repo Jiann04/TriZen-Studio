@@ -133,6 +133,28 @@ const scrollStorySteps = [
   },
 ];
 
+const preloadSteps = [
+  {
+    label: 'Positioning',
+    note: 'Setting the tone, hierarchy, and first impression.',
+  },
+  {
+    label: 'Concept Stack',
+    note: 'Preparing showcase frames and portfolio visuals.',
+  },
+  {
+    label: 'Launch Layer',
+    note: 'Loading motion, sections, and enquiry flow.',
+  },
+];
+
+const preloadAssets = Array.from(
+  new Set([
+    '/img/Logo.png',
+    ...caseStudies.flatMap((item) => item.images ?? []),
+  ])
+);
+
 // --- PRICING DATA ---
 const pricingPackages = [
   {
@@ -478,6 +500,369 @@ const styles = `
     overflow-x: clip; 
     min-height: 100vh;
     isolation: isolate;
+  }
+
+  .site-shell.is-blocked {
+    opacity: 0;
+  }
+
+  .site-shell.is-ready {
+    animation: site-shell-reveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes site-shell-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes preload-overlay-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes preload-grid-drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-26px, -26px, 0);
+    }
+  }
+
+  @keyframes preload-card-in {
+    from {
+      opacity: 0;
+      transform: translateY(34px) scale(0.97);
+      box-shadow: 0 0 0 var(--line-strong);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      box-shadow: 12px 12px 0px var(--line-strong);
+    }
+  }
+
+  @keyframes preload-rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes preload-logo-pulse {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+    50% {
+      transform: scale(1.035) rotate(-2deg);
+    }
+  }
+
+  @keyframes preload-sheen {
+    from {
+      transform: translateX(-135%);
+    }
+    to {
+      transform: translateX(135%);
+    }
+  }
+
+  @keyframes preload-rail-shift {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 32px 0;
+    }
+  }
+
+  @keyframes preload-step-pulse {
+    0%,
+    100% {
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0px var(--line-strong);
+    }
+    50% {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0px var(--line-strong);
+    }
+  }
+
+  .preload-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--bg);
+    transition: opacity 0.48s ease, visibility 0.48s ease;
+    isolation: isolate;
+    animation: preload-overlay-in 0.35s ease both;
+  }
+
+  .preload-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 52px 52px;
+    opacity: 0.42;
+    pointer-events: none;
+    animation: preload-grid-drift 4s linear infinite;
+  }
+
+  .preload-overlay::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% 10% 44%;
+    height: 180px;
+    background: linear-gradient(90deg, transparent, var(--accent-soft), transparent);
+    transform: rotate(-10deg);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .preload-overlay.is-exiting {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .preload-card {
+    position: relative;
+    z-index: 1;
+    width: min(860px, 100%);
+    display: grid;
+    gap: 24px;
+    padding: 28px;
+    background: var(--surface-strong);
+    border: 2px solid var(--line-strong);
+    box-shadow: 12px 12px 0px var(--line-strong);
+    overflow: hidden;
+    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.42s ease;
+    animation: preload-card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .preload-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+    transform: translateX(-135%);
+    animation: preload-sheen 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.2s 1 both;
+    pointer-events: none;
+  }
+
+  .preload-overlay.is-exiting .preload-card {
+    opacity: 0;
+    transform: translateY(-28px) scale(0.985);
+  }
+
+  .preload-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: preload-rise 0.5s ease 0.12s forwards;
+  }
+
+  .preload-kicker,
+  .preload-meta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--line-strong);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .preload-meta {
+    color: var(--muted);
+  }
+
+  .preload-main {
+    display: grid;
+    grid-template-columns: minmax(140px, 180px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: center;
+    opacity: 0;
+    animation: preload-rise 0.58s ease 0.18s forwards;
+  }
+
+  .preload-logo {
+    position: relative;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-secondary);
+    overflow: hidden;
+  }
+
+  .preload-logo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, transparent 0 44%, rgba(0, 0, 0, 0.06) 44% 56%, transparent 56%),
+      linear-gradient(0deg, transparent 0 78%, rgba(0, 0, 0, 0.04) 78% 100%);
+  }
+
+  .preload-logo img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(1) contrast(1.08);
+    animation: preload-logo-pulse 2.2s ease-in-out infinite;
+  }
+
+  .preload-copy {
+    display: grid;
+    gap: 12px;
+  }
+
+  .preload-progress-value {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+  }
+
+  .preload-copy h2 {
+    margin: 0;
+    max-width: 11ch;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 4.2vw, 3.7rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+  }
+
+  .preload-copy p {
+    margin: 0;
+    max-width: 54ch;
+    color: var(--muted);
+    line-height: 1.78;
+    font-size: 0.98rem;
+  }
+
+  .preload-track {
+    display: grid;
+    gap: 10px;
+    opacity: 0;
+    animation: preload-rise 0.6s ease 0.28s forwards;
+  }
+
+  .preload-track-rail {
+    height: 16px;
+    padding: 3px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-secondary);
+  }
+
+  .preload-track-rail span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--text) 0 16px,
+        transparent 16px 22px
+      );
+    background-size: 32px 100%;
+    animation: preload-rail-shift 0.8s linear infinite;
+    transition: width 0.28s ease;
+  }
+
+  .preload-track-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .preload-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    opacity: 0;
+    animation: preload-rise 0.62s ease 0.34s forwards;
+  }
+
+  .preload-step {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-secondary);
+    opacity: 0.55;
+    transition: transform 0.24s ease, box-shadow 0.24s ease, opacity 0.24s ease, background 0.24s ease;
+  }
+
+  .preload-step.is-active {
+    opacity: 1;
+    background: var(--surface-strong);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px var(--line-strong);
+  }
+
+  .preload-step.is-current {
+    animation: preload-step-pulse 1.1s ease-in-out infinite;
+  }
+
+  .preload-step-index {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .preload-step strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+
+  .preload-step span {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.58;
   }
 
   .grid-fade {
@@ -2520,6 +2905,33 @@ const styles = `
   }
 
   @media (max-width: 760px) {
+    .preload-card {
+      padding: 20px;
+      gap: 18px;
+    }
+
+    .preload-main {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .preload-logo {
+      width: min(150px, 42vw);
+      margin: 0 auto;
+    }
+
+    .preload-copy h2 {
+      max-width: none;
+    }
+
+    .preload-track-meta {
+      letter-spacing: 0.08em;
+    }
+
+    .preload-steps {
+      grid-template-columns: 1fr;
+    }
+
     .hero-copy h1 {
       font-size: 2.8rem;
       line-height: 1.1;
@@ -2630,16 +3042,131 @@ function PortfolioWebsite() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [lightbox, setLightbox] = useState({ isOpen: false, images: [], currentIndex: 0 });
   const [isNoteVisible, setIsNoteVisible] = useState(true);
-// 1. Add these states at the top of your function
   const [showHeader, setShowHeader] = useState(true);
+  const [preloadProgress, setPreloadProgress] = useState(0);
+  const [preloadStage, setPreloadStage] = useState(0);
+  const [isPreloadVisible, setIsPreloadVisible] = useState(true);
+  const [isPreloadExiting, setIsPreloadExiting] = useState(false);
   const lastScrollY = useRef(0);
+  const preloadOverflowRef = useRef('');
+  const preloadStartedRef = useRef(false);
 
-  // 2. Add this scroll effect for the header
+  useEffect(() => {
+    if (!preloadOverflowRef.current) {
+      preloadOverflowRef.current = document.body.style.overflow;
+    }
+
+    if (isPreloadVisible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = preloadOverflowRef.current;
+    }
+
+    return () => {
+      document.body.style.overflow = preloadOverflowRef.current;
+    };
+  }, [isPreloadVisible]);
+
+  useEffect(() => {
+    if (preloadStartedRef.current) {
+      return undefined;
+    }
+
+    preloadStartedRef.current = true;
+
+    const minimumDuration = 1100;
+    const startTime = Date.now();
+    let isCancelled = false;
+    let exitTimer;
+    let loadedCount = 0;
+
+    const updateProgress = () => {
+      if (isCancelled) {
+        return;
+      }
+
+      const nextProgress = Math.round((loadedCount / preloadAssets.length) * 100);
+      const nextStage = Math.min(
+        preloadSteps.length - 1,
+        Math.max(0, Math.ceil((nextProgress / 100) * preloadSteps.length) - 1)
+      );
+
+      setPreloadProgress(nextProgress);
+      setPreloadStage(nextStage);
+    };
+
+    const loadImageAsset = (src) =>
+      new Promise((resolve) => {
+        const image = new Image();
+        let settled = false;
+
+        const finish = () => {
+          if (settled) {
+            return;
+          }
+
+          settled = true;
+          loadedCount += 1;
+          updateProgress();
+          resolve();
+        };
+
+        image.onload = finish;
+        image.onerror = finish;
+        image.src = src;
+
+        if (image.complete) {
+          finish();
+        }
+      });
+
+    const runPreloader = async () => {
+      if (!preloadAssets.length) {
+        setPreloadProgress(100);
+        setIsPreloadExiting(true);
+        exitTimer = window.setTimeout(() => {
+          if (!isCancelled) {
+            setIsPreloadVisible(false);
+          }
+        }, 420);
+        return;
+      }
+
+      setPreloadProgress(6);
+
+      await Promise.all(preloadAssets.map((src) => loadImageAsset(src)));
+
+      const remainingTime = Math.max(0, minimumDuration - (Date.now() - startTime));
+
+      exitTimer = window.setTimeout(() => {
+        if (isCancelled) {
+          return;
+        }
+
+        setPreloadProgress(100);
+        setPreloadStage(preloadSteps.length - 1);
+        setIsPreloadExiting(true);
+
+        exitTimer = window.setTimeout(() => {
+          if (!isCancelled) {
+            setIsPreloadVisible(false);
+          }
+        }, 420);
+      }, remainingTime);
+    };
+
+    runPreloader();
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(exitTimer);
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // If scrolling down and past the hero, hide. If scrolling up, show.
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setShowHeader(false);
       } else {
@@ -2795,10 +3322,61 @@ function PortfolioWebsite() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightbox.isOpen]);
 
+  const activePreloadStep = preloadSteps[preloadStage] ?? preloadSteps[0];
+
+  useEffect(() => {
+    const preloader = document.getElementById('entry-preloader');
+
+    if (!preloader) {
+      return undefined;
+    }
+
+    const valueEl = document.getElementById('entry-preloader-value');
+    const noteEl = document.getElementById('entry-preloader-note');
+    const labelEl = document.getElementById('entry-preloader-label');
+    const barEl = document.getElementById('entry-preloader-bar');
+    const stepEls = Array.from(document.querySelectorAll('[data-preload-step]'));
+
+    if (valueEl) {
+      valueEl.textContent = `${preloadProgress}%`;
+    }
+
+    if (noteEl) {
+      noteEl.textContent = activePreloadStep.note;
+    }
+
+    if (labelEl) {
+      labelEl.textContent = activePreloadStep.label;
+    }
+
+    if (barEl) {
+      barEl.style.width = `${preloadProgress}%`;
+    }
+
+    stepEls.forEach((stepEl, index) => {
+      stepEl.classList.toggle('is-active', index <= preloadStage);
+      stepEl.classList.toggle('is-current', index === preloadStage);
+    });
+
+    preloader.classList.toggle('is-exiting', isPreloadExiting);
+
+    if (!isPreloadVisible) {
+      const removeTimer = window.setTimeout(() => {
+        preloader.remove();
+      }, 520);
+
+      return () => {
+        window.clearTimeout(removeTimer);
+      };
+    }
+
+    return undefined;
+  }, [activePreloadStep, isPreloadExiting, isPreloadVisible, preloadProgress, preloadStage]);
+
   return (
     <>
       <style>{styles}</style>
-      <div className="site-shell">
+      <div className={`site-shell${isPreloadVisible ? ' is-blocked' : ' is-ready'}`}>
         <div className={`scroll-toast${scrollToast.visible ? ' is-visible' : ''}`} role="status" aria-live="polite">
           <div className="scroll-toast-label">
             <span className="scroll-toast-dot" />
