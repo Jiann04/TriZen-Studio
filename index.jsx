@@ -2659,7 +2659,7 @@ function PortfolioWebsite() {
   }, [isDarkMode]);
 
   useEffect(() => {
-    document.title = 'TriZen Studio | Professional Website Maker';
+    document.title = 'Web Design Malaysia | TriZen Studio';
 
     let ticking = false;
     const handleScroll = () => {
