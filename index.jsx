@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
 
 const services = [
   {
@@ -2795,6 +2796,7 @@ function PortfolioWebsite() {
 
   return (
     <>
+      <Analytics />
       <style>{styles}</style>
       <div className="site-shell">
         <div className={`scroll-toast${scrollToast.visible ? ' is-visible' : ''}`} role="status" aria-live="polite">
