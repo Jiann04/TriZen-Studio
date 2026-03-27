@@ -17,10 +17,13 @@
         --hero-bg: #d7e2d5;
         --second-bg: #eadbe4;
         --third-bg: #f4efe8;
-        --ink: #111111;
-        --muted: rgba(17, 17, 17, 0.62);
-        --line: rgba(17, 17, 17, 0.18);
-        --line-strong: rgba(17, 17, 17, 0.34);
+        --ink: #1f2320;
+        --muted: rgba(31, 35, 32, 0.64);
+        --line: rgba(31, 35, 32, 0.18);
+        --line-strong: rgba(31, 35, 32, 0.34);
+        --accent: #8e6f90;
+        --accent-soft: #d8c7d8;
+        --hero-card-bg: rgba(215, 226, 213, 0.96);
         --device-x: 7vw;
         --device-y: 8vh;
         --device-rotate: -44deg;
@@ -125,13 +128,14 @@
         position: absolute;
         left: 28px;
         top: 88px;
-        color: rgba(17, 17, 17, 0.92);
+        color: transparent;
         font-family: "Sora", sans-serif;
         font-size: clamp(4.6rem, 12vw, 9.4rem);
         font-weight: 800;
         letter-spacing: -0.08em;
         line-height: 0.84;
-        opacity: calc(0.08 + (var(--approach-copy-opacity) * 0.34));
+        -webkit-text-stroke: 1.4px rgba(31, 35, 32, 0.14);
+        opacity: calc(0.12 + (var(--approach-copy-opacity) * 0.14));
         transform: translate3d(0, calc(var(--approach-copy-shift) * 0.26), 0);
         transition:
           opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -145,7 +149,7 @@
 
       .topbar {
         position: absolute;
-        top: 0;
+        top: 8px;
         left: 0;
         right: 0;
         z-index: 4;
@@ -171,9 +175,15 @@
         font-size: 0.98rem;
       }
 
+      .topbar-actions {
+        transform: translateY(12px);
+      }
+
       .topbar-actions a:last-child {
         padding: 12px 18px;
-        background: rgba(215, 199, 220, 0.92);
+        background: rgb(162, 180, 242);
+        opacity: 0.8;
+        border: 1px solid rgba(50, 92, 219, 0.12);
         font-weight: 700;
       }
 
@@ -193,14 +203,16 @@
 
       .hero-meta--right {
         right: 18px;
-        display: grid;
-        justify-items: end;
-        gap: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
         color: rgba(17, 17, 17, 0.58);
         font-family: Georgia, "Times New Roman", serif;
         font-size: 0.82rem;
         font-weight: 500;
         text-transform: none;
+        white-space: nowrap;
       }
 
       .hero-menu,
@@ -266,13 +278,14 @@
         position: absolute;
         left: 28px;
         top: 84px;
-        color: rgba(17, 17, 17, 0.98);
+        color: rgb(149, 172, 241);
         font-family: "Sora", sans-serif;
         font-size: clamp(4.8rem, 14vw, 12rem);
         font-weight: 800;
         letter-spacing: -0.09em;
         line-height: 0.84;
-        opacity: calc(0.12 + (var(--hero-copy-opacity) * 0.82));
+        -webkit-text-stroke: 2px rgba(31, 35, 32, 0.16);
+        opacity: calc(0.40 + (var(--hero-copy-opacity) * 0.12));
         transform: translate3d(0, calc(var(--hero-copy-shift) * 0.34), 0);
         transition:
           opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -299,6 +312,11 @@
       .hero-copy h1 {
         max-width: 8ch;
         font-size: clamp(2.7rem, 4.4vw, 4.2rem);
+        color: var(--ink);
+      }
+
+      .hero-copy__accent {
+        color: rgb(149, 172, 241);
       }
 
       .hero-copy p,
@@ -353,6 +371,12 @@
         color: #ffffff;
       }
 
+      .hero-actions a:last-child,
+      .approach-actions a:last-child {
+        background: transparent;
+        color: var(--ink);
+      }
+
       .hero-side {
         align-self: end;
         display: grid;
@@ -371,6 +395,12 @@
         border: 1px solid rgba(17, 17, 17, 0.12);
         background: rgba(255, 255, 255, 0.36);
         backdrop-filter: blur(8px);
+      }
+
+      .hero-about-card {
+        background: var(--hero-card-bg);
+        border: 1px solid rgba(31, 35, 32, 0.18);
+        backdrop-filter: none;
       }
 
       .hero-about-card h2,
@@ -409,8 +439,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--ink);
-        color: #ffffff;
+        background: rgb(129, 154, 230);
+        color: var(--ink);
+        border: 1px solid rgba(13, 16, 211, 0.18);
         font-weight: 700;
       }
 
@@ -622,7 +653,9 @@
       }
 
       .approach-layout {
-        grid-template-columns: 1.05fr 0.95fr;
+        grid-template-columns: 0.78fr 1.22fr;
+        align-items: center;
+        padding-top: 126px;
       }
 
       .approach-copy,
@@ -660,52 +693,103 @@
       }
 
       .approach-side {
-        justify-items: end;
+        justify-items: stretch;
+        align-self: center;
+        align-content: center;
         opacity: var(--approach-side-opacity);
-        transform: translateY(var(--approach-side-shift));
+        transform: translateY(calc(var(--approach-side-shift) + 10px));
       }
 
-      .approach-panel {
-        width: min(390px, 100%);
-        padding: 24px;
+      .approach-services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      .approach-service-card {
+        min-height: 228px;
+        padding: 22px 18px 18px;
         border: 1px solid rgba(17, 17, 17, 0.12);
         background: rgba(255, 255, 255, 0.34);
         backdrop-filter: blur(8px);
         display: grid;
-        gap: 14px;
+        align-content: start;
+        gap: 12px;
       }
 
-      .approach-panel__eyebrow {
+      .service-icon {
+        width: 42px;
+        height: 42px;
+        stroke: rgba(17, 17, 17, 0.9);
+        fill: none;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .approach-service-card__index {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(17, 17, 17, 0.56);
+      }
+
+      .approach-service-card strong {
+        display: block;
+        font-family: "Sora", sans-serif;
+        font-size: 1.16rem;
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .approach-service-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.64;
+      }
+
+      .approach-service-card__meta {
+        margin-top: auto;
+        padding-top: 10px;
+        color: rgba(17, 17, 17, 0.5);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .approach-stack {
+        display: grid;
+        gap: 10px;
+        padding-top: 8px;
+      }
+
+      .approach-stack__label {
         font-size: 0.78rem;
         font-weight: 800;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
 
-      .approach-panel strong {
-        display: block;
-        font-family: "Sora", sans-serif;
-        font-size: 1.28rem;
-        line-height: 1;
-        letter-spacing: -0.04em;
-      }
-
-      .approach-panel p {
-        margin: 0;
-        max-width: 28ch;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .approach-panel__rule {
+      .approach-stack__rule {
         height: 1px;
         background: rgba(17, 17, 17, 0.18);
       }
 
-      .approach-panel__meta {
+      .approach-stack__rail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+        gap: 12px;
+      }
+
+      .approach-stack__rail span {
+        min-height: 54px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px 18px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(17, 17, 17, 0.1);
+        background: rgba(255, 255, 255, 0.22);
         color: rgba(17, 17, 17, 0.56);
         font-size: 0.78rem;
         font-weight: 800;
@@ -811,6 +895,10 @@
           font-size: clamp(4rem, 15vw, 7.8rem);
         }
 
+        .approach-layout {
+          padding-top: 126px;
+        }
+
         .hero-copy,
         .hero-side,
         .approach-copy,
@@ -835,6 +923,10 @@
 
         .approach-side {
           justify-items: start;
+        }
+
+        .approach-services {
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         }
 
         .moving-device {
@@ -872,7 +964,7 @@
           top: 42px;
           left: 16px;
           right: auto;
-          justify-items: start;
+          justify-content: flex-start;
           text-align: left;
         }
 
@@ -886,6 +978,10 @@
         .approach-layout,
         .work-layout {
           padding: 108px 16px 24px;
+        }
+
+        .approach-layout {
+          padding-top: 124px;
         }
 
         .screen--hero .screen-inner::before {
@@ -906,7 +1002,8 @@
         }
 
         .hero-about-card,
-        .approach-card,
+        .approach-service-card,
+        .approach-stack__rail span,
         .work-card {
           width: 100%;
           padding: 18px;
@@ -959,7 +1056,6 @@
             </div>
           </header>
 
-          <div class="hero-meta hero-meta--center">Client Attraction</div>
           <div class="hero-meta hero-meta--right">
             <span>Kuala Lumpur / MY</span>
             <span id="concept-clock">12:26:56</span>
@@ -970,7 +1066,7 @@
 
           <div class="screen-inner">
             <div class="hero-copy">
-              <h1>Websites that turn first impressions into enquiries.</h1>
+              <h1>Websites that turn first impressions into <span class="hero-copy__accent">enquiries.</span></h1>
               <p>
                 Custom, fast, mobile-friendly websites for businesses that need more trust, stronger positioning, and a
                 simpler path to yes.
@@ -1006,9 +1102,9 @@
           <div class="approach-layout">
             <div class="approach-copy">
               <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Services</div>
-              <h2>Clear offers. No tech lecture.</h2>
+              <h2>Three services clients can understand fast.</h2>
               <p>
-                Present the work as outcomes clients can buy, not tools they have to decode.
+                Put the actual offer in the middle: product builds, cloud delivery, and AI workflows.
               </p>
               <div class="approach-actions">
                 <a href="#work-screen">See Proof</a>
@@ -1017,17 +1113,53 @@
             </div>
 
             <div class="approach-side">
-              <article class="approach-panel">
-                <span class="approach-panel__eyebrow">What You Offer</span>
-                <strong>Custom design. E-commerce. Support.</strong>
-                <p>Talk about the result, not the stack. Clients only need to know what they get and how it helps.</p>
-                <div class="approach-panel__rule"></div>
-                <div class="approach-panel__meta">
-                  <span>Custom Web Design</span>
-                  <span>E-commerce Builds</span>
-                  <span>Website Support</span>
+              <div class="approach-services">
+                <article class="approach-service-card">
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M16 13 8 24l8 11" />
+                    <path d="M32 13 40 24l-8 11" />
+                    <path d="M27 9 21 39" />
+                  </svg>
+                  <span class="approach-service-card__index">01</span>
+                  <strong>Custom Web Apps</strong>
+                  <p>Business sites, dashboards, and portals built with clean C# or Python logic behind the front-end.</p>
+                  <span class="approach-service-card__meta">C# / Python Backends</span>
+                </article>
+
+                <article class="approach-service-card">
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M14 33h20a6 6 0 0 0 0-12 8.5 8.5 0 0 0-16.1-2.8A6.2 6.2 0 0 0 14 33Z" />
+                    <path d="M18 37h12" />
+                  </svg>
+                  <span class="approach-service-card__index">02</span>
+                  <strong>Cloud Infrastructure</strong>
+                  <p>Fast, secure environments on AWS with better performance, cleaner deployment, and room to scale.</p>
+                  <span class="approach-service-card__meta">AWS Delivery</span>
+                </article>
+
+                <article class="approach-service-card">
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M24 8 27.5 18.5 38 24l-10.5 5.5L24 40l-3.5-10.5L10 24l10.5-5.5Z" />
+                    <path d="M35 11 36.5 15 40.5 16.5 36.5 18 35 22 33.5 18 29.5 16.5 33.5 15Z" />
+                  </svg>
+                  <span class="approach-service-card__index">03</span>
+                  <strong>AI Integrations</strong>
+                  <p>Smart assistants and workflow automations that remove manual work and make operations feel lighter.</p>
+                  <span class="approach-service-card__meta">Automation / AI Workflows</span>
+                </article>
+              </div>
+
+              <div class="approach-stack">
+                <span class="approach-stack__label">Trusted Stack</span>
+                <div class="approach-stack__rule"></div>
+                <div class="approach-stack__rail">
+                  <span>.NET</span>
+                  <span>Python</span>
+                  <span>AWS</span>
+                  <span>OpenAI</span>
+                  <span>React</span>
                 </div>
-              </article>
+              </div>
             </div>
           </div>
           <div class="screen-tag">Services</div>
@@ -1205,6 +1337,10 @@
           setVar('--work-copy-shift', `${Math.round(58 - workCopyOpacity * 58)}px`);
           setVar('--work-side-opacity', workSideOpacity.toFixed(3));
           setVar('--work-side-shift', `${Math.round(72 - workSideOpacity * 72)}px`);
+          setVar(
+            '--device-opacity',
+            clamp(1 - sectionOneProgress * 0.48 - sectionTwoProgress * 0.1 + thirdProgress * 0.16, 0.42, 1).toFixed(3)
+          );
         };
 
         const animateLines = (time = 0) => {
