@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TriZen Studio Project Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --outer-bg: #d7d5d0;
+        --page-bg: #d7e2d5;
+        --panel-bg: rgba(248, 245, 239, 0.7);
+        --ink: #1f2320;
+        --muted: rgba(31, 35, 32, 0.62);
+        --line: rgba(31, 35, 32, 0.16);
+        --accent: #95acf1;
+        --accent-soft: rgba(149, 172, 241, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        background: var(--outer-bg);
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      .showcase-shell {
+        min-height: 100svh;
+        padding: 14px;
+      }
+
+      .showcase-frame {
+        position: relative;
+        min-height: calc(100svh - 28px);
+        border: 1px solid var(--line);
+        background: var(--page-bg);
+        overflow: hidden;
+      }
+
+      .showcase-frame::before {
+        content: attr(data-watermark);
+        position: absolute;
+        left: 24px;
+        top: 92px;
+        z-index: 0;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(4.8rem, 16vw, 13rem);
+        line-height: 0.8;
+        letter-spacing: -0.11em;
+        color: rgba(31, 35, 32, 0.12);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .topbar {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 18px 22px;
+      }
+
+      .brand {
+        font-family: "Sora", sans-serif;
+        font-size: 1.7rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .nav-links,
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        font-size: 0.98rem;
+      }
+
+      .topbar-actions {
+        transform: translateY(12px);
+      }
+
+      .topbar-actions a:last-child {
+        padding: 12px 18px;
+        background: var(--accent);
+        border: 1px solid rgba(50, 92, 219, 0.12);
+        font-weight: 700;
+      }
+
+      .hero-meta {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        color: rgba(17, 17, 17, 0.58);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 0.82rem;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .showcase-layout {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.74fr);
+        gap: 28px;
+        min-height: calc(100svh - 28px);
+        padding: 118px 28px 28px;
+      }
+
+      .showcase-stage {
+        display: grid;
+        align-content: end;
+      }
+
+      .stage-frame {
+        position: relative;
+        display: grid;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: var(--panel-bg);
+        backdrop-filter: blur(8px);
+        box-shadow: 14px 14px 0 rgba(31, 35, 32, 0.08);
+      }
+
+      .stage-visual {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(31, 35, 32, 0.14);
+        background: rgba(255, 255, 255, 0.4);
+        aspect-ratio: 1.56;
+      }
+
+      .stage-visual img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .stage-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .stage-caption {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .showcase-side {
+        display: grid;
+        align-content: space-between;
+        gap: 20px;
+      }
+
+      .project-intro {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+      }
+
+      .project-kicker,
+      .panel-label {
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .project-title {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(3rem, 6.8vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+
+      .project-summary {
+        margin: 0;
+        max-width: 34ch;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.72;
+      }
+
+      .project-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat-card,
+      .control-panel,
+      .thumb-panel {
+        padding: 18px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.32);
+      }
+
+      .stat-card {
+        min-height: 110px;
+        display: grid;
+        align-content: start;
+        gap: 10px;
+      }
+
+      .stat-card strong {
+        font-family: "Sora", sans-serif;
+        font-size: 1.02rem;
+        line-height: 1.02;
+      }
+
+      .stat-card span,
+      .control-panel p {
+        color: var(--muted);
+        line-height: 1.62;
+      }
+
+      .control-panel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .control-panel p {
+        margin: 0;
+      }
+
+      .control-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .slide-count {
+        min-width: 96px;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .slide-button {
+        min-height: 52px;
+        padding: 0 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .slide-button--primary {
+        background: var(--ink);
+        color: #ffffff;
+      }
+
+      .thumb-panel {
+        display: grid;
+        gap: 14px;
+      }
+
+      .thumb-rail {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+        gap: 10px;
+      }
+
+      .thumb-button {
+        min-height: 78px;
+        padding: 10px 12px;
+        display: grid;
+        align-content: space-between;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.24);
+        color: var(--muted);
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .thumb-button span:first-child {
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .thumb-button span:last-child {
+        font-family: "Sora", sans-serif;
+        font-size: 0.96rem;
+        line-height: 1;
+        color: var(--ink);
+      }
+
+      .thumb-button.is-active {
+        border-color: rgba(31, 35, 32, 0.34);
+        background: var(--accent-soft);
+      }
+
+      .screen-tag {
+        position: absolute;
+        right: 18px;
+        bottom: 16px;
+        z-index: 3;
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 1120px) {
+        .showcase-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .showcase-side {
+          align-content: start;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .showcase-shell {
+          padding: 10px;
+        }
+
+        .topbar {
+          padding: 16px;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav-links,
+        .topbar-actions {
+          flex-wrap: wrap;
+          gap: 14px;
+        }
+
+        .hero-meta {
+          top: 72px;
+          left: 16px;
+          right: auto;
+          justify-content: flex-start;
+        }
+
+        .showcase-frame::before {
+          left: 14px;
+          top: 146px;
+          font-size: 4.6rem;
+        }
+
+        .showcase-layout {
+          padding: 128px 16px 20px;
+          gap: 18px;
+        }
+
+        .project-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .thumb-rail {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="showcase-shell">
+      <section class="showcase-frame" id="showcase-frame" data-watermark="PROJECT">
+        <header class="topbar">
+          <a class="brand" href="/concept-home.html">TRIZEN.</a>
+          <nav class="nav-links" aria-label="Project navigation">
+            <a href="/concept-home.html#hero-screen">Concept</a>
+            <a href="/concept-home.html#work-screen">Work</a>
+            <a href="mailto:sales@trizenstudio.com">Contact</a>
+          </nav>
+          <div class="topbar-actions">
+            <a href="/concept-home.html#work-screen">Back</a>
+            <a href="/index.html">Current Site</a>
+          </div>
+        </header>
+
+        <div class="hero-meta">
+          <span>Kuala Lumpur / MY</span>
+          <span id="showcase-clock">12:26:56</span>
+        </div>
+
+        <div class="showcase-layout">
+          <div class="showcase-stage">
+            <div class="stage-frame">
+              <div class="stage-visual">
+                <img id="slide-image" alt="" />
+              </div>
+              <div class="stage-meta">
+                <span id="slide-label">Project Screen</span>
+                <span id="slide-position">01 / 01</span>
+              </div>
+              <div class="stage-caption" id="slide-caption"></div>
+            </div>
+          </div>
+
+          <aside class="showcase-side">
+            <div class="project-intro">
+              <div class="project-kicker" id="project-kicker">Project Showcase</div>
+              <h1 class="project-title" id="project-title">Project</h1>
+              <p class="project-summary" id="project-summary"></p>
+
+              <div class="project-stats">
+                <article class="stat-card">
+                  <span class="panel-label">Type</span>
+                  <strong id="project-type">Platform</strong>
+                  <span id="project-type-copy"></span>
+                </article>
+                <article class="stat-card">
+                  <span class="panel-label">Screens</span>
+                  <strong id="project-count">0</strong>
+                  <span id="project-count-copy"></span>
+                </article>
+                <article class="stat-card">
+                  <span class="panel-label">Focus</span>
+                  <strong id="project-focus">Experience</strong>
+                  <span id="project-focus-copy"></span>
+                </article>
+              </div>
+            </div>
+
+            <div class="control-panel">
+              <span class="panel-label">Slideshow</span>
+              <p id="control-copy">Move through the full project sequence with the controls or keyboard arrows.</p>
+              <div class="control-row">
+                <span class="slide-count" id="slide-counter">01 / 01</span>
+                <button class="slide-button" id="prev-slide" type="button">Previous</button>
+                <button class="slide-button slide-button--primary" id="next-slide" type="button">Next</button>
+              </div>
+            </div>
+
+            <div class="thumb-panel">
+              <span class="panel-label">All Screens</span>
+              <div class="thumb-rail" id="thumb-rail"></div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="screen-tag" id="screen-tag">Project</div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const projects = {
+          flyease: {
+            watermark: "FLYEASE",
+            kicker: "Travel Platform",
+            title: "FlyEase",
+            summary:
+              "A travel booking direction designed to feel clearer, faster, and more reliable from landing through checkout.",
+            type: "Travel Build",
+            typeCopy: "Editorial product pages, destination discovery, and a cleaner booking path.",
+            focus: "Conversion Flow",
+            focusCopy: "Search, package detail, and checkout screens that reduce friction and help people commit faster.",
+            panelBg: "rgba(248, 245, 239, 0.72)",
+            pageBg: "#d7e2d5",
+            accent: "#95acf1",
+            accentSoft: "rgba(149, 172, 241, 0.18)",
+            slides: [
+              { src: "/img/TravelManagement%20(1).png", label: "Homepage", caption: "A first screen built to make the platform feel structured and premium immediately." },
+              { src: "/img/TravelManagement%20(2).png", label: "Landing", caption: "A cleaner entry into offers, routes, and brand positioning." },
+              { src: "/img/TravelManagement%20(3).png", label: "Booking Flow", caption: "Travel choices organized into a smoother sequence with clearer next steps." },
+              { src: "/img/TravelManagement%20(4).png", label: "Search", caption: "Fast comparison and filtering views designed for easier decision-making." },
+              { src: "/img/TravelManagement%20(5).png", label: "Package", caption: "Offer presentation focused on confidence, clarity, and value framing." },
+              { src: "/img/TravelManagement%20(6).png", label: "Detail", caption: "A more complete screen for itinerary details, reassurance, and feature depth." },
+              { src: "/img/TravelManagement%20(7).png", label: "Checkout", caption: "A final conversion screen with a calmer structure and more deliberate hierarchy." }
+            ]
+          },
+          trustnest: {
+            watermark: "TRUSTNEST",
+            kicker: "Property Platform",
+            title: "TrustNest",
+            summary:
+              "A property platform direction that balances trust, product clarity, and a more premium real-estate experience across every screen.",
+            type: "Property Build",
+            typeCopy: "Listing discovery, platform utilities, and polished interface patterns for a stronger first impression.",
+            focus: "Trust Signals",
+            focusCopy: "Interface layouts that make navigation, filtering, and property evaluation feel more confident and direct.",
+            panelBg: "rgba(251, 246, 249, 0.74)",
+            pageBg: "#eadbe4",
+            accent: "#c1a0b8",
+            accentSoft: "rgba(193, 160, 184, 0.18)",
+            slides: [
+              { src: "/img/PortFolio%20(1).png", label: "Overview", caption: "The first TrustNest direction, setting tone and platform structure." },
+              { src: "/img/PortFolio%20(2).png", label: "Landing", caption: "A clearer landing view designed to position listings and trust faster." },
+              { src: "/img/PortFolio%20(3).png", label: "Listing", caption: "Search and browse states refined for easier scanning and comparison." },
+              { src: "/img/PortFolio%20(4).png", label: "Dashboard", caption: "A more operational screen focused on account flow and property actions." },
+              { src: "/img/PortFolio%20(5).png", label: "Analytics", caption: "Performance and insight panels organized into a more usable rhythm." },
+              { src: "/img/PortFolio%20(6).png", label: "Workspace", caption: "Back-office and platform tools kept cleaner, lighter, and more intentional." },
+              { src: "/img/PortFolio%20(7).png", label: "Secure Flow", caption: "A transaction-focused screen where clarity and reassurance matter most." },
+              { src: "/img/PortFolio%20(8).png", label: "Property Detail", caption: "A detailed property presentation with stronger hierarchy and better emphasis." },
+              { src: "/img/PortFolio%20(9).png", label: "Collection", caption: "A broader screen view that supports exploration without losing polish." },
+              { src: "/img/PortFolio%20(10).png", label: "Lead Funnel", caption: "A direction focused on inquiry movement, visibility, and next-step clarity." },
+              { src: "/img/TrustNest.png", label: "Interface", caption: "A final high-level TrustNest screen tying the system together." }
+            ]
+          }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const projectKey = params.get("project");
+        const project = projects[projectKey] || projects.flyease;
+
+        const clock = document.getElementById("showcase-clock");
+        const frame = document.getElementById("showcase-frame");
+        const screenTag = document.getElementById("screen-tag");
+        const projectKicker = document.getElementById("project-kicker");
+        const projectTitle = document.getElementById("project-title");
+        const projectSummary = document.getElementById("project-summary");
+        const projectType = document.getElementById("project-type");
+        const projectTypeCopy = document.getElementById("project-type-copy");
+        const projectCount = document.getElementById("project-count");
+        const projectCountCopy = document.getElementById("project-count-copy");
+        const projectFocus = document.getElementById("project-focus");
+        const projectFocusCopy = document.getElementById("project-focus-copy");
+        const controlCopy = document.getElementById("control-copy");
+        const slideImage = document.getElementById("slide-image");
+        const slideLabel = document.getElementById("slide-label");
+        const slideCaption = document.getElementById("slide-caption");
+        const slidePosition = document.getElementById("slide-position");
+        const slideCounter = document.getElementById("slide-counter");
+        const thumbRail = document.getElementById("thumb-rail");
+        const prevSlideButton = document.getElementById("prev-slide");
+        const nextSlideButton = document.getElementById("next-slide");
+
+        let currentIndex = 0;
+
+        const updateClock = () => {
+          if (!clock) {
+            return;
+          }
+
+          const now = new Date();
+          clock.textContent = now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false
+          });
+        };
+
+        const setProjectTheme = () => {
+          frame.dataset.watermark = project.watermark;
+          screenTag.textContent = project.title;
+          projectKicker.textContent = project.kicker;
+          projectTitle.textContent = project.title;
+          projectSummary.textContent = project.summary;
+          projectType.textContent = project.type;
+          projectTypeCopy.textContent = project.typeCopy;
+          projectCount.textContent = String(project.slides.length).padStart(2, "0");
+          projectCountCopy.textContent = "Every key screen is collected here so the page works like a guided presentation.";
+          projectFocus.textContent = project.focus;
+          projectFocusCopy.textContent = project.focusCopy;
+          controlCopy.textContent = "Move through the full project sequence with the controls, thumbnails, or keyboard arrows.";
+
+          document.documentElement.style.setProperty("--page-bg", project.pageBg);
+          document.documentElement.style.setProperty("--panel-bg", project.panelBg);
+          document.documentElement.style.setProperty("--accent", project.accent);
+          document.documentElement.style.setProperty("--accent-soft", project.accentSoft);
+        };
+
+        const renderThumbs = () => {
+          thumbRail.innerHTML = "";
+
+          project.slides.forEach((slide, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "thumb-button";
+            button.innerHTML = `<span>${String(index + 1).padStart(2, "0")}</span><span>${slide.label}</span>`;
+            button.addEventListener("click", () => {
+              currentIndex = index;
+              renderSlide();
+            });
+            thumbRail.appendChild(button);
+          });
+        };
+
+        const renderSlide = () => {
+          const slide = project.slides[currentIndex];
+          const displayIndex = String(currentIndex + 1).padStart(2, "0");
+          const total = String(project.slides.length).padStart(2, "0");
+
+          slideImage.src = slide.src;
+          slideImage.alt = `${project.title} ${slide.label}`;
+          slideLabel.textContent = slide.label;
+          slideCaption.textContent = slide.caption;
+          slidePosition.textContent = `${displayIndex} / ${total}`;
+          slideCounter.textContent = `${displayIndex} / ${total}`;
+
+          Array.from(thumbRail.children).forEach((thumb, index) => {
+            thumb.classList.toggle("is-active", index === currentIndex);
+          });
+        };
+
+        const stepSlide = (direction) => {
+          const total = project.slides.length;
+          currentIndex = (currentIndex + direction + total) % total;
+          renderSlide();
+        };
+
+        setProjectTheme();
+        renderThumbs();
+        renderSlide();
+        updateClock();
+        window.setInterval(updateClock, 1000);
+
+        prevSlideButton.addEventListener("click", () => stepSlide(-1));
+        nextSlideButton.addEventListener("click", () => stepSlide(1));
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") {
+            stepSlide(-1);
+          }
+
+          if (event.key === "ArrowRight") {
+            stepSlide(1);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
