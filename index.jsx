@@ -55,7 +55,7 @@ const caseStudies = [
     name: 'TrustNest Secure Portal',
     summary: 'A clean, split-screen authentication flow designed to establish trust instantly. Built for seamless, highly secure user logins and protected access.',
     result: 'Elevated user confidence and frictionless onboarding',
-    images: Array.from({ length: 7 }, (_, i) => `/img/TrustNest.png`)  
+    images: ['/img/TrustNest.png']
   },
 ];
 
@@ -2527,10 +2527,42 @@ const styles = `
   }
 
   @media (max-width: 760px) {
+    :root {
+      --width: min(100%, calc(100% - 28px));
+      --shadow: 3px 3px 0px var(--line-strong);
+      --shadow-hover: 5px 5px 0px var(--line-strong);
+    }
+
+    .section {
+      padding: 52px 0;
+    }
+
+    .section-head {
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
     .hero-copy h1 {
-      font-size: 2.8rem;
-      line-height: 1.1;
+      font-size: 2.5rem;
+      line-height: 1.06;
       letter-spacing: -0.02em;
+    }
+
+    .section-head h2,
+    .cta-panel h2,
+    .services-left h2,
+    .story-split-right h2 {
+      font-size: clamp(1.82rem, 8vw, 2.42rem);
+      line-height: 1.02;
+    }
+
+    .section-head p,
+    .hero-copy p,
+    .pricing-card p,
+    .service-card p,
+    .case-card p {
+      font-size: 0.92rem;
+      line-height: 1.6;
     }
 
     .nav-wrap {
@@ -2544,7 +2576,7 @@ const styles = `
     }
 
     .nav {
-      padding: 10px 15px;
+      padding: 8px 12px;
       flex-wrap: wrap;
       justify-content: center;
       text-align: center;
@@ -2556,8 +2588,8 @@ const styles = `
     }
 
     .brand-mark {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
     }
 
     .nav-links {
@@ -2600,7 +2632,15 @@ const styles = `
     }
 
     .cta-panel {
-      padding: 26px;
+      padding: 22px;
+    }
+
+    .pricing-card,
+    .service-card,
+    .case-card,
+    .addon-item,
+    .story-panel-card {
+      padding: 20px;
     }
 
     .service-row,
