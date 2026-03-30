@@ -2191,6 +2191,12 @@ const styles = `
     line-height: 1.55;
   }
 
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
   .pricing-card {
     padding: 30px;
     display: flex;
@@ -3279,7 +3285,7 @@ function PortfolioWebsite() {
               </p>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px' }}>
+            <div className="pricing-grid">
               <div className="pricing-card" data-reveal style={{ '--delay': '0ms' }}>
                 <div className="pricing-icon pricing-laptop"><img src="/img/laptop.png" alt="Basic Laptop" /></div>
                 <h3>Basic Plan</h3>

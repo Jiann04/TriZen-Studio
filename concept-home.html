@@ -17,6 +17,10 @@
         --hero-bg: #d7e2d5;
         --second-bg: #eadbe4;
         --third-bg: #f4efe8;
+        --fourth-bg: #e8e1d8;
+        --fifth-bg: #e1e6ea;
+        --final-bg: #1f2320;
+        --final-ink: #f4efe8;
         --ink: #1f2320;
         --muted: rgba(31, 35, 32, 0.64);
         --line: rgba(31, 35, 32, 0.18);
@@ -32,12 +36,20 @@
         --device-tilt-x: 78deg;
         --device-tilt-y: -54deg;
         --device-depth: 42px;
-        --device-front-opacity: 0.96;
-        --device-back-opacity: 0.44;
-        --device-left-opacity: 0.92;
-        --device-right-opacity: 0.24;
-        --device-top-opacity: 0.94;
-        --device-bottom-opacity: 0.14;
+        --device-edge-size: 2.15px;
+        --device-face-inset: 1.9px;
+        --device-box-shift-x: 0px;
+        --device-box-shift-y: 0px;
+        --device-box-shift-z: 0px;
+        --device-box-rotate-x: 0deg;
+        --device-box-rotate-y: 0deg;
+        --device-box-rotate-z: 0deg;
+        --device-front-opacity: 0.66;
+        --device-back-opacity: 0.26;
+        --device-left-opacity: 0.44;
+        --device-right-opacity: 0.36;
+        --device-top-opacity: 0.5;
+        --device-bottom-opacity: 0.26;
         --hero-copy-opacity: 0;
         --hero-copy-shift: 42px;
         --hero-side-opacity: 0;
@@ -69,6 +81,152 @@
       body {
         min-height: 100svh;
         perspective: 1800px;
+      }
+
+      body.is-dev-mode {
+        --page-bg: #060907;
+        --frame: #0b100c;
+        --hero-bg: #09100a;
+        --second-bg: #08100a;
+        --third-bg: #091009;
+        --fourth-bg: #08100b;
+        --fifth-bg: #08100d;
+        --final-bg: #030504;
+        --final-ink: #8ff3a2;
+        --ink: #8ff3a2;
+        --muted: rgba(143, 243, 162, 0.72);
+        --line: rgba(143, 243, 162, 0.14);
+        --line-strong: rgba(143, 243, 162, 0.3);
+        --hero-card-bg: rgba(8, 18, 10, 0.9);
+        color: var(--ink);
+        background: var(--page-bg);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      body.is-dev-mode .screen-frame,
+      body.is-dev-mode .hero-about-card,
+      body.is-dev-mode .approach-service-card,
+      body.is-dev-mode .work-card,
+      body.is-dev-mode .process-step,
+      body.is-dev-mode .testimonial-card,
+      body.is-dev-mode .contact-terminal,
+      body.is-dev-mode .contact-link,
+      body.is-dev-mode .contact-footnote,
+      body.is-dev-mode .work-preview {
+        border-color: rgba(143, 243, 162, 0.18);
+        background: rgba(8, 18, 10, 0.72);
+        box-shadow: inset 0 0 0 1px rgba(143, 243, 162, 0.05);
+      }
+
+      body.is-dev-mode .screen-frame * {
+        outline: 1px solid rgba(143, 243, 162, 0.05);
+        outline-offset: -1px;
+      }
+
+      body.is-dev-mode .hero-search-button,
+      body.is-dev-mode .topbar-actions a:last-child,
+      body.is-dev-mode .contact-link:first-child {
+        background: rgba(120, 255, 145, 0.16);
+        color: var(--ink);
+        border-color: rgba(120, 255, 145, 0.28);
+      }
+
+      body.is-dev-mode .moving-device__face {
+        border-color: rgba(143, 243, 162, 0.42);
+        background: linear-gradient(to right, transparent 38%, rgba(143, 243, 162, 0.34) 38%, rgba(143, 243, 162, 0.34) 39%, transparent 39%),
+                    linear-gradient(to bottom, transparent 50%, rgba(143, 243, 162, 0.28) 50%, rgba(143, 243, 162, 0.28) 51%, transparent 51%),
+                    linear-gradient(135deg, rgba(143, 243, 162, 0.18), rgba(143, 243, 162, 0.05));
+        box-shadow: inset 0 0 0 0.75px rgba(143, 243, 162, 0.16);
+      }
+
+      body.is-dev-mode .moving-device__edge {
+        background: rgba(143, 243, 162, 0.5);
+        box-shadow: 0 0 0 0.65px rgba(143, 243, 162, 0.16);
+      }
+
+      body.is-dev-mode .moving-device__edge--depth-top-left,
+      body.is-dev-mode .moving-device__edge--depth-bottom-left,
+      body.is-dev-mode .moving-device__edge--depth-top-right,
+      body.is-dev-mode .moving-device__edge--depth-bottom-right {
+        background: rgba(143, 243, 162, 0.62);
+        box-shadow: 0 0 0 0.8px rgba(143, 243, 162, 0.18);
+      }
+
+      body.is-dev-mode .moving-device__face--left {
+        background: linear-gradient(to bottom, transparent 50%, rgba(143, 243, 162, 0.3) 50%, rgba(143, 243, 162, 0.3) 51%, transparent 51%),
+                    linear-gradient(180deg, rgba(143, 243, 162, 0.24), rgba(143, 243, 162, 0.06));
+      }
+
+      body.is-dev-mode .moving-device__face--right {
+        background: linear-gradient(to bottom, transparent 50%, rgba(143, 243, 162, 0.22) 50%, rgba(143, 243, 162, 0.22) 51%, transparent 51%),
+                    linear-gradient(180deg, rgba(143, 243, 162, 0.14), rgba(143, 243, 162, 0.02));
+      }
+
+      body.is-dev-mode .moving-device__face--top {
+        background: linear-gradient(to right, transparent 38%, rgba(143, 243, 162, 0.28) 38%, rgba(143, 243, 162, 0.28) 39%, transparent 39%),
+                    linear-gradient(180deg, rgba(143, 243, 162, 0.28), rgba(143, 243, 162, 0.08));
+      }
+
+      body.is-dev-mode .moving-device__face--bottom {
+        background: linear-gradient(to right, transparent 38%, rgba(143, 243, 162, 0.18) 38%, rgba(143, 243, 162, 0.18) 39%, transparent 39%),
+                    linear-gradient(180deg, rgba(143, 243, 162, 0.12), rgba(143, 243, 162, 0.02));
+      }
+
+      body.is-dev-mode .moving-device__beam {
+        height: 2.8px;
+        background: linear-gradient(90deg, rgba(143, 243, 162, 0), rgba(143, 243, 162, 0.96) 14%, rgba(143, 243, 162, 0.98) 84%, rgba(143, 243, 162, 0));
+        box-shadow: 0 0 18px rgba(143, 243, 162, 0.14);
+      }
+
+      body.is-dev-mode .moving-device__beam--secondary {
+        opacity: 0.58;
+      }
+
+      body.is-dev-mode .moving-device__point {
+        background: rgba(143, 243, 162, 0.96);
+        box-shadow: 0 0 0 6px rgba(143, 243, 162, 0.08);
+      }
+
+      body.is-dev-mode .moving-device__orbit {
+        border-color: rgba(143, 243, 162, 0.22);
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        pointer-events: none;
+        opacity: 0.05;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23grain)'/%3E%3C/svg%3E");
+        background-size: 180px 180px;
+      }
+
+      /* --- Smart Custom Cursor --- */
+      @media (pointer: fine) {
+        body, a, button, .work-word-hitbox, .approach-stack__rail span {
+          cursor: none !important;
+        }
+        .smart-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 12px;
+          height: 12px;
+          background-color: var(--ink);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 99999;
+          transform: translate3d(-50%, -50%, 0);
+          transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), height 0.3s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+          mix-blend-mode: difference;
+        }
+        .smart-cursor.is-hovering {
+          width: 64px;
+          height: 64px;
+          background-color: rgba(255, 255, 255, 0.9);
+        }
       }
 
       a {
@@ -115,26 +273,22 @@
         isolation: isolate;
       }
 
-      .screen--hero .screen-frame {
-        background: var(--hero-bg);
-      }
+      .screen--hero .screen-frame { background: var(--hero-bg); }
+      .screen--approach .screen-frame { background: var(--second-bg); }
 
-      .screen--approach .screen-frame {
-        background: var(--second-bg);
-      }
-
+      /* Safe constraints applied to massive background typography */
       .screen--approach .screen-frame::before {
         content: "SERVICES";
         position: absolute;
         left: 28px;
-        top: 88px;
-        color: transparent;
+        top: 76px;
+        color: rgba(110, 82, 105, 0.08);
         font-family: "Sora", sans-serif;
-        font-size: clamp(4.6rem, 12vw, 9.4rem);
+        font-size: clamp(4rem, min(10.6vw, 15vh), 8rem);
         font-weight: 800;
         letter-spacing: -0.08em;
         line-height: 0.84;
-        -webkit-text-stroke: 1.4px rgba(31, 35, 32, 0.14);
+        -webkit-text-stroke: 2.6px rgba(110, 82, 105, 0.24);
         opacity: calc(0.12 + (var(--approach-copy-opacity) * 0.14));
         transform: translate3d(0, calc(var(--approach-copy-shift) * 0.26), 0);
         transition:
@@ -143,115 +297,123 @@
         pointer-events: none;
       }
 
-      .screen--work .screen-frame {
-        background: var(--third-bg);
+      .screen--work .screen-frame { background: var(--third-bg); }
+      .screen--process .screen-frame { background: var(--fourth-bg); }
+      .screen--testimonials .screen-frame { background: var(--fifth-bg); }
+
+      .screen--contact .screen-frame {
+        background: var(--final-bg);
+        color: var(--final-ink);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.24);
+      }
+
+      .screen--process .screen-frame::before,
+      .screen--testimonials .screen-frame::before,
+      .screen--contact .screen-frame::before {
+        position: absolute;
+        left: 28px;
+        top: 88px;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(4.2rem, min(12vw, 18vh), 9rem);
+        font-weight: 800;
+        letter-spacing: -0.08em;
+        line-height: 0.82;
+        pointer-events: none;
+      }
+
+      .screen--process .screen-frame::before { content: none; }
+      .screen--testimonials .screen-frame::before { content: "VOICES"; color: transparent; -webkit-text-stroke: 1.4px rgba(31, 35, 32, 0.14); }
+      .screen--contact .screen-frame::before { content: "TALK"; color: rgba(244, 239, 232, 0.08); }
+
+      .screen--contact .topbar,
+      .screen--contact .brand,
+      .screen--contact .nav-links a,
+      .screen--contact .topbar-actions a,
+      .screen--contact ,
+      .screen--contact .hero-meta {
+        color: var(--final-ink);
+      }
+
+      .screen--contact .hero-meta--right { color: rgba(244, 239, 232, 0.58); }
+      .screen--contact .topbar-actions a:last-child {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+      .screen--contact .mode-toggle {
+        color: var(--final-ink);
+        border-color: rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .contact-globe {
+        position: absolute;
+        top: clamp(108px, 17vh, 170px);
+        right: clamp(24px, 5.6vw, 88px);
+        z-index: 1;
+        width: min(42vw, 560px);
+        aspect-ratio: 1;
+        pointer-events: none;
+        opacity: 0.94;
+        filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.22));
+      }
+
+      body.is-dev-mode .contact-globe {
+        opacity: 0.98;
+        filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.34));
       }
 
       .topbar {
-        position: absolute;
-        top: 8px;
-        left: 0;
-        right: 0;
-        z-index: 4;
-        display: flex;
+        position: absolute; top: 8px; left: 0; right: 0; z-index: 4; display: flex;
+        align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px;
+      }
+
+      .brand { font-family: "Sora", sans-serif; font-size: 1.7rem; font-weight: 800; letter-spacing: -0.04em; }
+      .nav-links, .topbar-actions { display: flex; align-items: center; gap: 22px; font-size: 0.98rem; }
+      .topbar-actions { transform: translateY(12px); }
+      .topbar-actions a:last-child { padding: 12px 18px; background: rgb(162, 180, 242); opacity: 0.8; border: 1px solid rgba(50, 92, 219, 0.12); font-weight: 700; }
+      .mode-toggle {
+        display: inline-flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 18px 22px;
-      }
-
-      .brand {
-        font-family: "Sora", sans-serif;
-        font-size: 1.7rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-      }
-
-      .nav-links,
-      .topbar-actions {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        font-size: 0.98rem;
-      }
-
-      .topbar-actions {
-        transform: translateY(12px);
-      }
-
-      .topbar-actions a:last-child {
-        padding: 12px 18px;
-        background: rgb(162, 180, 242);
-        opacity: 0.8;
-        border: 1px solid rgba(50, 92, 219, 0.12);
-        font-weight: 700;
-      }
-
-      .hero-meta {
-        position: absolute;
-        top: 14px;
-        z-index: 3;
-        font-size: 0.78rem;
-        font-weight: 800;
-        text-transform: uppercase;
-      }
-
-      .hero-meta--center {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .hero-meta--right {
-        right: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
         gap: 8px;
-        color: rgba(17, 17, 17, 0.58);
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 0.82rem;
-        font-weight: 500;
-        text-transform: none;
-        white-space: nowrap;
+        min-height: 40px;
+        padding: 0 12px;
+        border: 1px solid rgba(31, 35, 32, 0.16);
+        background: rgba(255, 255, 255, 0.3);
+        color: inherit;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        flex: none;
+      }
+      .mode-toggle__icon {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+      }
+      .mode-toggle.is-active {
+        background: rgba(142, 111, 144, 0.12);
+        border-color: rgba(142, 111, 144, 0.28);
+      }
+      body.is-dev-mode .mode-toggle {
+        border-color: rgba(143, 243, 162, 0.24);
+        background: rgba(8, 18, 10, 0.88);
       }
 
-      .hero-menu,
-      .hero-side-link,
-      .hero-scroll {
-        position: absolute;
-        z-index: 3;
-        font-size: 0.88rem;
+      .hero-meta { position: absolute; top: 14px; z-index: 3; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; }
+      .hero-meta--center { left: 50%; transform: translateX(-50%); }
+      .hero-meta--right {
+        right: 18px; display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+        color: rgba(17, 17, 17, 0.58); font-family: Georgia, "Times New Roman", serif; font-size: 0.82rem; font-weight: 500; text-transform: none; white-space: nowrap;
       }
 
-      .hero-side-link {
-        left: 38px;
-        top: 46%;
-      }
+      .hero-menu, .hero-side-link, .hero-scroll { position: absolute; z-index: 3; font-size: 0.88rem; }
+      .hero-side-link { left: 38px; top: 46%; }
+      .hero-menu { right: 18px; top: 50%; font-weight: 800; text-transform: uppercase; transform: translateY(-50%); }
+      .hero-scroll { left: 50%; bottom: 16px; font-weight: 800; text-transform: uppercase; transform: translateX(-50%); }
 
-      .hero-menu {
-        right: 18px;
-        top: 50%;
-        font-weight: 800;
-        text-transform: uppercase;
-        transform: translateY(-50%);
-      }
-
-      .hero-scroll {
-        left: 50%;
-        bottom: 16px;
-        font-weight: 800;
-        text-transform: uppercase;
-        transform: translateX(-50%);
-      }
-
-      .topbar,
-      .hero-meta,
-      .hero-side-link,
-      .hero-menu,
-      .hero-scroll {
-        transition:
-          opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-          filter 680ms cubic-bezier(0.22, 1, 0.36, 1);
+      .topbar, .hero-meta, .hero-side-link, .hero-menu, .hero-scroll {
+        transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), filter 680ms cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       body:not(.is-entered) .topbar,
@@ -259,759 +421,713 @@
       body:not(.is-entered) .hero-side-link,
       body:not(.is-entered) .hero-menu,
       body:not(.is-entered) .hero-scroll {
-        opacity: 0;
-        filter: blur(8px);
+        opacity: 0; filter: blur(8px);
       }
 
       .screen-inner {
-        position: relative;
-        z-index: 2;
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 34px;
-        min-height: calc(100svh - clamp(24px, 3.4vw, 48px));
-        padding: 108px 34px 42px;
+        position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr;
+        gap: 34px; min-height: calc(100svh - clamp(24px, 3.4vw, 48px)); padding: 108px 34px 42px;
       }
 
       .screen--hero .screen-inner::before {
-        content: "LEADS";
-        position: absolute;
-        left: 28px;
-        top: 84px;
-        color: rgb(149, 172, 241);
-        font-family: "Sora", sans-serif;
-        font-size: clamp(4.8rem, 14vw, 12rem);
-        font-weight: 800;
-        letter-spacing: -0.09em;
-        line-height: 0.84;
-        -webkit-text-stroke: 2px rgba(31, 35, 32, 0.16);
+        content: "LEADS"; position: absolute; left: 28px; top: 84px; color: rgba(54, 84, 61, 0.14);
+        font-family: "Sora", sans-serif; font-size: clamp(4.8rem, min(14vw, 20vh), 12rem); font-weight: 800;
+        letter-spacing: -0.09em; line-height: 0.84; -webkit-text-stroke: 2.8px rgba(54, 84, 61, 0.24);
         opacity: calc(0.40 + (var(--hero-copy-opacity) * 0.12));
         transform: translate3d(0, calc(var(--hero-copy-shift) * 0.34), 0);
-        transition:
-          opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-          transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+        transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
         pointer-events: none;
       }
 
-      .hero-copy {
-        position: relative;
-        align-self: end;
-        max-width: 640px;
-        padding-bottom: 52px;
-      }
+      .hero-copy { position: relative; align-self: end; max-width: 640px; padding-bottom: 52px; }
 
-      .hero-copy h1,
-      .approach-copy h2,
-      .work-copy h2 {
-        margin: 0 0 16px;
-        font-family: "Sora", sans-serif;
-        line-height: 0.94;
-        letter-spacing: -0.06em;
+      .hero-copy h1, .approach-copy h2, .process-copy h2, .testimonials-copy h2, .contact-copy h2 {
+        margin: 0 0 16px; font-family: "Sora", sans-serif; line-height: 0.94; letter-spacing: -0.06em;
       }
 
       .hero-copy h1 {
         max-width: 8ch;
-        font-size: clamp(2.7rem, 4.4vw, 4.2rem);
-        color: var(--ink);
+        font-size: clamp(2.7rem, min(4.4vw, 6vh), 4.2rem);
+        color: #263128;
+        text-wrap: balance;
       }
+      .hero-copy__accent { color: rgb(149, 172, 241); }
 
-      .hero-copy__accent {
-        color: rgb(149, 172, 241);
-      }
-
-      .hero-copy p,
-      .approach-copy p,
-      .work-copy p {
-        margin: 0;
-        max-width: 40ch;
-        color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.76;
-      }
-
-      .hero-copy,
-      .hero-side,
-      .approach-copy,
-      .approach-side,
-      .work-copy,
-      .work-side {
-        will-change: opacity, transform;
-        transition:
-          opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
-          transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
-      }
-
-      .hero-copy {
-        opacity: var(--hero-copy-opacity);
-        transform: translateY(var(--hero-copy-shift));
-      }
-
-      .hero-actions,
-      .approach-actions {
-        margin-top: 24px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .hero-actions a,
-      .approach-actions a {
-        min-height: 52px;
-        padding: 0 18px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--ink);
-        font-weight: 700;
-      }
-
-      .hero-actions a:first-child,
-      .approach-actions a:first-child {
-        background: var(--ink);
-        color: #ffffff;
-      }
-
-      .hero-actions a:last-child,
-      .approach-actions a:last-child {
-        background: transparent;
-        color: var(--ink);
-      }
-
-      .hero-side {
-        align-self: end;
-        display: grid;
-        gap: 28px;
-        padding-bottom: 52px;
-        justify-items: end;
-        opacity: var(--hero-side-opacity);
-        transform: translateY(var(--hero-side-shift));
-      }
-
-      .hero-about-card,
-      .approach-card,
-      .work-card {
-        width: min(420px, 100%);
-        padding: 24px;
-        border: 1px solid rgba(17, 17, 17, 0.12);
-        background: rgba(255, 255, 255, 0.36);
-        backdrop-filter: blur(8px);
-      }
-
-      .hero-about-card {
-        background: var(--hero-card-bg);
-        border: 1px solid rgba(31, 35, 32, 0.18);
-        backdrop-filter: none;
-      }
-
-      .hero-about-card h2,
-      .approach-card h3,
-      .work-card h3 {
-        margin: 0 0 12px;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .hero-about-card p,
-      .approach-card p,
-      .work-card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.68;
-      }
-
-      .hero-search {
-        display: grid;
-        gap: 10px;
-      }
-
-      .hero-search-input {
-        min-height: 58px;
-        padding: 0 0 0 2px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: rgba(17, 17, 17, 0.48);
-        border-bottom: 1px solid rgba(17, 17, 17, 0.38);
-      }
-
-      .hero-search-button {
-        min-height: 58px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgb(129, 154, 230);
-        color: var(--ink);
-        border: 1px solid rgba(13, 16, 211, 0.18);
-        font-weight: 700;
-      }
-
-      .moving-device {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: clamp(260px, 28vw, 420px);
-        aspect-ratio: 1;
-        transform: translate3d(-9999px, -9999px, 0);
-        opacity: var(--device-opacity);
-        pointer-events: none;
-        will-change: transform;
-        transition: opacity 520ms ease;
-      }
-
-      .moving-device__stage {
-        position: absolute;
-        inset: 0;
-        transform-style: preserve-3d;
-        will-change: transform;
-        transform:
-          perspective(1500px)
-          rotateX(var(--device-tilt-x))
-          rotateY(var(--device-tilt-y))
-          rotateZ(var(--device-rotate))
-          scale(var(--device-scale));
-      }
-
-      .moving-device__shadow {
-        position: absolute;
-        inset: 18% 12% 4%;
-        background: radial-gradient(circle at center, rgba(17, 17, 17, 0.18), transparent 70%);
-        filter: blur(18px);
-        opacity: 0.2;
-        transform: translate3d(0, calc(var(--device-depth) * 0.42), -1px) scale(0.88);
-      }
-
-      .moving-device__box {
-        position: absolute;
-        top: 18%;
-        left: 21%;
-        width: 58%;
-        height: 58%;
-        transform-style: preserve-3d;
-        transform-origin: 50% 50% calc(var(--device-depth) * -0.5);
-      }
-
-      .moving-device__face {
-        position: absolute;
-        border: 1.2px solid rgba(17, 17, 17, 0.36);
-        background:
-          linear-gradient(to right, transparent 38%, rgba(17, 17, 17, 0.2) 38%, rgba(17, 17, 17, 0.2) 39%, transparent 39%),
-          linear-gradient(to bottom, transparent 50%, rgba(17, 17, 17, 0.18) 50%, rgba(17, 17, 17, 0.18) 51%, transparent 51%),
-          linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02));
-        backface-visibility: hidden;
-      }
-
-      .moving-device__face--front,
-      .moving-device__face--back {
-        inset: 0;
-      }
-
-      .moving-device__face--front {
-        opacity: var(--device-front-opacity);
-        transform: translateZ(0);
-      }
-
-      .moving-device__face--back {
-        opacity: var(--device-back-opacity);
-        transform: translateZ(calc(var(--device-depth) * -1));
-      }
-
-      .moving-device__face--left,
-      .moving-device__face--right {
-        top: 0;
-        bottom: 0;
-        width: var(--device-depth);
-      }
-
-      .moving-device__face--left {
-        left: 0;
-        opacity: var(--device-left-opacity);
-        background:
-          linear-gradient(to bottom, transparent 50%, rgba(17, 17, 17, 0.22) 50%, rgba(17, 17, 17, 0.22) 51%, transparent 51%),
-          linear-gradient(180deg, rgba(17, 17, 17, 0.34), rgba(17, 17, 17, 0.1));
-        transform-origin: left center;
-        transform: rotateY(-90deg);
-      }
-
-      .moving-device__face--right {
-        right: 0;
-        opacity: var(--device-right-opacity);
-        background:
-          linear-gradient(to bottom, transparent 50%, rgba(17, 17, 17, 0.16) 50%, rgba(17, 17, 17, 0.16) 51%, transparent 51%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-        transform-origin: right center;
-        transform: rotateY(90deg);
-      }
-
-      .moving-device__face--top,
-      .moving-device__face--bottom {
-        left: 0;
-        right: 0;
-        height: var(--device-depth);
-      }
-
-      .moving-device__face--top {
-        top: 0;
-        opacity: var(--device-top-opacity);
-        background:
-          linear-gradient(to right, transparent 38%, rgba(17, 17, 17, 0.14) 38%, rgba(17, 17, 17, 0.14) 39%, transparent 39%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.18));
-        transform-origin: center top;
-        transform: rotateX(90deg);
-      }
-
-      .moving-device__face--bottom {
-        bottom: 0;
-        opacity: var(--device-bottom-opacity);
-        background:
-          linear-gradient(to right, transparent 38%, rgba(17, 17, 17, 0.12) 38%, rgba(17, 17, 17, 0.12) 39%, transparent 39%),
-          linear-gradient(180deg, rgba(17, 17, 17, 0.1), rgba(17, 17, 17, 0.02));
-        transform-origin: center bottom;
-        transform: rotateX(-90deg);
-      }
-
-      .moving-device__beam-layer {
-        position: absolute;
-        inset: 0;
-        transform-style: preserve-3d;
-      }
-
-      .moving-device__beam {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 184%;
-        height: 2.4px;
-        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(17, 17, 17, 0.8) 14%, rgba(17, 17, 17, 0.8) 84%, rgba(17, 17, 17, 0));
-        transform-origin: 50% 50%;
-        box-shadow: 0 0 18px rgba(17, 17, 17, 0.08);
-      }
-
-      .moving-device__beam--secondary {
-        width: 156%;
-        opacity: 0.34;
-      }
-
-      .moving-device__point {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        background: var(--ink);
-        border-radius: 999px;
-        transform-style: preserve-3d;
-        box-shadow: 0 0 0 6px rgba(17, 17, 17, 0.04);
-      }
-
-      .moving-device__point--front {
-        left: 8%;
-        top: 40%;
-      }
-
-      .moving-device__point--rear {
-        right: 4%;
-        top: 16%;
-        opacity: 0.86;
-        transform: translateZ(calc(var(--device-depth) * -0.84));
-      }
-
-      .moving-device__orbit {
-        position: absolute;
-        border: 1px solid rgba(17, 17, 17, 0.2);
-        border-radius: 999px;
-        transform-style: preserve-3d;
-        animation: deviceOrbit 8s linear infinite;
-      }
-
-      .moving-device__orbit--one {
-        left: -18%;
-        top: -12%;
-        width: 42%;
-        height: 12%;
-        transform: rotateX(72deg) rotateZ(12deg) translateZ(calc(var(--device-depth) * -0.18));
-      }
-
-      .moving-device__orbit--two {
-        right: -10%;
-        bottom: 16%;
-        width: 48%;
-        height: 13%;
-        animation-duration: 6.6s;
-        animation-direction: reverse;
-        transform: rotateX(72deg) rotateZ(-18deg) translateZ(calc(var(--device-depth) * -0.64));
-      }
-
-      .approach-layout,
-      .work-layout {
+      .approach-copy h2, .process-copy h2, .testimonials-copy h2, .contact-copy h2 {
         position: relative;
-        z-index: 2;
-        display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
-        gap: 34px;
-        min-height: calc(100svh - clamp(24px, 3.4vw, 48px));
-        padding: 108px 34px 42px;
-        align-items: end;
+        display: inline-block;
+        padding: 0.12em 0 0.2em 18px;
+        text-wrap: balance;
       }
 
-      .approach-layout {
-        grid-template-columns: 0.78fr 1.22fr;
-        align-items: center;
-        padding-top: 126px;
+      .approach-copy h2::before, .process-copy h2::before, .testimonials-copy h2::before, .contact-copy h2::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.12em;
+        bottom: 0.18em;
+        width: 4px;
+        background: rgba(142, 111, 144, 0.46);
       }
 
-      .approach-copy,
-      .work-copy {
-        align-self: end;
-        padding-bottom: 52px;
+      .approach-copy h2::after, .process-copy h2::after, .testimonials-copy h2::after, .contact-copy h2::after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        bottom: 0;
+        width: clamp(56px, 8vw, 84px);
+        height: 1px;
+        background: currentColor;
+        opacity: 0.22;
       }
 
-      .approach-copy {
-        opacity: var(--approach-copy-opacity);
-        transform: translateY(var(--approach-copy-shift));
-      }
-
-      .approach-copy h2,
-      .work-copy h2 {
-        max-width: 10ch;
-        font-size: clamp(2.4rem, 4vw, 3.8rem);
+      .contact-copy h2::before {
+        background: rgba(244, 239, 232, 0.62);
       }
 
       .approach-copy h2 {
-        max-width: 7ch;
-        font-size: clamp(2.7rem, 4.2vw, 4.1rem);
+        color: #6e5269;
       }
 
-      .approach-copy p {
-        max-width: 30ch;
+      .approach-copy h2::before {
+        background: rgba(110, 82, 105, 0.48);
       }
 
-      .approach-side,
-      .work-side {
-        align-self: stretch;
-        display: grid;
-        gap: 18px;
-        align-content: end;
+      .process-copy h2 {
+        color: #68594b;
       }
 
-      .approach-side {
-        justify-items: stretch;
-        align-self: center;
-        align-content: center;
-        opacity: var(--approach-side-opacity);
-        transform: translateY(calc(var(--approach-side-shift) + 10px));
+      .process-copy h2::before {
+        background: rgba(104, 89, 75, 0.48);
       }
 
-      .approach-services {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 16px;
+      .testimonials-copy h2 {
+        color: #4d6374;
       }
 
-      .approach-service-card {
-        min-height: 228px;
-        padding: 22px 18px 18px;
-        border: 1px solid rgba(17, 17, 17, 0.12);
-        background: rgba(255, 255, 255, 0.34);
-        backdrop-filter: blur(8px);
-        display: grid;
-        align-content: start;
-        gap: 12px;
+      .testimonials-copy h2::before {
+        background: rgba(77, 99, 116, 0.48);
       }
 
-      .service-icon {
-        width: 42px;
-        height: 42px;
-        stroke: rgba(17, 17, 17, 0.9);
-        fill: none;
-        stroke-width: 1.6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+      body.is-dev-mode .approach-copy h2::before,
+      body.is-dev-mode .process-copy h2::before,
+      body.is-dev-mode .testimonials-copy h2::before,
+      body.is-dev-mode .contact-copy h2::before {
+        background: rgba(143, 243, 162, 0.74);
       }
 
-      .approach-service-card__index {
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(17, 17, 17, 0.56);
+      body.is-dev-mode .hero-copy h1,
+      body.is-dev-mode .approach-copy h2,
+      body.is-dev-mode .process-copy h2,
+      body.is-dev-mode .testimonials-copy h2,
+      body.is-dev-mode .contact-copy h2 {
+        color: rgba(143, 243, 162, 0.96);
+        text-shadow: 0 0 18px rgba(143, 243, 162, 0.06);
       }
 
-      .approach-service-card strong {
-        display: block;
-        font-family: "Sora", sans-serif;
-        font-size: 1.16rem;
-        line-height: 1.02;
-        letter-spacing: -0.04em;
+      body.is-dev-mode .work-title {
+        color: rgba(143, 243, 162, 0.22);
       }
 
-      .approach-service-card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.64;
+      body.is-dev-mode .hero-copy__accent {
+        color: rgba(143, 243, 162, 0.88);
       }
 
-      .approach-service-card__meta {
-        margin-top: auto;
-        padding-top: 10px;
-        color: rgba(17, 17, 17, 0.5);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+      body.is-dev-mode .screen--hero .screen-inner::before {
+        color: rgba(143, 243, 162, 0.1);
+        -webkit-text-stroke: 2.8px rgba(143, 243, 162, 0.28);
       }
 
-      .approach-stack {
-        display: grid;
-        gap: 10px;
-        padding-top: 8px;
+      body.is-dev-mode .screen--approach .screen-frame::before,
+      body.is-dev-mode .screen--testimonials .screen-frame::before {
+        -webkit-text-stroke: 2.4px rgba(143, 243, 162, 0.24);
       }
 
-      .approach-stack__label {
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+      body.is-dev-mode .screen--approach .approach-copy .hero-meta--center {
+        background: linear-gradient(90deg, rgba(8, 16, 10, 0.96) 0%, rgba(8, 16, 10, 0.82) 72%, rgba(8, 16, 10, 0) 100%);
       }
 
-      .approach-stack__rule {
-        height: 1px;
-        background: rgba(17, 17, 17, 0.18);
+      body.is-dev-mode .screen--contact .screen-frame::before {
+        color: rgba(143, 243, 162, 0.12);
       }
 
-      .approach-stack__rail {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
-        gap: 12px;
+      .screen--approach .screen-frame::before {
+        -webkit-text-stroke: 2.6px rgba(110, 82, 105, 0.24);
       }
 
-      .approach-stack__rail span {
-        min-height: 54px;
+      .screen--testimonials .screen-frame::before {
+        font-size: clamp(3.8rem, min(10.8vw, 16vh), 7.8rem);
+        -webkit-text-stroke: 1.4px rgba(77, 99, 116, 0.18);
+      }
+
+      .hero-copy p, .approach-copy p, .work-copy p, .process-copy p, .testimonials-copy p, .contact-copy p {
+        margin: 0; max-width: 40ch; color: var(--muted); font-size: 1rem; line-height: 1.76;
+      }
+
+      .hero-copy, .hero-side, .approach-copy, .approach-side, .work-copy, .work-side {
+        will-change: opacity, transform;
+        transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .hero-copy { opacity: var(--hero-copy-opacity); transform: translateY(var(--hero-copy-shift)); }
+
+      .hero-actions, .approach-actions, .process-actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+      .hero-actions a, .approach-actions a, .process-actions a {
+        min-height: 52px; padding: 0 18px; display: inline-flex; align-items: center; justify-content: center;
+        border: 1px solid var(--ink); font-weight: 700;
+      }
+
+      .magnetic-button {
+        --magnetic-x: 0px; --magnetic-y: 0px;
+        transform: translate3d(var(--magnetic-x), var(--magnetic-y), 0);
+        transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+        will-change: transform;
+      }
+
+      .magnetic-button:hover { box-shadow: 10px 10px 0 rgba(31, 35, 32, 0.08); }
+      .hero-actions a:first-child, .approach-actions a:first-child, .process-actions a:first-child { background: var(--ink); color: #ffffff; }
+      .hero-actions a:last-child, .approach-actions a:last-child, .process-actions a:last-child { background: transparent; color: var(--ink); }
+
+      .hero-side {
+        align-self: end; display: grid; gap: 28px; padding-bottom: 52px; justify-items: end;
+        opacity: var(--hero-side-opacity); transform: translateY(var(--hero-side-shift));
+      }
+
+      .hero-about-card, .approach-card, .work-card {
+        width: min(420px, 100%); padding: 24px; border: 1px solid rgba(17, 17, 17, 0.12);
+        background: rgba(255, 255, 255, 0.36); backdrop-filter: blur(8px);
+      }
+
+      .hero-about-card { background: var(--hero-card-bg); border: 1px solid rgba(31, 35, 32, 0.18); backdrop-filter: none; }
+      .hero-about-card h2, .approach-card h3, .work-card h3 { margin: 0 0 12px; font-size: 1rem; font-weight: 600; }
+      .hero-about-card p, .approach-card p, .work-card p { margin: 0; color: var(--muted); line-height: 1.68; }
+
+      .hero-search { display: grid; gap: 10px; width: min(420px, 100%); }
+      .hero-search-input {
+        min-height: 58px; padding: 0 0 0 2px; display: flex; align-items: center; gap: 12px;
+        color: rgba(17, 17, 17, 0.48); border-bottom: 1px solid rgba(17, 17, 17, 0.38);
+      }
+      .hero-search-button {
+        min-height: 58px; display: flex; align-items: center; justify-content: center;
+        background: rgb(129, 154, 230); color: var(--ink); border: 1px solid rgba(13, 16, 211, 0.18); font-weight: 700;
+      }
+
+      .process-marquee {
+        position: absolute; left: 0; right: 0; top: 94px; z-index: 1; overflow: hidden; pointer-events: none;
+      }
+      .process-marquee__track {
+        display: flex; width: max-content; gap: 0; white-space: nowrap; will-change: transform;
+        animation: processMarquee 24s linear infinite;
+      }
+      .process-marquee__track span {
+        flex: none;
+        padding-right: 2.4rem; font-family: "Sora", sans-serif; font-size: clamp(0.98rem, 1.8vw, 1.34rem);
+        font-weight: 800; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(104, 89, 75, 0.54);
+      }
+
+      body.is-dev-mode .process-marquee__track span {
+        color: rgba(143, 243, 162, 0.56);
+      }
+
+      .moving-device {
+        position: fixed; top: 0; left: 0; z-index: 1; width: clamp(260px, 28vw, 420px); aspect-ratio: 1;
+        transform: translate3d(-9999px, -9999px, 0); opacity: var(--device-opacity); pointer-events: none;
+        will-change: transform; transition: opacity 520ms ease;
+      }
+      .moving-device__stage {
+        position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform;
+        transform: perspective(1500px) rotateX(var(--device-tilt-x)) rotateY(var(--device-tilt-y)) rotateZ(var(--device-rotate)) scale(var(--device-scale));
+      }
+      .moving-device__shadow {
+        position: absolute; inset: 18% 12% 4%; background: radial-gradient(circle at center, rgba(17, 17, 17, 0.18), transparent 70%);
+        filter: blur(18px); opacity: 0.2; transform: translate3d(0, calc(var(--device-depth) * 0.42), -1px) scale(0.88);
+      }
+      .moving-device__box {
+        position: absolute; top: 18%; left: 21%; width: 58%; height: 58%; transform-style: preserve-3d;
+        transform-origin: 50% 50% calc(var(--device-depth) * -0.5);
+        will-change: transform;
+        transform:
+          translate3d(var(--device-box-shift-x), var(--device-box-shift-y), var(--device-box-shift-z))
+          rotateX(var(--device-box-rotate-x))
+          rotateY(var(--device-box-rotate-y))
+          rotateZ(var(--device-box-rotate-z));
+      }
+      .moving-device__face {
+        position: absolute; border: 0;
+        background: linear-gradient(to right, transparent 38%, rgba(84, 108, 91, 0.07) 38%, rgba(84, 108, 91, 0.07) 39%, transparent 39%),
+                    linear-gradient(to bottom, transparent 50%, rgba(84, 108, 91, 0.06) 50%, rgba(84, 108, 91, 0.06) 51%, transparent 51%),
+                    linear-gradient(135deg, rgba(170, 192, 174, 0.16), rgba(102, 128, 109, 0.05));
+        backface-visibility: hidden;
+        box-shadow: none;
+      }
+      .moving-device__face--front, .moving-device__face--back { inset: var(--device-face-inset); }
+      .moving-device__face--front {
+        opacity: var(--device-front-opacity);
+        transform: translateZ(calc(var(--device-face-inset) * -1));
+        background: linear-gradient(to right, transparent 38%, rgba(84, 108, 91, 0.08) 38%, rgba(84, 108, 91, 0.08) 39%, transparent 39%),
+                    linear-gradient(to bottom, transparent 50%, rgba(84, 108, 91, 0.07) 50%, rgba(84, 108, 91, 0.07) 51%, transparent 51%),
+                    linear-gradient(135deg, rgba(176, 198, 180, 0.2), rgba(114, 141, 121, 0.08));
+      }
+      .moving-device__face--back {
+        opacity: var(--device-back-opacity);
+        transform: translateZ(calc((var(--device-depth) * -1) + var(--device-face-inset)));
+        background: linear-gradient(to right, transparent 38%, rgba(74, 96, 81, 0.07) 38%, rgba(74, 96, 81, 0.07) 39%, transparent 39%),
+                    linear-gradient(to bottom, transparent 50%, rgba(74, 96, 81, 0.05) 50%, rgba(74, 96, 81, 0.05) 51%, transparent 51%),
+                    linear-gradient(135deg, rgba(125, 149, 131, 0.12), rgba(84, 107, 91, 0.04));
+      }
+      .moving-device__face--left, .moving-device__face--right {
+        top: var(--device-face-inset);
+        bottom: var(--device-face-inset);
+        width: calc(var(--device-depth) - (var(--device-face-inset) * 2));
+      }
+      .moving-device__face--left {
+        left: var(--device-face-inset); opacity: var(--device-left-opacity); transform-origin: left center; transform: translateZ(calc(var(--device-face-inset) * -1)) rotateY(-90deg);
+        background: linear-gradient(to bottom, transparent 50%, rgba(79, 102, 86, 0.14) 50%, rgba(79, 102, 86, 0.14) 51%, transparent 51%),
+                    linear-gradient(180deg, rgba(102, 126, 108, 0.22), rgba(74, 96, 81, 0.1));
+      }
+      .moving-device__face--right {
+        right: var(--device-face-inset); opacity: var(--device-right-opacity); transform-origin: right center; transform: translateZ(calc(var(--device-face-inset) * -1)) rotateY(90deg);
+        background: linear-gradient(to bottom, transparent 50%, rgba(79, 102, 86, 0.11) 50%, rgba(79, 102, 86, 0.11) 51%, transparent 51%),
+                    linear-gradient(180deg, rgba(188, 208, 191, 0.18), rgba(108, 132, 114, 0.06));
+      }
+      .moving-device__face--top, .moving-device__face--bottom {
+        left: var(--device-face-inset);
+        right: var(--device-face-inset);
+        height: calc(var(--device-depth) - (var(--device-face-inset) * 2));
+      }
+      .moving-device__face--top {
+        top: var(--device-face-inset); opacity: var(--device-top-opacity); transform-origin: center top; transform: translateZ(calc(var(--device-face-inset) * -1)) rotateX(90deg);
+        background: linear-gradient(to right, transparent 38%, rgba(79, 102, 86, 0.1) 38%, rgba(79, 102, 86, 0.1) 39%, transparent 39%),
+                    linear-gradient(180deg, rgba(206, 222, 209, 0.26), rgba(140, 165, 147, 0.12));
+      }
+      .moving-device__face--bottom {
+        bottom: var(--device-face-inset); opacity: var(--device-bottom-opacity); transform-origin: center bottom; transform: translateZ(calc(var(--device-face-inset) * -1)) rotateX(-90deg);
+        background: linear-gradient(to right, transparent 38%, rgba(79, 102, 86, 0.09) 38%, rgba(79, 102, 86, 0.09) 39%, transparent 39%),
+                    linear-gradient(180deg, rgba(92, 117, 98, 0.14), rgba(65, 84, 71, 0.05));
+      }
+      .moving-device__edge {
+        position: absolute;
+        background: rgba(17, 17, 17, 0.54);
+        transform-style: preserve-3d;
+        box-shadow: 0 0 0 0.65px rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+      }
+      .moving-device__edge--front-top,
+      .moving-device__edge--front-bottom,
+      .moving-device__edge--back-top,
+      .moving-device__edge--back-bottom {
+        left: calc(var(--device-edge-size) * -0.18);
+        right: calc(var(--device-edge-size) * -0.18);
+        height: calc(var(--device-edge-size) * 1.34);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(17, 17, 17, 0.76) 34%, rgba(17, 17, 17, 0.66) 100%);
+        box-shadow: 0 0 0 0.8px rgba(255, 255, 255, 0.11), 0 0 10px rgba(17, 17, 17, 0.06);
+      }
+      .moving-device__edge--front-top { top: calc(var(--device-edge-size) * -0.16); transform: translateZ(calc(var(--device-edge-size) * 0.55)); }
+      .moving-device__edge--front-bottom { bottom: calc(var(--device-edge-size) * -0.16); transform: translateZ(calc(var(--device-edge-size) * 0.55)); }
+      .moving-device__edge--back-top { top: calc(var(--device-edge-size) * -0.16); transform: translateZ(calc((var(--device-depth) * -1) - (var(--device-edge-size) * 0.55))); }
+      .moving-device__edge--back-bottom { bottom: calc(var(--device-edge-size) * -0.16); transform: translateZ(calc((var(--device-depth) * -1) - (var(--device-edge-size) * 0.55))); }
+      .moving-device__edge--front-left,
+      .moving-device__edge--front-right,
+      .moving-device__edge--back-left,
+      .moving-device__edge--back-right {
+        top: 0;
+        bottom: 0;
+        width: var(--device-edge-size);
+      }
+      .moving-device__edge--front-left { left: 0; transform: translateZ(0); }
+      .moving-device__edge--front-right { right: 0; transform: translateZ(0); }
+      .moving-device__edge--back-left { left: 0; transform: translateZ(calc(var(--device-depth) * -1)); }
+      .moving-device__edge--back-right { right: 0; transform: translateZ(calc(var(--device-depth) * -1)); }
+      .moving-device__edge--depth-top-left,
+      .moving-device__edge--depth-bottom-left,
+      .moving-device__edge--depth-top-right,
+      .moving-device__edge--depth-bottom-right {
+        width: var(--device-depth);
+        height: calc(var(--device-edge-size) * 1.45);
+        background: rgba(17, 17, 17, 0.68);
+        box-shadow: 0 0 0 0.9px rgba(255, 255, 255, 0.1);
+      }
+      .moving-device__edge--depth-top-left {
+        top: calc(var(--device-edge-size) * -0.5);
+        left: calc(var(--device-edge-size) * -0.5);
+        transform-origin: left center;
+        transform: translateZ(calc(var(--device-edge-size) * 0.5)) rotateY(90deg);
+      }
+      .moving-device__edge--depth-bottom-left {
+        bottom: calc(var(--device-edge-size) * -0.5);
+        left: calc(var(--device-edge-size) * -0.5);
+        transform-origin: left center;
+        transform: translateZ(calc(var(--device-edge-size) * 0.5)) rotateY(90deg);
+      }
+      .moving-device__edge--depth-top-right {
+        top: calc(var(--device-edge-size) * -0.5);
+        right: calc(var(--device-edge-size) * -0.5);
+        transform-origin: right center;
+        transform: translateZ(calc(var(--device-edge-size) * 0.5)) rotateY(-90deg);
+      }
+      .moving-device__edge--depth-bottom-right {
+        bottom: calc(var(--device-edge-size) * -0.5);
+        right: calc(var(--device-edge-size) * -0.5);
+        transform-origin: right center;
+        transform: translateZ(calc(var(--device-edge-size) * 0.5)) rotateY(-90deg);
+      }
+      body.is-dev-mode .moving-device__edge--front-top,
+      body.is-dev-mode .moving-device__edge--front-bottom,
+      body.is-dev-mode .moving-device__edge--back-top,
+      body.is-dev-mode .moving-device__edge--back-bottom {
+        background: linear-gradient(180deg, rgba(143, 243, 162, 0.9) 0%, rgba(143, 243, 162, 0.62) 36%, rgba(143, 243, 162, 0.5) 100%);
+        box-shadow: 0 0 0 0.85px rgba(143, 243, 162, 0.2), 0 0 12px rgba(143, 243, 162, 0.12);
+      }
+      .moving-device__beam-layer { position: absolute; inset: 0; transform-style: preserve-3d; }
+      .moving-device__beam {
+        position: absolute; left: 50%; top: 50%; width: 184%; height: 2.4px;
+        background: linear-gradient(90deg, rgba(17, 17, 17, 0), rgba(17, 17, 17, 0.8) 14%, rgba(17, 17, 17, 0.8) 84%, rgba(17, 17, 17, 0));
+        transform-origin: 50% 50%; box-shadow: 0 0 18px rgba(17, 17, 17, 0.08);
+      }
+      .moving-device__beam--secondary { width: 156%; opacity: 0.34; }
+      .moving-device__point {
+        position: absolute; width: 12px; height: 12px; background: var(--ink); border-radius: 999px;
+        transform-style: preserve-3d; box-shadow: 0 0 0 6px rgba(17, 17, 17, 0.04);
+      }
+      .moving-device__point--front { left: 8%; top: 40%; }
+      .moving-device__point--rear { right: 4%; top: 16%; opacity: 0.86; transform: translateZ(calc(var(--device-depth) * -0.84)); }
+      .moving-device__orbit {
+        position: absolute; border: 1px solid rgba(17, 17, 17, 0.2); border-radius: 999px;
+        transform-style: preserve-3d; animation: deviceOrbit 8s linear infinite;
+      }
+      .moving-device__orbit--one {
+        left: -18%; top: -12%; width: 42%; height: 12%; transform: rotateX(72deg) rotateZ(12deg) translateZ(calc(var(--device-depth) * -0.18));
+      }
+      .moving-device__orbit--two {
+        right: -10%; bottom: 16%; width: 48%; height: 13%; animation-duration: 6.6s; animation-direction: reverse;
+        transform: rotateX(72deg) rotateZ(-18deg) translateZ(calc(var(--device-depth) * -0.64));
+      }
+
+      .approach-layout {
+        position: relative; z-index: 2; display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 34px;
+        min-height: calc(100svh - clamp(24px, 3.4vw, 48px)); padding: 126px 34px 42px; align-items: center;
+      }
+      .approach-copy { opacity: var(--approach-copy-opacity); transform: translateY(var(--approach-copy-shift)); align-self: end; padding-bottom: 52px; }
+      .approach-copy h2 { max-width: 7ch; font-size: clamp(2.7rem, min(4.2vw, 6vh), 4.1rem); }
+      .approach-copy p { max-width: 30ch; }
+      .screen--approach .approach-copy .hero-meta--center {
+        display: inline-block;
+        padding-right: 14px;
+        background: linear-gradient(90deg, rgba(234, 219, 228, 0.96) 0%, rgba(234, 219, 228, 0.78) 72%, rgba(234, 219, 228, 0) 100%);
+      }
+      .approach-side { justify-items: stretch; align-self: center; align-content: center; display: grid; gap: 18px; opacity: var(--approach-side-opacity); transform: translateY(calc(var(--approach-side-shift) + 10px)); }
+      .approach-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+      .approach-service-card { min-height: 228px; padding: 22px 18px 18px; border: 1px solid rgba(17, 17, 17, 0.12); background: rgba(255, 255, 255, 0.34); backdrop-filter: blur(8px); display: grid; align-content: start; gap: 12px; }
+      .service-icon { width: 42px; height: 42px; stroke: rgba(17, 17, 17, 0.9); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+      .approach-service-card__index { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(17, 17, 17, 0.56); }
+      .approach-service-card strong { display: block; font-family: "Sora", sans-serif; font-size: 1.16rem; line-height: 1.02; letter-spacing: -0.04em; }
+      .approach-service-card p { margin: 0; color: var(--muted); line-height: 1.64; }
+      .approach-service-card__meta { margin-top: auto; padding-top: 10px; color: rgba(17, 17, 17, 0.5); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+      .approach-stack { display: grid; gap: 10px; padding-top: 8px; }
+      .approach-stack__label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+      .approach-stack__rule { height: 1px; background: rgba(17, 17, 17, 0.18); }
+      .approach-stack__rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 12px; }
+      .approach-stack__rail span { min-height: 54px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(17, 17, 17, 0.1); background: rgba(255, 255, 255, 0.22); color: rgba(17, 17, 17, 0.56); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+
+      /* --- UPDATED WORK LAYOUT FOR LAPTOP SCREENS --- */
+      .work-layout {
+        position: relative;
+        z-index: 2;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(17, 17, 17, 0.1);
-        background: rgba(255, 255, 255, 0.22);
-        color: rgba(17, 17, 17, 0.56);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: clamp(16px, 4vh, 34px);
+        min-height: calc(100svh - clamp(24px, 3.4vw, 48px));
+        padding: 100px 34px 42px;
       }
-
-      .work-side {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        opacity: var(--work-side-opacity);
-        transform: translateY(var(--work-side-shift));
-      }
-
       .work-copy {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
         opacity: var(--work-copy-opacity);
         transform: translateY(var(--work-copy-shift));
+        z-index: 2;
       }
-
-      .work-card {
-        display: grid;
-        gap: 12px;
-      }
-
-      .work-points {
+      .work-copy .hero-meta { position: relative; margin: 0; }
+      .work-copy p { max-width: 22ch; text-align: right; margin: 0; padding-bottom: 8px; }
+      
+      /* GIANT TEXT: Now absolute background, scaling carefully with height */
+      .work-title {
+        position: relative;
+        align-self: flex-start;
         margin: 0;
-        padding: 0;
-        list-style: none;
+        font-size: clamp(5rem, min(18vw, 22vh), 15rem);
+        line-height: 0.8;
+        letter-spacing: -0.08em;
+        color: rgba(124, 103, 78, 0.18);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      .work-side {
         display: grid;
-        gap: 10px;
-        color: var(--muted);
-      }
-
-      .work-points li {
-        line-height: 1.62;
-      }
-
-      .work-points strong {
-        color: var(--ink);
-      }
-
-      .work-image {
-        aspect-ratio: 1.18;
-        overflow: hidden;
-        border: 1px solid rgba(17, 17, 17, 0.12);
-        background: rgba(255, 255, 255, 0.4);
-      }
-
-      .work-image img {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        opacity: var(--work-side-opacity);
+        transform: translateY(var(--work-side-shift));
+        z-index: 2; /* Sit above the WORK text */
       }
-
-      .work-card span {
-        color: var(--muted);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
+      .work-card { position: relative; display: grid; gap: 8px; align-content: start; padding: 18px 0 20px; border-top: 1px solid rgba(31, 35, 32, 0.16); cursor: default; transition: border-color 260ms cubic-bezier(0.22, 1, 0.36, 1); }
+      .work-card:hover { border-color: rgba(31, 35, 32, 0.16); }
+      .work-card:last-child { border-bottom: 1px solid rgba(31, 35, 32, 0.16); }
+      .work-card span { color: var(--muted); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; transition: color 220ms ease; }
+      .work-card h3 { 
+        margin: 0; 
+        font-family: "Sora", sans-serif; 
+        font-size: clamp(2.7rem, min(7.2vw, 10.2vh), 8.2rem); 
+        line-height: 0.84; 
+        letter-spacing: -0.07em; 
+        color: transparent;
+        -webkit-text-stroke: 1.6px rgba(31, 35, 32, 0.76);
         text-transform: uppercase;
       }
 
-      .screen-tag {
-        position: absolute;
-        right: 18px;
-        bottom: 16px;
-        z-index: 3;
-        font-size: 0.82rem;
-        font-weight: 800;
-        text-transform: uppercase;
+      body.is-dev-mode .work-card h3 {
+        -webkit-text-stroke: 1.6px rgba(143, 243, 162, 0.76);
       }
-
-      @keyframes deviceOrbit {
-        0% {
-          stroke-dashoffset: 0;
-        }
-        100% {
-          stroke-dashoffset: -96;
-        }
+      
+      .work-word-hitbox { position: relative; display: inline-block; width: max-content; }
+      .work-project-link { display: inline-block; color: inherit; text-decoration: none; }
+      .work-project-link:focus-visible { outline: 1px solid rgba(31, 35, 32, 0.28); outline-offset: 8px; }
+      .work-preview-hotspots { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(var(--preview-parts), minmax(0, 1fr)); }
+      .work-preview-hotspot { cursor: none; background: transparent; }
+      
+      .work-preview {
+        position: absolute; top: 0; left: 0; z-index: 4; width: clamp(240px, 32vw, 480px);
+        opacity: 0; pointer-events: none; transform: translate3d(-9999px, -9999px, 0) scale(0.96);
+        transform-origin: center center; transition: opacity 180ms ease, transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+        perspective: 1200px;
       }
+      .work-preview.is-visible { opacity: 1; }
+      
+      /* 3D Magnetic Image Tilt styling */
+      .work-preview__frame {
+        padding: 12px; border: 1px solid rgba(31, 35, 32, 0.14); background: rgba(248, 245, 239, 0.82);
+        backdrop-filter: blur(10px); box-shadow: 12px 12px 0 rgba(31, 35, 32, 0.08); display: grid; gap: 10px;
+        transform-style: preserve-3d; transition: transform 0.1s ease-out;
+      }
+      .work-preview__image { width: 100%; aspect-ratio: 1.56; object-fit: cover; border: 1px solid rgba(31, 35, 32, 0.12); background: rgba(255, 255, 255, 0.42); transform: translateZ(20px); }
+      .work-preview__label { color: rgba(31, 35, 32, 0.6); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; transform: translateZ(30px); }
 
-      @media (max-width: 1080px) {
+      .process-layout, .testimonials-layout, .contact-layout { position: relative; z-index: 2; display: grid; gap: 30px; min-height: calc(100svh - clamp(24px, 3.4vw, 48px)); padding: 118px 34px 42px; }
+      .process-layout { grid-template-columns: 0.82fr 1.18fr; align-items: end; }
+      .testimonials-layout { grid-template-columns: 0.72fr 1.28fr; align-items: end; }
+      .contact-layout { grid-template-columns: 0.92fr 1.08fr; align-items: stretch; }
+      .process-copy, .testimonials-copy, .contact-copy { align-self: end; padding-bottom: 24px; }
+      .process-copy h2 { max-width: 8ch; font-size: clamp(2.7rem, min(4.2vw, 6vh), 4.1rem); }
+      .testimonials-copy h2 { max-width: 6.8ch; font-size: clamp(2.38rem, min(3.6vw, 5.3vh), 3.5rem); }
+      .contact-copy h2 { max-width: 6ch; font-size: clamp(3.8rem, min(8vw, 12vh), 7rem); color: var(--final-ink); margin: 0 0 16px; font-family: "Sora", sans-serif; line-height: 0.94; letter-spacing: -0.06em; }
+      .process-copy p, .testimonials-copy p { max-width: 32ch; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.76; }
+      .testimonials-copy p { max-width: 26ch; font-size: 0.96rem; line-height: 1.68; }
+      .contact-copy p { max-width: 34ch; color: rgba(244, 239, 232, 0.72); margin: 0; font-size: 1rem; line-height: 1.76; }
+      .process-side, .testimonials-side, .contact-side { align-self: stretch; display: grid; gap: 16px; }
+      .process-side { align-content: end; }
+      .testimonials-side { grid-template-columns: 1.06fr 0.94fr; align-content: end; }
+      .contact-side { align-content: end; }
+      .process-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .process-step, .testimonial-card, .contact-terminal, .contact-link, .contact-footnote { border: 1px solid rgba(31, 35, 32, 0.12); background: rgba(255, 255, 255, 0.34); backdrop-filter: blur(8px); }
+      .process-step, .testimonial-card { padding: 22px 18px 18px; }
+      .process-step { min-height: 230px; display: grid; align-content: start; gap: 12px; }
+      .process-step__index, .testimonial-card__label, .contact-terminal__label, .contact-footnote__label { font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(31, 35, 32, 0.56); }
+      .process-step strong { display: block; font-family: "Sora", sans-serif; font-size: 1.14rem; line-height: 1.04; letter-spacing: -0.04em; }
+      .process-step p { margin: 0; color: var(--muted); line-height: 1.66; }
+      
+      .testimonial-card { min-height: 196px; display: grid; align-content: start; gap: 14px; }
+      .testimonial-card--featured { min-height: 252px; }
+      .testimonial-card blockquote { margin: 0; font-family: "Sora", sans-serif; font-size: clamp(1.28rem, 2.18vw, 2.26rem); line-height: 1.08; letter-spacing: -0.05em; }
+      .testimonial-card--secondary blockquote { font-size: clamp(1.06rem, 1.54vw, 1.42rem); }
+      .testimonial-card__person { display: flex; align-items: center; gap: 14px; }
+      .testimonial-card__headshot { width: 64px; height: 64px; flex: none; border: 1px solid rgba(31, 35, 32, 0.14); background: rgba(255, 255, 255, 0.64); }
+      .testimonial-card__meta { display: grid; gap: 4px; }
+      .testimonial-card__name { font-family: "Sora", sans-serif; font-size: 0.96rem; line-height: 1; letter-spacing: -0.04em; }
+      .testimonial-card__role { color: var(--muted); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+
+      .contact-terminal, .contact-link, .contact-footnote { border-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.05); color: var(--final-ink); }
+      .contact-terminal, .contact-footnote { padding: 24px; }
+      .contact-terminal { display: grid; gap: 16px; }
+      .contact-terminal__label, .contact-footnote__label { color: rgba(244, 239, 232, 0.54); }
+      .contact-terminal__line { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); color: rgba(244, 239, 232, 0.78); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94rem; }
+      .contact-terminal__line:last-child { padding-bottom: 0; border-bottom: 0; }
+      .contact-links { display: grid; gap: 12px; }
+      .contact-link { min-height: 58px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; }
+      .contact-link:first-child { background: var(--final-ink); color: var(--ink); }
+      .contact-link span:last-child, .contact-footnote p { color: rgba(244, 239, 232, 0.68); }
+      .contact-link:first-child span:last-child { color: rgba(31, 35, 32, 0.64); }
+      .contact-footnote { display: grid; gap: 10px; }
+      .contact-footnote p { margin: 0; line-height: 1.7; }
+
+      .screen--contact .magnetic-button:hover { box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.18); }
+
+
+      @keyframes deviceOrbit { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -96; } }
+      @keyframes processMarquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(calc(-100% / 3), 0, 0); } }
+
+      /* --- SAFETY MEDIA QUERY FOR VERY SHORT LAPTOPS --- */
+      @media (max-height: 860px) and (min-width: 1024px) {
         .topbar {
-          flex-wrap: wrap;
+          top: 16px;
         }
-
-        .screen-inner,
-        .approach-layout,
-        .work-layout {
-          grid-template-columns: 1fr;
-          gap: 28px;
-          padding: 108px 24px 32px;
+        .hero-meta {
+          top: 22px;
         }
-
-        .screen--hero .screen-inner::before {
-          left: 20px;
-          top: 110px;
-          font-size: clamp(4.2rem, 16vw, 8rem);
-        }
-
-        .screen--approach .screen-frame::before {
-          left: 20px;
-          top: 110px;
-          font-size: clamp(4rem, 15vw, 7.8rem);
-        }
-
-        .approach-layout {
+        .screen-inner, .approach-layout {
           padding-top: 126px;
-        }
-
-        .hero-copy,
-        .hero-side,
-        .approach-copy,
-        .work-copy {
           padding-bottom: 20px;
+          gap: 24px;
         }
-
-        .hero-side-link,
-        .hero-menu,
-        .hero-scroll {
-          position: static;
+        .work-layout, .process-layout, .testimonials-layout, .contact-layout {
+          padding-top: 96px;
+          padding-bottom: 20px;
+          gap: 24px;
+        }
+        .approach-service-card, .process-step, .testimonial-card { min-height: auto; padding: 16px; }
+        .hero-copy, .approach-copy, .process-copy, .testimonials-copy, .contact-copy { padding-bottom: 18px; }
+        .hero-side { gap: 18px; padding-bottom: 18px; }
+        .hero-about-card, .approach-service-card { padding: 18px; }
+        .hero-side-link {
+          display: none;
+        }
+        .hero-menu {
+          top: 168px;
           transform: none;
         }
-
-        .hero-side {
-          justify-items: start;
+        .hero-scroll {
+          bottom: 12px;
         }
-
-        .work-side {
-          grid-template-columns: 1fr;
+        .hero-copy {
+          max-width: 620px;
         }
-
-        .approach-side {
-          justify-items: start;
+        .approach-copy {
+          padding-top: 18px;
         }
-
-        .approach-services {
-          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        .screen--hero .screen-inner::before {
+          top: 122px;
+          font-size: clamp(3rem, min(8.8vw, 12vh), 5.2rem);
         }
-
-        .moving-device {
-          width: clamp(250px, 36vw, 350px);
+        .screen--approach .screen-frame::before {
+          top: 114px;
+          font-size: clamp(2.6rem, min(7.8vw, 10.2vh), 4.4rem);
+          opacity: 0.18;
         }
+        .screen--process .screen-frame::before,
+        .screen--process .screen-frame::before,
+        .screen--testimonials .screen-frame::before,
+        .screen--contact .screen-frame::before {
+          top: 104px;
+          font-size: clamp(3.4rem, min(10vw, 14vh), 6.2rem);
+        }
+        .hero-copy h1, .approach-copy h2, .process-copy h2, .testimonials-copy h2 {
+          font-size: clamp(1.96rem, min(3.1vw, 4.6vh), 2.78rem);
+          line-height: 0.98;
+          max-width: 6.8ch;
+        }
+        .hero-copy h1 {
+          max-width: 10.2ch;
+        }
+        .approach-copy h2 {
+          max-width: 8.4ch;
+        }
+        .testimonials-copy h2 {
+          max-width: 6.2ch;
+          font-size: clamp(1.84rem, min(2.84vw, 4.18vh), 2.4rem);
+        }
+        .contact-copy h2 {
+          font-size: clamp(3rem, min(5.8vw, 9vh), 4.8rem);
+          line-height: 0.95;
+        }
+        .hero-copy p, .approach-copy p, .process-copy p, .testimonials-copy p, .contact-copy p {
+          font-size: 0.9rem;
+          line-height: 1.54;
+          max-width: 26ch;
+        }
+        .testimonials-copy p {
+          max-width: 23ch;
+        }
+        .approach-copy p {
+          max-width: 23ch;
+        }
+      }
+
+      /* --- MOBILE MEDIA QUERIES --- */
+      @media (max-width: 1080px) {
+        .topbar { flex-wrap: wrap; }
+        .nav-links { display: flex; flex-wrap: wrap; gap: 12px; width: 100%; }
+        .topbar-actions { width: 100%; transform: none; justify-content: flex-start; flex-wrap: wrap; gap: 12px; }
+        .screen-inner, .approach-layout, .process-layout, .testimonials-layout, .contact-layout { grid-template-columns: 1fr; gap: 28px; padding: 108px 24px 32px; }
+        .hero-copy h1, .approach-copy h2, .process-copy h2, .testimonials-copy h2 { font-size: clamp(2.28rem, 5.2vw, 3.36rem); line-height: 0.97; }
+        .contact-copy h2 { font-size: clamp(3rem, 7.2vw, 5rem); line-height: 0.95; }
+        .hero-copy p, .approach-copy p, .process-copy p, .testimonials-copy p, .contact-copy p { font-size: 0.96rem; line-height: 1.68; max-width: 34ch; }
+        
+        .work-layout { padding: 108px 24px 32px; gap: 24px; }
+        .work-side { grid-template-columns: 1fr; }
+        .work-copy { flex-direction: column; gap: 16px; }
+        .work-copy p { text-align: left; align-self: flex-start; }
+        .work-title { font-size: clamp(4.2rem, 14vw, 8rem); }
+
+        .screen--hero .screen-inner::before { left: 20px; top: 110px; font-size: clamp(3.8rem, 13vw, 6.6rem); }
+        .screen--approach .screen-frame::before { left: 20px; top: 110px; font-size: clamp(3.6rem, 12.5vw, 6.3rem); }
+        .screen--process .screen-frame::before, .screen--testimonials .screen-frame::before, .screen--contact .screen-frame::before { left: 20px; top: 110px; font-size: clamp(3.5rem, 12vw, 6.2rem); }
+        .screen--testimonials .screen-frame::before { font-size: clamp(3.1rem, 10.6vw, 5.4rem); }
+        .process-marquee { top: 116px; }
+        .approach-layout { padding-top: 126px; }
+        .process-layout, .testimonials-layout, .contact-layout { padding-top: 126px; }
+        .contact-globe { top: 132px; right: 20px; width: min(50vw, 420px); }
+        .hero-copy, .hero-side, .approach-copy, .process-copy, .testimonials-copy, .contact-copy { padding-bottom: 20px; }
+        .hero-side-link, .hero-menu, .hero-scroll { position: static; transform: none; }
+        .hero-side { justify-items: start; }
+        .process-steps, .testimonials-side { grid-template-columns: 1fr; }
+        .approach-side { justify-items: start; }
+        .approach-services { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
       }
 
       @media (max-width: 720px) {
-        .screen {
-          padding: 10px;
-        }
-
-        .screen-frame {
-          min-height: calc(100svh - 20px);
-        }
-
-        .topbar {
-          padding: 16px 16px 14px;
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .nav-links,
-        .topbar-actions {
-          flex-wrap: wrap;
-          gap: 14px;
-        }
-
-        .hero-meta--center {
-          left: 16px;
-          transform: none;
-        }
-
-        .hero-meta--right {
-          top: 42px;
-          left: 16px;
+        .concept-shell { scroll-snap-type: y proximity; }
+        .screen { padding: 10px; }
+        .screen { scroll-snap-stop: normal; }
+        .screen-frame { min-height: calc(100svh - 20px); }
+        .topbar { padding: 16px 16px 14px; align-items: flex-start; flex-direction: column; }
+        .nav-links, .topbar-actions { flex-wrap: wrap; gap: 14px; }
+        .hero-meta--center { left: 16px; transform: none; }
+        .hero-meta--right { top: 42px; left: 16px; right: auto; justify-content: flex-start; text-align: left; }
+        .hero-menu { top: auto; right: 14px; bottom: 52px; }
+        .screen-inner, .approach-layout, .work-layout, .process-layout, .testimonials-layout, .contact-layout { padding: 108px 16px 24px; }
+        .approach-layout, .process-layout, .testimonials-layout, .contact-layout { padding-top: 124px; }
+        .screen--hero .screen-inner::before, .screen--approach .screen-frame::before, .screen--process .screen-frame::before, .screen--testimonials .screen-frame::before, .screen--contact .screen-frame::before { left: 14px; top: 132px; font-size: clamp(3.1rem, 12vw, 4rem); line-height: 0.9; }
+        .process-marquee { top: 138px; }
+        .process-marquee__track span { font-size: 0.9rem; letter-spacing: 0.18em; }
+        .hero-side-link { margin-top: 8px; }
+        .hero-copy h1, .approach-copy h2, .process-copy h2, .testimonials-copy h2, .contact-copy h2 { max-width: none; }
+        .hero-copy h1, .approach-copy h2, .process-copy h2, .testimonials-copy h2 { font-size: clamp(1.96rem, 8.4vw, 2.64rem); line-height: 0.98; }
+        .testimonials-copy h2 { font-size: clamp(1.82rem, 7.4vw, 2.34rem); }
+        .contact-copy h2 { font-size: clamp(2.54rem, 10vw, 3.7rem); line-height: 0.96; }
+        .approach-copy h2, .process-copy h2, .testimonials-copy h2, .contact-copy h2 { padding-left: 14px; padding-bottom: 0.16em; margin-bottom: 12px; }
+        .approach-copy h2::before, .process-copy h2::before, .testimonials-copy h2::before, .contact-copy h2::before { width: 3px; }
+        .approach-copy h2::after, .process-copy h2::after, .testimonials-copy h2::after, .contact-copy h2::after { left: 14px; width: 42px; }
+        .hero-copy p, .approach-copy p, .process-copy p, .testimonials-copy p, .contact-copy p, .work-copy p { font-size: 0.92rem; line-height: 1.62; max-width: 30ch; }
+        .testimonials-copy p { max-width: 24ch; }
+        .work-title { font-size: clamp(3.6rem, 18vw, 5rem); line-height: 0.84; }
+        .contact-globe {
+          top: 168px;
+          left: 50%;
           right: auto;
-          justify-content: flex-start;
-          text-align: left;
+          width: min(72vw, 320px);
+          transform: translateX(-50%);
+          opacity: 0.84;
         }
-
-        .hero-menu {
-          top: auto;
-          right: 14px;
-          bottom: 52px;
-        }
-
-        .screen-inner,
-        .approach-layout,
-        .work-layout {
-          padding: 108px 16px 24px;
-        }
-
-        .approach-layout {
-          padding-top: 124px;
-        }
-
-        .screen--hero .screen-inner::before {
-          left: 14px;
-          top: 132px;
-          font-size: 4.4rem;
-          line-height: 0.88;
-        }
-
-        .hero-side-link {
-          margin-top: 8px;
-        }
-
-        .hero-copy h1,
-        .approach-copy h2,
-        .work-copy h2 {
-          max-width: none;
-        }
-
-        .hero-about-card,
-        .approach-service-card,
-        .approach-stack__rail span,
-        .work-card {
-          width: 100%;
-          padding: 18px;
-        }
-
-        .moving-device {
-          width: min(64vw, 300px);
-        }
+        .hero-about-card, .approach-service-card, .approach-stack__rail span, .work-card { width: 100%; padding: 18px; }
+        .testimonial-card__person { align-items: flex-start; }
+        .testimonial-card__headshot { width: 56px; height: 56px; }
+        .work-preview { width: min(80vw, 300px); }
       }
     </style>
   </head>
@@ -1027,12 +1143,22 @@
             <div class="moving-device__face moving-device__face--top"></div>
             <div class="moving-device__face moving-device__face--bottom"></div>
             <div class="moving-device__face moving-device__face--front"></div>
-
+            <span class="moving-device__edge moving-device__edge--front-top"></span>
+            <span class="moving-device__edge moving-device__edge--front-bottom"></span>
+            <span class="moving-device__edge moving-device__edge--front-left"></span>
+            <span class="moving-device__edge moving-device__edge--front-right"></span>
+            <span class="moving-device__edge moving-device__edge--back-top"></span>
+            <span class="moving-device__edge moving-device__edge--back-bottom"></span>
+            <span class="moving-device__edge moving-device__edge--back-left"></span>
+            <span class="moving-device__edge moving-device__edge--back-right"></span>
+            <span class="moving-device__edge moving-device__edge--depth-top-left"></span>
+            <span class="moving-device__edge moving-device__edge--depth-bottom-left"></span>
+            <span class="moving-device__edge moving-device__edge--depth-top-right"></span>
+            <span class="moving-device__edge moving-device__edge--depth-bottom-right"></span>
             <div class="moving-device__beam-layer">
               <span class="moving-device__beam moving-device__beam--primary" id="device-beam"></span>
               <span class="moving-device__beam moving-device__beam--secondary" id="device-beam-secondary"></span>
             </div>
-
             <span class="moving-device__point moving-device__point--front"></span>
             <span class="moving-device__point moving-device__point--rear"></span>
             <span class="moving-device__orbit moving-device__orbit--one"></span>
@@ -1048,31 +1174,28 @@
             <nav class="nav-links" aria-label="Concept navigation">
               <a href="#approach-screen">Services</a>
               <a href="#work-screen">Proof</a>
-              <a href="#contact-panel">Contact</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
             </nav>
             <div class="topbar-actions">
               <a href="/index.html">Current Site</a>
-              <a href="#contact-panel">Book Call</a>
+              <a href="#contact-screen">Book Call</a>
             </div>
           </header>
 
           <div class="hero-meta hero-meta--right">
             <span>Kuala Lumpur / MY</span>
-            <span id="concept-clock">12:26:56</span>
+            <span class="concept-clock">12:26:56</span>
           </div>
-          <div class="hero-side-link">[ Free Discovery Call ]</div>
           <div class="hero-menu">Menu</div>
           <div class="hero-scroll">Scroll</div>
 
           <div class="screen-inner">
             <div class="hero-copy">
               <h1>Websites that turn first impressions into <span class="hero-copy__accent">enquiries.</span></h1>
-              <p>
-                Custom, fast, mobile-friendly websites for businesses that need more trust, stronger positioning, and a
-                simpler path to yes.
-              </p>
+              <p>Fast, mobile-ready websites for businesses that need more trust, better positioning, and quicker enquiries.</p>
               <div class="hero-actions">
-                <a href="#contact-panel">Get a Free Quote</a>
+                <a class="magnetic-button" data-magnetic href="#contact-screen">Get a Free Quote</a>
                 <a href="#work-screen">View Proof</a>
               </div>
             </div>
@@ -1080,17 +1203,13 @@
             <aside class="hero-side">
               <div class="hero-about-card">
                 <h2>What clients need</h2>
-                <p>
-                  They want to know three things fast: can you solve the problem, does the work look premium, and will
-                  hiring you feel easy.
-                </p>
+                <p>Clients want three answers fast: can you solve it, does it look premium, and is hiring easy.</p>
               </div>
-
               <div class="hero-search" id="contact-panel">
                 <div class="hero-search-input">
                   <span>sales@trizenstudio.com / 15 min intro</span>
                 </div>
-                <a class="hero-search-button" href="mailto:sales@trizenstudio.com">Book Discovery Call</a>
+                <a class="hero-search-button magnetic-button" data-magnetic href="mailto:sales@trizenstudio.com">Book Discovery Call</a>
               </div>
             </aside>
           </div>
@@ -1099,15 +1218,31 @@
 
       <section class="screen screen--approach" id="approach-screen" data-screen="1">
         <div class="screen-frame">
+          <header class="topbar">
+            <a class="brand" href="#">TRIZEN.</a>
+            <nav class="nav-links" aria-label="Concept navigation">
+              <a href="#approach-screen">Services</a>
+              <a href="#work-screen">Proof</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+              <a href="/index.html">Current Site</a>
+              <a href="#contact-screen">Book Call</a>
+            </div>
+          </header>
+
+          <div class="hero-meta hero-meta--right">
+            <span>Kuala Lumpur / MY</span>
+            <span class="concept-clock">12:26:56</span>
+          </div>
+
           <div class="approach-layout">
             <div class="approach-copy">
-              <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Services</div>
-              <h2>Three services clients can understand fast.</h2>
-              <p>
-                Put the actual offer in the middle: product builds, cloud delivery, and AI workflows.
-              </p>
+              <h2>Three services clients understand fast.</h2>
+              <p>Clear offer, clear scope: builds, cloud delivery, and AI workflows.</p>
               <div class="approach-actions">
-                <a href="#work-screen">See Proof</a>
+                <a class="magnetic-button" data-magnetic href="#work-screen">See Proof</a>
                 <a href="#hero-screen">Back to Start</a>
               </div>
             </div>
@@ -1115,97 +1250,288 @@
             <div class="approach-side">
               <div class="approach-services">
                 <article class="approach-service-card">
-                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
-                    <path d="M16 13 8 24l8 11" />
-                    <path d="M32 13 40 24l-8 11" />
-                    <path d="M27 9 21 39" />
-                  </svg>
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M16 13 8 24l8 11" /><path d="M32 13 40 24l-8 11" /><path d="M27 9 21 39" /></svg>
                   <span class="approach-service-card__index">01</span>
                   <strong>Custom Web Apps</strong>
-                  <p>Business sites, dashboards, and portals built with clean C# or Python logic behind the front-end.</p>
+                  <p>Dashboards, portals, and business platforms powered by clean C# or Python backends.</p>
                   <span class="approach-service-card__meta">C# / Python Backends</span>
                 </article>
-
                 <article class="approach-service-card">
-                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
-                    <path d="M14 33h20a6 6 0 0 0 0-12 8.5 8.5 0 0 0-16.1-2.8A6.2 6.2 0 0 0 14 33Z" />
-                    <path d="M18 37h12" />
-                  </svg>
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M14 33h20a6 6 0 0 0 0-12 8.5 8.5 0 0 0-16.1-2.8A6.2 6.2 0 0 0 14 33Z" /><path d="M18 37h12" /></svg>
                   <span class="approach-service-card__index">02</span>
                   <strong>Cloud Infrastructure</strong>
-                  <p>Fast, secure environments on AWS with better performance, cleaner deployment, and room to scale.</p>
+                  <p>Secure AWS delivery with cleaner deployment and room to scale.</p>
                   <span class="approach-service-card__meta">AWS Delivery</span>
                 </article>
-
                 <article class="approach-service-card">
-                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true">
-                    <path d="M24 8 27.5 18.5 38 24l-10.5 5.5L24 40l-3.5-10.5L10 24l10.5-5.5Z" />
-                    <path d="M35 11 36.5 15 40.5 16.5 36.5 18 35 22 33.5 18 29.5 16.5 33.5 15Z" />
-                  </svg>
+                  <svg class="service-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8 27.5 18.5 38 24l-10.5 5.5L24 40l-3.5-10.5L10 24l10.5-5.5Z" /><path d="M35 11 36.5 15 40.5 16.5 36.5 18 35 22 33.5 18 29.5 16.5 33.5 15Z" /></svg>
                   <span class="approach-service-card__index">03</span>
                   <strong>AI Integrations</strong>
-                  <p>Smart assistants and workflow automations that remove manual work and make operations feel lighter.</p>
+                  <p>AI assistants and workflows that cut manual work.</p>
                   <span class="approach-service-card__meta">Automation / AI Workflows</span>
                 </article>
               </div>
-
               <div class="approach-stack">
                 <span class="approach-stack__label">Trusted Stack</span>
                 <div class="approach-stack__rule"></div>
                 <div class="approach-stack__rail">
-                  <span>.NET</span>
-                  <span>Python</span>
-                  <span>AWS</span>
-                  <span>OpenAI</span>
-                  <span>React</span>
+                  <span>.NET</span><span>Python</span><span>AWS</span><span>OpenAI</span><span>React</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="screen-tag">Services</div>
         </div>
       </section>
 
       <section class="screen screen--work" id="work-screen" data-screen="2">
         <div class="screen-frame">
+          <header class="topbar">
+            <a class="brand" href="#">TRIZEN.</a>
+            <nav class="nav-links" aria-label="Concept navigation">
+              <a href="#approach-screen">Services</a>
+              <a href="#work-screen">Proof</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+              <a href="/index.html">Current Site</a>
+              <a href="#contact-screen">Book Call</a>
+            </div>
+          </header>
+
+          <div class="hero-meta hero-meta--right">
+            <span>Kuala Lumpur / MY</span>
+            <span class="concept-clock">12:26:56</span>
+          </div>
+
           <div class="work-layout">
+            <h2 class="work-title">WORK</h2>
+            
             <div class="work-copy">
-              <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Proof</div>
-              <h2>Proof people can scan in seconds.</h2>
-              <p>
-                Keep the visuals strong and the explanation short: problem, solution, result.
-              </p>
+              <div class="hero-meta hero-meta--center" style="position: static; transform: none;">Selected Work</div>
+              <p>Move across each word to reveal previews.</p>
             </div>
 
             <div class="work-side">
               <article class="work-card">
-                <div class="work-image">
-                  <img src="/img/TravelManagement%20(1).png" alt="Travel management concept preview" />
-                </div>
-                <span>Case Study 01</span>
-                <h3>Travel booking platform refresh</h3>
-                <ul class="work-points">
-                  <li><strong>Problem:</strong> The brand felt cluttered and hard to trust.</li>
-                  <li><strong>Solution:</strong> Built a cleaner, faster booking site with a more premium visual frame.</li>
-                  <li><strong>Result:</strong> Stronger first impressions and easier enquiries from better-fit clients.</li>
-                </ul>
+                <span>Travel Platform</span>
+                <a class="work-project-link" href="/project-showcase.html?project=flyease" aria-label="Open FlyEase slideshow">
+                  <div class="work-word-hitbox">
+                    <h3>FLYEASE</h3>
+                    <div class="work-preview-hotspots" style="--preview-parts: 7;" aria-hidden="true">
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(1).png" data-preview-label="FlyEase homepage preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(2).png" data-preview-label="FlyEase landing preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(3).png" data-preview-label="FlyEase booking flow preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(4).png" data-preview-label="FlyEase search preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(5).png" data-preview-label="FlyEase package preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(6).png" data-preview-label="FlyEase detail preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TravelManagement%20(7).png" data-preview-label="FlyEase checkout preview"></span>
+                    </div>
+                  </div>
+                </a>
               </article>
 
               <article class="work-card">
-                <div class="work-image">
-                  <img src="/img/TrustNest.png" alt="TrustNest concept preview" />
-                </div>
-                <span>Case Study 02</span>
-                <h3>Property platform repositioning</h3>
-                <ul class="work-points">
-                  <li><strong>Problem:</strong> The old site looked generic and low-trust.</li>
-                  <li><strong>Solution:</strong> Designed a sharper visual system with a simpler conversion path.</li>
-                  <li><strong>Result:</strong> A clearer offer and a more credible presence for higher-value leads.</li>
-                </ul>
+                <span>Property Platform</span>
+                <a class="work-project-link" href="/project-showcase.html?project=trustnest" aria-label="Open TrustNest slideshow">
+                  <div class="work-word-hitbox">
+                    <h3>TRUSTNEST</h3>
+                    <div class="work-preview-hotspots" style="--preview-parts: 9;" aria-hidden="true">
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(1).png" data-preview-label="TrustNest overview preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(2).png" data-preview-label="TrustNest landing preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(3).png" data-preview-label="TrustNest listing preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(4).png" data-preview-label="TrustNest dashboard preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(5).png" data-preview-label="TrustNest analytics preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(6).png" data-preview-label="TrustNest workspace preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(7).png" data-preview-label="TrustNest secure flow preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/PortFolio%20(8).png" data-preview-label="TrustNest property preview"></span>
+                      <span class="work-preview-hotspot" data-preview="/img/TrustNest.png" data-preview-label="TrustNest interface preview"></span>
+                    </div>
+                  </div>
+                </a>
               </article>
             </div>
           </div>
-          <div class="screen-tag">Proof</div>
+          
+          <div class="work-preview" id="work-preview" aria-hidden="true">
+            <div class="work-preview__frame">
+              <img class="work-preview__image" id="work-preview-image" alt="" />
+              <div class="work-preview__label" id="work-preview-label">Project Preview</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--process" id="process-screen" data-screen="3">
+        <div class="screen-frame">
+          <header class="topbar">
+            <a class="brand" href="#">TRIZEN.</a>
+            <nav class="nav-links" aria-label="Concept navigation">
+              <a href="#approach-screen">Services</a>
+              <a href="#work-screen">Proof</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+              <a href="/index.html">Current Site</a>
+              <a href="#contact-screen">Book Call</a>
+            </div>
+          </header>
+
+          <div class="hero-meta hero-meta--right">
+            <span>Kuala Lumpur / MY</span>
+            <span class="concept-clock">12:26:56</span>
+          </div>
+
+          <div class="process-marquee" aria-hidden="true">
+            <div class="process-marquee__track">
+              <span>/// DISCOVERY /// BUILD /// HANDOVER /// DISCOVERY /// BUILD /// HANDOVER ///</span>
+              <span>/// DISCOVERY /// BUILD /// HANDOVER /// DISCOVERY /// BUILD /// HANDOVER ///</span>
+              <span>/// DISCOVERY /// BUILD /// HANDOVER /// DISCOVERY /// BUILD /// HANDOVER ///</span>
+            </div>
+          </div>
+
+          <div class="process-layout">
+            <div class="process-copy">
+              <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Process</div>
+              <h2>A three-step process that feels easy.</h2>
+              <p>Clear decisions, controlled delivery, calm launch.</p>
+              <div class="process-actions">
+                <a class="magnetic-button" data-magnetic href="#testimonials-screen">Read Reviews</a>
+                <a href="#contact-screen">Start a Call</a>
+              </div>
+            </div>
+
+            <div class="process-side">
+              <div class="process-steps">
+                <article class="process-step">
+                  <span class="process-step__index">01 / Discovery</span>
+                  <strong>One focused kickoff.</strong>
+                  <p>We set goals, audience, and priorities first.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step__index">02 / Build</span>
+                  <strong>Design and development move together.</strong>
+                  <p>Design and development move together with clear milestones.</p>
+                </article>
+                <article class="process-step">
+                  <span class="process-step__index">03 / Handover</span>
+                  <strong>Launch with support, not confusion.</strong>
+                  <p>Test, deploy, and hand over with confidence.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--testimonials" id="testimonials-screen" data-screen="4">
+        <div class="screen-frame">
+          <header class="topbar">
+            <a class="brand" href="#">TRIZEN.</a>
+            <nav class="nav-links" aria-label="Concept navigation">
+              <a href="#approach-screen">Services</a>
+              <a href="#work-screen">Proof</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+              <a href="/index.html">Current Site</a>
+              <a href="#contact-screen">Book Call</a>
+            </div>
+          </header>
+
+          <div class="hero-meta hero-meta--right">
+            <span>Kuala Lumpur / MY</span>
+            <span class="concept-clock">12:26:56</span>
+          </div>
+
+          <div class="testimonials-layout">
+            <div class="testimonials-copy">
+              <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Testimonials</div>
+              <h2>Clients feel it too.</h2>
+              <p>The work shows output. These quotes show the experience.</p>
+            </div>
+
+            <div class="testimonials-side">
+              <article class="testimonial-card testimonial-card--featured">
+                <span class="testimonial-card__label">01 / Operations</span>
+                <blockquote>"They made a complex backend feel trusted fast. The rollout stayed calm all the way through."</blockquote>
+              </article>
+
+              <article class="testimonial-card testimonial-card--secondary">
+                <span class="testimonial-card__label">02 / Founder</span>
+                <blockquote>"Launch was early, the workflow stayed intact, and handover stayed easy."</blockquote>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--contact" id="contact-screen" data-screen="5">
+        <div class="screen-frame">
+          <header class="topbar">
+            <a class="brand" href="#">TRIZEN.</a>
+            <nav class="nav-links" aria-label="Concept navigation">
+              <a href="#approach-screen">Services</a>
+              <a href="#work-screen">Proof</a>
+              <a href="#process-screen">Process</a>
+              <a href="#contact-screen">Contact</a>
+            </nav>
+            <div class="topbar-actions">
+              <a href="/index.html">Current Site</a>
+              <a href="mailto:sales@trizenstudio.com">Email Us</a>
+            </div>
+          </header>
+
+          <div class="hero-meta hero-meta--right">
+            <span>Kuala Lumpur / MY</span>
+            <span class="concept-clock">12:26:56</span>
+          </div>
+
+          <canvas class="contact-globe" id="contact-globe" aria-hidden="true"></canvas>
+
+          <div class="contact-layout">
+            <div class="contact-copy">
+              <div class="hero-meta hero-meta--center" style="position: static; transform: none; margin-bottom: 12px;">Terminal</div>
+              <h2>Let's talk about the build.</h2>
+              <p>Skip the email chains. One short call is enough to scope the project and map the launch.</p>
+            </div>
+
+            <div class="contact-side">
+              <div class="contact-terminal">
+                <span class="contact-terminal__label">Ready State</span>
+                <div class="contact-terminal__line">
+                  <span>&gt; email</span>
+                  <span data-terminal="sales@trizenstudio.com"></span>
+                </div>
+                <div class="contact-terminal__line">
+                  <span>&gt; response</span>
+                  <span data-terminal="within 1 business day"></span>
+                </div>
+                <div class="contact-terminal__line">
+                  <span>&gt; format</span>
+                  <span data-terminal="15 min discovery call"></span>
+                </div>
+              </div>
+
+              <div class="contact-links">
+                <a class="contact-link magnetic-button" data-magnetic href="mailto:sales@trizenstudio.com">
+                  <span>Start With Email</span>
+                  <span>sales@trizenstudio.com</span>
+                </a>
+                <a class="contact-link" href="/index.html">
+                  <span>See Current Site</span>
+                  <span>open live version</span>
+                </a>
+              </div>
+
+              <div class="contact-footnote">
+                <span class="contact-footnote__label">Closing Note</span>
+                <p>Hiring should feel lighter: less back-and-forth, better positioning, and a site that works from day one.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -1213,109 +1539,446 @@
     <script>
       (() => {
         const body = document.body;
-        const clock = document.getElementById('concept-clock');
+        const clocks = Array.from(document.querySelectorAll('.concept-clock'));
         const shell = document.getElementById('concept-shell');
         const movingDevice = document.getElementById('moving-device');
         const hero = document.getElementById('hero-screen');
         const approach = document.getElementById('approach-screen');
         const work = document.getElementById('work-screen');
+        const processScreen = document.getElementById('process-screen');
+        const testimonialsScreen = document.getElementById('testimonials-screen');
+        const contactScreen = document.getElementById('contact-screen');
+        const globeCanvas = document.getElementById('contact-globe');
+        const globeContext = globeCanvas ? globeCanvas.getContext('2d') : null;
+        const workFrame = work?.querySelector('.screen-frame');
+        const workPreviewTargets = Array.from(document.querySelectorAll('.work-preview-hotspot'));
+        const workPreview = document.getElementById('work-preview');
+        const workPreviewImage = document.getElementById('work-preview-image');
+        const workPreviewLabel = document.getElementById('work-preview-label');
         const deviceBeam = document.getElementById('device-beam');
         const deviceBeamSecondary = document.getElementById('device-beam-secondary');
+        const magneticButtons = Array.from(document.querySelectorAll('[data-magnetic]'));
+        const globeDots = [];
 
-        if (clock) {
+        // --- Smart Cursor Initialization ---
+        const cursor = document.createElement('div');
+        cursor.classList.add('smart-cursor');
+        document.body.appendChild(cursor);
+        let cursorVisible = false;
+
+        // --- Parallax Logic ---
+        let mouseNormalizedX = 0;
+        let mouseNormalizedY = 0;
+        const useNaturalScroll = () => window.innerWidth <= 820 || !window.matchMedia('(pointer:fine)').matches;
+
+        // --- Terminal Logic ---
+        const terminalLines = document.querySelectorAll('[data-terminal]');
+        let terminalTyped = false;
+
+        if (clocks.length) {
           const updateClock = () => {
             const now = new Date();
-            clock.textContent = now.toLocaleTimeString([], {
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-              hour12: false,
+            const timeText = now.toLocaleTimeString([], {
+              hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
             });
+            clocks.forEach((clock) => { clock.textContent = timeText; });
           };
-
           updateClock();
           window.setInterval(updateClock, 1000);
         }
 
-        if (!shell || !hero || !approach || !work || !movingDevice) {
-          return;
-        }
+        if (!shell || !hero || !approach || !work || !processScreen || !testimonialsScreen || !contactScreen || !movingDevice) return;
 
-        let snapLock = false;
-        let touchStartY = 0;
-        let sceneReady = false;
-        let sectionOneProgress = 0;
-        let sectionTwoProgress = 0;
-        let introProgress = 0;
-        let introStartedAt = 0;
-        let currentDeviceX = 78;
-        let currentDeviceY = 14;
-        let currentDeviceRotate = -8;
-        let currentDeviceScale = 0.82;
-        let currentDeviceTiltX = 12;
-        let currentDeviceTiltY = 10;
-        let currentDeviceDepth = 42;
-        let currentDeviceOffsetX = 0;
-        let currentDeviceOffsetY = 0;
-        let targetDeviceX = 50;
-        let targetDeviceY = 50;
-        let targetDeviceRotate = 0;
-        let targetDeviceScale = 1.08;
-        let targetDeviceTiltX = 0;
-        let targetDeviceTiltY = 0;
-        let targetDeviceDepth = 36;
-        let targetDeviceOffsetX = 0;
-        let targetDeviceOffsetY = 10;
-        let rafId = 0;
+        const modeToggles = Array.from(document.querySelectorAll('.topbar-actions')).map((actions) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'mode-toggle';
+          button.innerHTML = '<span class="mode-toggle__icon">&lt;/&gt;</span><span>Mode</span>';
+          actions.insertBefore(button, actions.firstChild);
+          return button;
+        });
+
+        let isDevMode = false;
+        try {
+          isDevMode = window.sessionStorage.getItem('trizen-mode') === 'dev';
+        } catch {}
+
+        const syncMode = () => {
+          body.classList.toggle('is-dev-mode', isDevMode);
+          modeToggles.forEach((button) => {
+            button.classList.toggle('is-active', isDevMode);
+            button.setAttribute('aria-pressed', String(isDevMode));
+          });
+        };
+
+        modeToggles.forEach((button) => {
+          button.addEventListener('click', () => {
+            isDevMode = !isDevMode;
+            syncMode();
+            try {
+              window.sessionStorage.setItem('trizen-mode', isDevMode ? 'dev' : 'default');
+            } catch {}
+          });
+        });
+
+        syncMode();
+
+        let snapLock = false; let touchStartY = 0; let sceneReady = false; 
+        let sectionOneProgress = 0; let sectionTwoProgress = 0; let sectionThreeProgress = 0; let sectionFourProgress = 0; let introProgress = 0; 
+        let introStartedAt = 0; let currentDeviceX = 78; let currentDeviceY = 14; 
+        let currentDeviceRotate = -8; let currentDeviceScale = 0.82; let currentDeviceTiltX = 12; 
+        let currentDeviceTiltY = 10; let currentDeviceDepth = 42; let currentDeviceOffsetX = 0; 
+        let currentDeviceOffsetY = 0; let targetDeviceX = 50; let targetDeviceY = 50; 
+        let targetDeviceRotate = 0; let targetDeviceScale = 1.08; let targetDeviceTiltX = 0; 
+        let targetDeviceTiltY = 0; let targetDeviceDepth = 36; let targetDeviceOffsetX = 0; 
+        let targetDeviceOffsetY = 10; let currentDeviceBoxShiftX = 0; let currentDeviceBoxShiftY = 0;
+        let currentDeviceBoxShiftZ = 0; let currentDeviceBoxRotateX = 0; let currentDeviceBoxRotateY = 0;
+        let currentDeviceBoxRotateZ = 0; let targetDeviceBoxShiftX = 0; let targetDeviceBoxShiftY = 0;
+        let targetDeviceBoxShiftZ = 0; let targetDeviceBoxRotateX = 0; let targetDeviceBoxRotateY = 0;
+        let targetDeviceBoxRotateZ = 0; let previewHideTimeout = 0; let rafId = 0;
 
         const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
         const lerp = (start, end, progress) => start + (end - start) * progress;
         const ease = (value) => 1 - Math.pow(1 - value, 3);
         const setVar = (name, value) => shell.style.setProperty(name, value);
+        const normalizeAngle = (angle) => {
+          let normalized = angle % 360;
+          if (normalized > 180) normalized -= 360;
+          if (normalized < -180) normalized += 360;
+          return normalized;
+        };
+        const lerpAngle = (start, end, progress) => start + normalizeAngle(end - start) * progress;
+        const blendPose = (from, to, progress) => ({
+          x: lerp(from.x, to.x, progress),
+          y: lerp(from.y, to.y, progress),
+          rotate: lerpAngle(from.rotate, to.rotate, progress),
+          scale: lerp(from.scale, to.scale, progress),
+          tiltX: lerp(from.tiltX, to.tiltX, progress),
+          tiltY: lerp(from.tiltY, to.tiltY, progress),
+          depth: lerp(from.depth, to.depth, progress),
+          offsetX: lerp(from.offsetX, to.offsetX, progress),
+          offsetY: lerp(from.offsetY, to.offsetY, progress),
+          boxShiftX: lerp(from.boxShiftX, to.boxShiftX, progress),
+          boxShiftY: lerp(from.boxShiftY, to.boxShiftY, progress),
+          boxShiftZ: lerp(from.boxShiftZ, to.boxShiftZ, progress),
+          boxRotateX: lerpAngle(from.boxRotateX, to.boxRotateX, progress),
+          boxRotateY: lerpAngle(from.boxRotateY, to.boxRotateY, progress),
+          boxRotateZ: lerpAngle(from.boxRotateZ, to.boxRotateZ, progress),
+        });
+
+        const desktopHeroPose = {
+          x: 50, y: 50, rotate: 0, scale: 1.08, tiltX: 0, tiltY: 0, depth: 36, offsetX: 0, offsetY: 10,
+          boxShiftX: 0, boxShiftY: 0, boxShiftZ: 0, boxRotateX: 0, boxRotateY: 0, boxRotateZ: 0,
+        };
+        const desktopServicesPose = {
+          x: 73, y: 23, rotate: -18, scale: 1.42, tiltX: 56, tiltY: -24, depth: 86, offsetX: -20, offsetY: -6,
+          boxShiftX: -12, boxShiftY: -10, boxShiftZ: 10, boxRotateX: 8, boxRotateY: -12, boxRotateZ: -8,
+        };
+        const desktopProofPose = {
+          x: 50, y: 57, rotate: 45, scale: 1.24, tiltX: 10, tiltY: 4, depth: 58, offsetX: 6, offsetY: 10,
+          boxShiftX: 0, boxShiftY: -6, boxShiftZ: 10, boxRotateX: -4, boxRotateY: 6, boxRotateZ: 0,
+        };
+        const desktopProcessPose = {
+          x: 70, y: 35, rotate: 30, scale: 1.16, tiltX: 56, tiltY: -38, depth: 76, offsetX: -8, offsetY: -6,
+          boxShiftX: -6, boxShiftY: 8, boxShiftZ: 16, boxRotateX: 14, boxRotateY: -16, boxRotateZ: -6,
+        };
+        const desktopTestimonialsPose = {
+          x: 81, y: 20, rotate: 12, scale: 1.08, tiltX: 44, tiltY: 8, depth: 56, offsetX: 2, offsetY: -8,
+          boxShiftX: 4, boxShiftY: -4, boxShiftZ: 4, boxRotateX: -2, boxRotateY: 4, boxRotateZ: 2,
+        };
+        const desktopContactPose = {
+          x: 33.5, y: 51.5, rotate: -10.5, scale: 0.96, tiltX: 14, tiltY: -8, depth: 38, offsetX: 0, offsetY: 0,
+          boxShiftX: 0, boxShiftY: 0, boxShiftZ: -4, boxRotateX: 0, boxRotateY: 0, boxRotateZ: 0,
+        };
+
+        for (let latIndex = 0; latIndex < 15; latIndex += 1) {
+          const latProgress = latIndex / 14;
+          const lat = -Math.PI / 2 + latProgress * Math.PI;
+          const density = Math.max(9, Math.round(12 + Math.cos(lat) * 10));
+          for (let lonIndex = 0; lonIndex < density; lonIndex += 1) {
+            globeDots.push({
+              lat,
+              lon: (lonIndex / density) * Math.PI * 2,
+              size: 0.8 + ((lonIndex + latIndex) % 3) * 0.2,
+            });
+          }
+        }
+        
+        const resetMagneticButton = (button) => {
+          button.style.setProperty('--magnetic-x', '0px');
+          button.style.setProperty('--magnetic-y', '0px');
+        };
+        
+        const updateMagneticButtons = (clientX, clientY) => {
+          magneticButtons.forEach((button) => {
+            const rect = button.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = clientX - centerX;
+            const deltaY = clientY - centerY;
+            const distance = Math.hypot(deltaX, deltaY);
+            const reach = Math.max(140, Math.max(rect.width, rect.height) * 1.9);
+
+            if (distance >= reach) { resetMagneticButton(button); return; }
+            const force = Math.pow(1 - distance / reach, 1.65);
+            button.style.setProperty('--magnetic-x', `${((deltaX / reach) * 18 * force).toFixed(2)}px`);
+            button.style.setProperty('--magnetic-y', `${((deltaY / reach) * 14 * force).toFixed(2)}px`);
+          });
+        };
+
         const applyDevicePosition = (xPercent, yPercent) => {
           const deviceWidth = movingDevice.offsetWidth || 0;
           const deviceHeight = movingDevice.offsetHeight || 0;
           const translateX = window.innerWidth * (xPercent / 100) - deviceWidth / 2;
           const translateY = window.innerHeight * (yPercent / 100) - deviceHeight / 2;
-
           movingDevice.style.transform = `translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, 0)`;
         };
 
-        const updateScene = () => {
-          if (!sceneReady) {
-            return;
-          }
+        const resizeGlobe = () => {
+          if (!globeCanvas || !globeContext) return;
+          const rect = globeCanvas.getBoundingClientRect();
+          const width = Math.max(1, Math.round(rect.width));
+          const height = Math.max(1, Math.round(rect.height));
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          globeCanvas.width = Math.max(1, Math.round(width * dpr));
+          globeCanvas.height = Math.max(1, Math.round(height * dpr));
+          globeContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
 
+        const renderGlobe = (time = 0) => {
+          if (!globeCanvas || !globeContext) return;
+
+          const rect = globeCanvas.getBoundingClientRect();
+          if (rect.width < 2 || rect.height < 2) return;
+
+          const reveal = clamp((shell.scrollTop + window.innerHeight - contactScreen.offsetTop) / (window.innerHeight * 0.9), 0, 1);
+          globeContext.clearRect(0, 0, rect.width, rect.height);
+          if (reveal <= 0.01) return;
+
+          const centerX = rect.width * 0.5;
+          const centerY = rect.height * 0.54;
+          const radius = Math.min(rect.width, rect.height) * 0.34;
+          const rotateY = time / 5600 + mouseNormalizedX * 0.28;
+          const rotateX = -0.38 + mouseNormalizedY * 0.12;
+          const perspective = radius * 3.2;
+          const dots = [];
+          const palette = isDevMode
+            ? {
+                line: `rgba(143, 243, 162, ${0.18 + reveal * 0.14})`,
+                glow: `rgba(143, 243, 162, ${0.05 + reveal * 0.08})`,
+                dot: `rgba(143, 243, 162, ${0.42 + reveal * 0.52})`,
+              }
+            : {
+                line: `rgba(244, 239, 232, ${0.16 + reveal * 0.16})`,
+                glow: `rgba(244, 239, 232, ${0.05 + reveal * 0.08})`,
+                dot: `rgba(244, 239, 232, ${0.48 + reveal * 0.48})`,
+              };
+
+          globeDots.forEach((point) => {
+            const cosLat = Math.cos(point.lat);
+            let x = cosLat * Math.cos(point.lon);
+            let y = Math.sin(point.lat);
+            let z = cosLat * Math.sin(point.lon);
+
+            const x1 = x * Math.cos(rotateY) - z * Math.sin(rotateY);
+            const z1 = x * Math.sin(rotateY) + z * Math.cos(rotateY);
+            const y1 = y * Math.cos(rotateX) - z1 * Math.sin(rotateX);
+            const z2 = y * Math.sin(rotateX) + z1 * Math.cos(rotateX);
+
+            const scale = perspective / (perspective - z2 * radius * 1.25);
+            dots.push({
+              x: centerX + x1 * radius * scale,
+              y: centerY + y1 * radius * scale,
+              z: z2,
+              radius: point.size * (1.1 + ((z2 + 1) * 0.9)),
+              alpha: 0.22 + ((z2 + 1) * 0.34),
+            });
+          });
+
+          dots.sort((a, b) => a.z - b.z);
+
+          globeContext.save();
+          globeContext.globalAlpha = 0.9;
+          const glow = globeContext.createRadialGradient(centerX, centerY, radius * 0.18, centerX, centerY, radius * 1.1);
+          glow.addColorStop(0, palette.glow);
+          glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+          globeContext.fillStyle = glow;
+          globeContext.beginPath();
+          globeContext.arc(centerX, centerY, radius * 1.08, 0, Math.PI * 2);
+          globeContext.fill();
+
+          globeContext.strokeStyle = palette.line;
+          globeContext.lineWidth = 1;
+          globeContext.beginPath();
+          globeContext.arc(centerX, centerY, radius, 0, Math.PI * 2);
+          globeContext.stroke();
+
+          dots.forEach((dot) => {
+            globeContext.fillStyle = palette.dot;
+            globeContext.globalAlpha = dot.alpha;
+            globeContext.beginPath();
+            globeContext.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+            globeContext.fill();
+          });
+
+          globeContext.restore();
+        };
+
+        const updateWorkPreviewPosition = (clientX, clientY) => {
+          if (!workFrame || !workPreview) return;
+          const isMobile = window.innerWidth < 768;
+          const frameRect = workFrame.getBoundingClientRect();
+          const previewWidth = workPreview.offsetWidth || 280;
+          const previewHeight = workPreview.offsetHeight || 320;
+          
+          let localX, localY;
+
+          // --- CENTERING PREVIEW ON MOBILE ---
+          if (isMobile) {
+            localX = (frameRect.width - previewWidth) / 2;
+            localY = (frameRect.height - previewHeight) / 2;
+          } else {
+            localX = clamp(clientX - frameRect.left + 22, 18, frameRect.width - previewWidth - 18);
+            localY = clamp(clientY - frameRect.top - previewHeight * 0.42, 18, frameRect.height - previewHeight - 18);
+          }
+          
+          workPreview.style.transform = `translate3d(${localX.toFixed(2)}px, ${localY.toFixed(2)}px, 0) scale(1)`;
+
+          // --- 3D Magnetic Image Tilt ---
+          const frameInner = workPreview.querySelector('.work-preview__frame');
+          if (frameInner && !isMobile) {
+            const centerX = localX + (previewWidth / 2);
+            const centerY = localY + (previewHeight / 2);
+            const rotateX = (clientY - frameRect.top - centerY) * -0.04;
+            const rotateY = (clientX - frameRect.left - centerX) * 0.04;
+            frameInner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+          } else if (frameInner) {
+            frameInner.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+          }
+        };
+
+        const hideWorkPreview = () => {
+          if (!workPreview) return;
+          window.clearTimeout(previewHideTimeout);
+          workPreview.classList.remove('is-visible');
+          workPreview.style.transform = 'translate3d(-9999px, -9999px, 0) scale(0.96)';
+          
+          // Reset 3D Tilt
+          const frameInner = workPreview.querySelector('.work-preview__frame');
+          if(frameInner) frameInner.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        };
+
+        const showWorkPreview = (card, clientX, clientY) => {
+          if (!workPreview || !workPreviewImage || !workPreviewLabel) return;
+          const previewSrc = card.getAttribute('data-preview');
+          const previewLabel = card.getAttribute('data-preview-label') || 'Project Preview';
+          if (!previewSrc) return;
+          workPreviewImage.src = previewSrc;
+          workPreviewImage.alt = previewLabel;
+          workPreviewLabel.textContent = previewLabel;
+          workPreview.classList.add('is-visible');
+          updateWorkPreviewPosition(clientX, clientY);
+        };
+
+        const updateScene = () => {
+          if (!sceneReady) return;
           const shellTop = shell.scrollTop;
+          const isMobile = window.innerWidth < 1024;
+          
           const heroHeight = hero.offsetHeight || 1;
           const approachHeight = approach.offsetHeight || 1;
           const approachStart = approach.offsetTop;
           const workStart = work.offsetTop;
           const workHeight = work.offsetHeight || 1;
+          const processStart = processScreen.offsetTop;
+          const processHeight = processScreen.offsetHeight || 1;
+          const testimonialsStart = testimonialsScreen.offsetTop;
+          const testimonialsHeight = testimonialsScreen.offsetHeight || 1;
+          const contactStart = contactScreen.offsetTop;
+          const contactHeight = contactScreen.offsetHeight || 1;
 
           const firstProgress = clamp(shellTop / heroHeight, 0, 1);
           const secondProgress = clamp((shellTop - approachStart) / approachHeight, 0, 1);
           const thirdProgress = clamp((shellTop - workStart) / workHeight, 0, 1);
+          const fourthProgress = clamp((shellTop - processStart) / processHeight, 0, 1);
+          const fifthProgress = clamp((shellTop - testimonialsStart) / testimonialsHeight, 0, 1);
+          const sixthProgress = clamp((shellTop - contactStart) / contactHeight, 0, 1);
+          const contactApproach = ease(clamp((shellTop - (contactStart - window.innerHeight * 0.72)) / (window.innerHeight * 0.72), 0, 1));
 
           sectionOneProgress = ease(firstProgress);
           sectionTwoProgress = ease(secondProgress);
+          sectionThreeProgress = ease(thirdProgress);
+          sectionFourProgress = ease(fourthProgress);
 
-          targetDeviceX = lerp(50, 70, sectionOneProgress) + sectionTwoProgress * 0.4 - thirdProgress * 0.8;
-          targetDeviceY = lerp(50, 27, sectionOneProgress) + sectionTwoProgress * 3.8 + thirdProgress * 1.1;
-          targetDeviceRotate = lerp(0, -4.5, sectionOneProgress) - sectionTwoProgress * 1.2 + thirdProgress * 0.4;
-          targetDeviceScale = lerp(1.08, 1.36, sectionOneProgress) + sectionTwoProgress * 0.08 - thirdProgress * 0.02;
-          targetDeviceTiltX = lerp(0, 38, sectionOneProgress) + sectionTwoProgress * 3.2;
-          targetDeviceTiltY = lerp(0, 20, sectionOneProgress) + sectionTwoProgress * 1.2;
-          targetDeviceDepth = lerp(36, 78, sectionOneProgress) + sectionTwoProgress * 7 - thirdProgress * 1.2;
-          targetDeviceOffsetX = 0;
-          targetDeviceOffsetY = lerp(10, 0, sectionOneProgress);
+          // --- RESPONSIVE DEVICE POSITIONING LOGIC ---
+          if (isMobile) {
+            // Mobile safe background positioning (less intrusive)
+            targetDeviceX = 50 + sectionTwoProgress * 5 - fourthProgress * 5;
+            targetDeviceY = 25 + sectionTwoProgress * 5 + fourthProgress * 15;
+            targetDeviceRotate = lerp(0, -10, sectionOneProgress) + thirdProgress * 20;
+            targetDeviceScale = lerp(0.5, 0.55, sectionOneProgress);
+            targetDeviceTiltX = lerp(20, 30, sectionOneProgress);
+            targetDeviceTiltY = lerp(0, 10, sectionOneProgress);
+            targetDeviceDepth = 25;
+            targetDeviceOffsetX = 0;
+            targetDeviceOffsetY = 0;
+            targetDeviceX = lerp(targetDeviceX, 42, contactApproach);
+            targetDeviceY = lerp(targetDeviceY, 36, contactApproach);
+            targetDeviceRotate = lerp(targetDeviceRotate, -8, contactApproach);
+            targetDeviceBoxShiftX = sectionTwoProgress * -4 + sectionThreeProgress * 8 - sectionFourProgress * 6;
+            targetDeviceBoxShiftY = sectionTwoProgress * -3 - sectionThreeProgress * 4 + sectionFourProgress * 5;
+            targetDeviceBoxShiftZ = sectionThreeProgress * 5 + sectionFourProgress * 4;
+            targetDeviceBoxRotateX = sectionTwoProgress * 4 - sectionThreeProgress * 7 + sectionFourProgress * 8;
+            targetDeviceBoxRotateY = sectionTwoProgress * -8 + sectionThreeProgress * 12 - sectionFourProgress * 11;
+            targetDeviceBoxRotateZ = sectionTwoProgress * -5 + sectionThreeProgress * 9 - sectionFourProgress * 8;
+            // Mobile requires much lower opacity so text remains readable
+            setVar('--device-opacity', clamp(0.15 - sectionOneProgress * 0.05, 0.05, 0.15).toFixed(3));
+          } else {
+            // Section-driven poses make each chapter feel like a different viewpoint and placement.
+            const desktopServicesBlend = blendPose(desktopHeroPose, desktopServicesPose, sectionOneProgress);
+            const desktopProofBlend = blendPose(desktopServicesBlend, desktopProofPose, sectionTwoProgress);
+            const desktopProcessBlend = blendPose(desktopProofBlend, desktopProcessPose, sectionThreeProgress);
+            const desktopTestimonialsBlend = blendPose(desktopProcessBlend, desktopTestimonialsPose, sectionFourProgress);
+            const desktopContactBlend = blendPose(desktopTestimonialsBlend, desktopContactPose, ease(fifthProgress));
+
+            targetDeviceX = desktopContactBlend.x;
+            targetDeviceY = desktopContactBlend.y;
+            targetDeviceRotate = desktopContactBlend.rotate;
+            targetDeviceScale = desktopContactBlend.scale;
+            targetDeviceTiltX = desktopContactBlend.tiltX;
+            targetDeviceTiltY = desktopContactBlend.tiltY;
+            targetDeviceDepth = desktopContactBlend.depth;
+            targetDeviceOffsetX = desktopContactBlend.offsetX;
+            targetDeviceOffsetY = desktopContactBlend.offsetY;
+            targetDeviceBoxShiftX = desktopContactBlend.boxShiftX;
+            targetDeviceBoxShiftY = desktopContactBlend.boxShiftY;
+            targetDeviceBoxShiftZ = desktopContactBlend.boxShiftZ;
+            targetDeviceBoxRotateX = desktopContactBlend.boxRotateX;
+            targetDeviceBoxRotateY = desktopContactBlend.boxRotateY;
+            targetDeviceBoxRotateZ = desktopContactBlend.boxRotateZ;
+
+            targetDeviceX = lerp(targetDeviceX, desktopContactPose.x, contactApproach);
+            targetDeviceY = lerp(targetDeviceY, desktopContactPose.y, contactApproach);
+            targetDeviceRotate = lerp(targetDeviceRotate, desktopContactPose.rotate, contactApproach);
+            targetDeviceScale = lerp(targetDeviceScale, desktopContactPose.scale, contactApproach);
+            targetDeviceTiltX = lerp(targetDeviceTiltX, desktopContactPose.tiltX, contactApproach);
+            targetDeviceTiltY = lerp(targetDeviceTiltY, desktopContactPose.tiltY, contactApproach);
+            targetDeviceDepth = lerp(targetDeviceDepth, desktopContactPose.depth, contactApproach);
+            targetDeviceOffsetX = lerp(targetDeviceOffsetX, desktopContactPose.offsetX, contactApproach);
+            targetDeviceOffsetY = lerp(targetDeviceOffsetY, desktopContactPose.offsetY, contactApproach);
+            targetDeviceBoxShiftX = lerp(targetDeviceBoxShiftX, desktopContactPose.boxShiftX, contactApproach);
+            targetDeviceBoxShiftY = lerp(targetDeviceBoxShiftY, desktopContactPose.boxShiftY, contactApproach);
+            targetDeviceBoxShiftZ = lerp(targetDeviceBoxShiftZ, desktopContactPose.boxShiftZ, contactApproach);
+            targetDeviceBoxRotateX = lerp(targetDeviceBoxRotateX, desktopContactPose.boxRotateX, contactApproach);
+            targetDeviceBoxRotateY = lerp(targetDeviceBoxRotateY, desktopContactPose.boxRotateY, contactApproach);
+            targetDeviceBoxRotateZ = lerp(targetDeviceBoxRotateZ, desktopContactPose.boxRotateZ, contactApproach);
+            setVar('--device-opacity', clamp(1 - sectionOneProgress * 0.48 - sectionTwoProgress * 0.1 + thirdProgress * 0.12 - fourthProgress * 0.14 - fifthProgress * 0.22 - sixthProgress * 0.86, 0.02, 1).toFixed(3));
+          }
 
           const heroCopyOpacity = clamp(1 - sectionOneProgress * 1.12, 0, 1);
           const heroSideOpacity = clamp(1 - sectionOneProgress * 1.18, 0, 1);
-          const approachCopyOpacity =
-            clamp((sectionOneProgress - 0.14) / 0.52, 0, 1) * clamp(1 - sectionTwoProgress * 1.08, 0, 1);
-          const approachSideOpacity =
-            clamp((sectionOneProgress - 0.08) / 0.48, 0, 1) * clamp(1 - sectionTwoProgress * 1.12, 0, 1);
+          const approachCopyOpacity = clamp((sectionOneProgress - 0.14) / 0.52, 0, 1) * clamp(1 - sectionTwoProgress * 1.08, 0, 1);
+          const approachSideOpacity = clamp((sectionOneProgress - 0.08) / 0.48, 0, 1) * clamp(1 - sectionTwoProgress * 1.12, 0, 1);
           const workCopyOpacity = clamp((sectionTwoProgress - 0.08) / 0.54, 0, 1);
           const workSideOpacity = clamp((sectionTwoProgress - 0.04) / 0.48, 0, 1);
 
@@ -1324,23 +1987,29 @@
           setVar('--hero-side-opacity', heroSideOpacity.toFixed(3));
           setVar('--hero-side-shift', `${Math.round(sectionOneProgress * 92)}px`);
           setVar('--approach-copy-opacity', approachCopyOpacity.toFixed(3));
-          setVar(
-            '--approach-copy-shift',
-            `${Math.round(62 - approachCopyOpacity * 62 + sectionTwoProgress * 24)}px`
-          );
+          setVar('--approach-copy-shift', `${Math.round(62 - approachCopyOpacity * 62 + sectionTwoProgress * 24)}px`);
           setVar('--approach-side-opacity', approachSideOpacity.toFixed(3));
-          setVar(
-            '--approach-side-shift',
-            `${Math.round(76 - approachSideOpacity * 76 + sectionTwoProgress * 28)}px`
-          );
+          setVar('--approach-side-shift', `${Math.round(76 - approachSideOpacity * 76 + sectionTwoProgress * 28)}px`);
           setVar('--work-copy-opacity', workCopyOpacity.toFixed(3));
           setVar('--work-copy-shift', `${Math.round(58 - workCopyOpacity * 58)}px`);
           setVar('--work-side-opacity', workSideOpacity.toFixed(3));
           setVar('--work-side-shift', `${Math.round(72 - workSideOpacity * 72)}px`);
-          setVar(
-            '--device-opacity',
-            clamp(1 - sectionOneProgress * 0.48 - sectionTwoProgress * 0.1 + thirdProgress * 0.16, 0.42, 1).toFixed(3)
-          );
+
+          // --- Terminal Typing trigger ---
+          if (sixthProgress > 0.6 && !terminalTyped) {
+            terminalTyped = true;
+            terminalLines.forEach((el, index) => {
+              const text = el.getAttribute('data-terminal');
+              let i = 0;
+              setTimeout(() => {
+                const int = setInterval(() => {
+                  el.innerText += text.charAt(i);
+                  i++;
+                  if (i >= text.length) clearInterval(int);
+                }, 40);
+              }, index * 600); // stagger typing lines
+            });
+          }
         };
 
         const animateLines = (time = 0) => {
@@ -1357,16 +2026,33 @@
           const idleX = Math.sin(time / 2200) * 0.7;
           const idleY = Math.cos(time / 2400) * 0.55;
           const idleRotate = Math.sin(time / 2600) * 0.45;
+          const boxIdleShiftX = Math.sin(time / 860) * 2.6;
+          const boxIdleShiftY = Math.cos(time / 980) * 2.1;
+          const boxIdleShiftZ = Math.sin(time / 1120) * 2.4;
+          const boxIdleRotateX = Math.sin(time / 780) * 2.4;
+          const boxIdleRotateY = Math.cos(time / 920) * 3.2;
+          const boxIdleRotateZ = Math.sin(time / 700) * 2;
+          
+          const parallaxLimit = 8; // Mouse influence limit
 
           const goalDeviceX = lerp(78, targetDeviceX + idleX, introProgress);
           const goalDeviceY = lerp(14, targetDeviceY + idleY, introProgress);
           const goalDeviceRotate = lerp(-8, targetDeviceRotate + idleRotate, introProgress);
           const goalDeviceScale = lerp(0.82, targetDeviceScale, introProgress);
-          const goalDeviceTiltX = lerp(12, targetDeviceTiltX, introProgress);
-          const goalDeviceTiltY = lerp(10, targetDeviceTiltY, introProgress);
+          
+          // --- 3D Mouse Parallax Integration ---
+          const goalDeviceTiltX = lerp(12, targetDeviceTiltX - (mouseNormalizedY * parallaxLimit), introProgress);
+          const goalDeviceTiltY = lerp(10, targetDeviceTiltY + (mouseNormalizedX * parallaxLimit), introProgress);
+          
           const goalDeviceDepth = lerp(42, targetDeviceDepth, introProgress);
           const goalDeviceOffsetX = lerp(0, targetDeviceOffsetX, introProgress);
           const goalDeviceOffsetY = lerp(0, targetDeviceOffsetY, introProgress);
+          const goalDeviceBoxShiftX = lerp(0, targetDeviceBoxShiftX + boxIdleShiftX, introProgress);
+          const goalDeviceBoxShiftY = lerp(0, targetDeviceBoxShiftY + boxIdleShiftY, introProgress);
+          const goalDeviceBoxShiftZ = lerp(0, targetDeviceBoxShiftZ + boxIdleShiftZ, introProgress);
+          const goalDeviceBoxRotateX = lerp(0, targetDeviceBoxRotateX + boxIdleRotateX, introProgress);
+          const goalDeviceBoxRotateY = lerp(0, targetDeviceBoxRotateY + boxIdleRotateY, introProgress);
+          const goalDeviceBoxRotateZ = lerp(0, targetDeviceBoxRotateZ + boxIdleRotateZ, introProgress);
 
           currentDeviceX = lerp(currentDeviceX, goalDeviceX, 0.065);
           currentDeviceY = lerp(currentDeviceY, goalDeviceY, 0.065);
@@ -1377,6 +2063,12 @@
           currentDeviceDepth = lerp(currentDeviceDepth, goalDeviceDepth, 0.08);
           currentDeviceOffsetX = lerp(currentDeviceOffsetX, goalDeviceOffsetX, 0.08);
           currentDeviceOffsetY = lerp(currentDeviceOffsetY, goalDeviceOffsetY, 0.08);
+          currentDeviceBoxShiftX = lerp(currentDeviceBoxShiftX, goalDeviceBoxShiftX, 0.09);
+          currentDeviceBoxShiftY = lerp(currentDeviceBoxShiftY, goalDeviceBoxShiftY, 0.09);
+          currentDeviceBoxShiftZ = lerp(currentDeviceBoxShiftZ, goalDeviceBoxShiftZ, 0.09);
+          currentDeviceBoxRotateX = lerp(currentDeviceBoxRotateX, goalDeviceBoxRotateX, 0.11);
+          currentDeviceBoxRotateY = lerp(currentDeviceBoxRotateY, goalDeviceBoxRotateY, 0.11);
+          currentDeviceBoxRotateZ = lerp(currentDeviceBoxRotateZ, goalDeviceBoxRotateZ, 0.11);
 
           applyDevicePosition(currentDeviceX, currentDeviceY);
           movingDevice.style.transform += ` translate3d(${currentDeviceOffsetX.toFixed(2)}px, ${currentDeviceOffsetY.toFixed(2)}px, 0)`;
@@ -1385,126 +2077,175 @@
           setVar('--device-tilt-x', `${currentDeviceTiltX.toFixed(2)}deg`);
           setVar('--device-tilt-y', `${currentDeviceTiltY.toFixed(2)}deg`);
           setVar('--device-depth', `${currentDeviceDepth.toFixed(2)}px`);
-          setVar(
-            '--device-back-opacity',
-            clamp(0.4 - sectionOneProgress * 0.22 - sectionTwoProgress * 0.06, 0.08, 0.4).toFixed(3)
-          );
-          setVar(
-            '--device-left-opacity',
-            clamp(0.52 + sectionOneProgress * 0.1 + sectionTwoProgress * 0.06, 0.52, 0.72).toFixed(3)
-          );
-          setVar(
-            '--device-right-opacity',
-            clamp(0.18 - sectionOneProgress * 0.03 + sectionTwoProgress * 0.02, 0.12, 0.2).toFixed(3)
-          );
-          setVar(
-            '--device-top-opacity',
-            clamp(0.56 + sectionOneProgress * 0.34 + sectionTwoProgress * 0.14, 0.56, 1).toFixed(3)
-          );
-          setVar('--device-bottom-opacity', clamp(0.12 + sectionOneProgress * 0.02, 0.12, 0.16).toFixed(3));
+          setVar('--device-box-shift-x', `${currentDeviceBoxShiftX.toFixed(2)}px`);
+          setVar('--device-box-shift-y', `${currentDeviceBoxShiftY.toFixed(2)}px`);
+          setVar('--device-box-shift-z', `${currentDeviceBoxShiftZ.toFixed(2)}px`);
+          setVar('--device-box-rotate-x', `${currentDeviceBoxRotateX.toFixed(2)}deg`);
+          setVar('--device-box-rotate-y', `${currentDeviceBoxRotateY.toFixed(2)}deg`);
+          setVar('--device-box-rotate-z', `${currentDeviceBoxRotateZ.toFixed(2)}deg`);
+          const flatStateBoost = window.innerWidth < 1024 ? 0 : clamp((sectionThreeProgress * 0.52) + (sectionFourProgress * 0.82), 0, 1);
+          setVar('--device-edge-size', `${lerp(2.15, 2.88, flatStateBoost).toFixed(2)}px`);
+          setVar('--device-face-inset', `${lerp(1.9, 2.18, flatStateBoost).toFixed(2)}px`);
+          setVar('--device-front-opacity', clamp(0.66 + flatStateBoost * 0.12, 0.66, 0.78).toFixed(3));
+          setVar('--device-back-opacity', clamp(0.26 - sectionOneProgress * 0.1 - sectionTwoProgress * 0.03 + flatStateBoost * 0.16, 0.16, 0.38).toFixed(3));
+          setVar('--device-left-opacity', clamp(0.38 + sectionOneProgress * 0.06 + sectionTwoProgress * 0.04 + flatStateBoost * 0.12, 0.38, 0.58).toFixed(3));
+          setVar('--device-right-opacity', clamp(0.34 - sectionOneProgress * 0.02 + sectionTwoProgress * 0.02 + flatStateBoost * 0.12, 0.3, 0.48).toFixed(3));
+          setVar('--device-top-opacity', clamp(0.42 + sectionOneProgress * 0.12 + sectionTwoProgress * 0.06 + flatStateBoost * 0.12, 0.42, 0.72).toFixed(3));
+          setVar('--device-bottom-opacity', clamp(0.24 + sectionOneProgress * 0.02 + flatStateBoost * 0.08, 0.24, 0.36).toFixed(3));
 
           const primaryX = 0;
           const primaryY = beamDriftY + sectionTwoProgress * 14;
-          const primaryZ =
-            lerp(0, currentDeviceDepth * -0.18, introProgress) + sectionTwoProgress * 4;
+          const primaryZ = lerp(0, currentDeviceDepth * -0.18, introProgress) + sectionTwoProgress * 4;
           const primaryRotate = 90 + tickAngle;
           const primaryTwist = 0;
           const primaryScaleY = 1 + sectionTwoProgress * 0.18;
 
           const secondaryX = 0;
           const secondaryY = beamDriftY * 0.55 + sectionTwoProgress * 12;
-          const secondaryZ =
-            lerp(currentDeviceDepth * -0.1, currentDeviceDepth * -0.48, introProgress) +
-            sectionTwoProgress * 4.8;
+          const secondaryZ = lerp(currentDeviceDepth * -0.1, currentDeviceDepth * -0.48, introProgress) + sectionTwoProgress * 4.8;
           const secondaryRotate = 90 + tickAngleSecondary;
           const secondaryTwist = 0;
           const secondaryScaleY = 0.88 + sectionTwoProgress * 0.14;
 
-          if (deviceBeam) {
-            deviceBeam.style.transform =
-              `translate(-50%, -50%) translate3d(${primaryX.toFixed(2)}px, ${primaryY.toFixed(2)}px, ${primaryZ.toFixed(2)}px) ` +
-              `rotateZ(${primaryRotate.toFixed(2)}deg) rotateY(${primaryTwist.toFixed(2)}deg) scaleY(${primaryScaleY.toFixed(3)})`;
-          }
+          if (deviceBeam) deviceBeam.style.transform = `translate(-50%, -50%) translate3d(${primaryX.toFixed(2)}px, ${primaryY.toFixed(2)}px, ${primaryZ.toFixed(2)}px) rotateZ(${primaryRotate.toFixed(2)}deg) rotateY(${primaryTwist.toFixed(2)}deg) scaleY(${primaryScaleY.toFixed(3)})`;
+          if (deviceBeamSecondary) deviceBeamSecondary.style.transform = `translate(-50%, -50%) translate3d(${secondaryX.toFixed(2)}px, ${secondaryY.toFixed(2)}px, ${secondaryZ.toFixed(2)}px) rotateZ(${secondaryRotate.toFixed(2)}deg) rotateY(${secondaryTwist.toFixed(2)}deg) scaleX(0.82) scaleY(${secondaryScaleY.toFixed(3)})`;
 
-          if (deviceBeamSecondary) {
-            deviceBeamSecondary.style.transform =
-              `translate(-50%, -50%) translate3d(${secondaryX.toFixed(2)}px, ${secondaryY.toFixed(2)}px, ${secondaryZ.toFixed(2)}px) ` +
-              `rotateZ(${secondaryRotate.toFixed(2)}deg) rotateY(${secondaryTwist.toFixed(2)}deg) scaleX(0.82) scaleY(${secondaryScaleY.toFixed(3)})`;
-          }
+          renderGlobe(time);
 
           rafId = window.requestAnimationFrame(animateLines);
         };
 
         const snapToSection = (direction) => {
-          if (snapLock) {
-            return;
-          }
-
-          const sections = [hero, approach, work];
+          if (snapLock) return;
+          const sections = [hero, approach, work, processScreen, testimonialsScreen, contactScreen];
           const currentTop = shell.scrollTop;
           let closestIndex = 0;
           let closestDistance = Number.POSITIVE_INFINITY;
 
           sections.forEach((section, index) => {
             const distance = Math.abs(section.offsetTop - currentTop);
-            if (distance < closestDistance) {
-              closestDistance = distance;
-              closestIndex = index;
-            }
+            if (distance < closestDistance) { closestDistance = distance; closestIndex = index; }
           });
 
           const targetIndex = clamp(closestIndex + direction, 0, sections.length - 1);
-
-          if (targetIndex === closestIndex && Math.abs(sections[closestIndex].offsetTop - currentTop) < 24) {
-            return;
-          }
+          if (targetIndex === closestIndex && Math.abs(sections[closestIndex].offsetTop - currentTop) < 24) return;
 
           snapLock = true;
           shell.scrollTo({ top: sections[targetIndex].offsetTop, behavior: 'smooth' });
-
-          window.setTimeout(() => {
-            snapLock = false;
-          }, 760);
+          window.setTimeout(() => { snapLock = false; }, 760);
         };
 
-        shell.addEventListener(
-          'wheel',
-          (event) => {
-            if (snapLock || Math.abs(event.deltaY) < 8) {
-              return;
-            }
-
-            event.preventDefault();
-            snapToSection(event.deltaY > 0 ? 1 : -1);
-          },
-          { passive: false }
-        );
+        shell.addEventListener('wheel', (event) => {
+          if (useNaturalScroll()) return;
+          if (snapLock || Math.abs(event.deltaY) < 8) return;
+          event.preventDefault();
+          snapToSection(event.deltaY > 0 ? 1 : -1);
+        }, { passive: false });
 
         shell.addEventListener('touchstart', (event) => {
-          if (!event.touches.length) {
-            return;
-          }
-
+          if (!event.touches.length) return;
           touchStartY = event.touches[0].clientY;
         });
 
         shell.addEventListener('touchend', (event) => {
-          if (!event.changedTouches.length || snapLock) {
-            return;
-          }
-
+          if (useNaturalScroll()) return;
+          if (!event.changedTouches.length || snapLock) return;
           const deltaY = touchStartY - event.changedTouches[0].clientY;
-          if (Math.abs(deltaY) < 14) {
-            return;
-          }
-
+          if (Math.abs(deltaY) < 14) return;
           snapToSection(deltaY > 0 ? 1 : -1);
         });
 
-        shell.addEventListener('scroll', updateScene, { passive: true });
-        window.addEventListener('resize', updateScene);
+        // --- Text Decode Effect on Portfolios & Tech Stack ---
+        const scrambleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!<>-_\\/[]{}—=+*^?#________";
+        const scrambleElements = document.querySelectorAll('.approach-stack__rail span');
+        
+        scrambleElements.forEach(el => {
+          el.dataset.original = el.innerText;
+          el.addEventListener('pointerenter', event => {
+            let iterations = 0;
+            const originalText = event.target.dataset.original;
+            clearInterval(event.target.interval);
+            
+            event.target.interval = setInterval(() => {
+              event.target.innerText = originalText.split("").map((letter, index) => {
+                if(index < iterations) return originalText[index];
+                return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+              }).join("");
+              
+              if(iterations >= originalText.length) clearInterval(event.target.interval);
+              iterations += 1 / 3;
+            }, 30);
+          });
+        });
+
+        workPreviewTargets.forEach((target) => {
+          target.addEventListener('pointerenter', (event) => {
+            if (event.pointerType !== 'mouse') return;
+            showWorkPreview(target, event.clientX, event.clientY);
+          });
+
+          target.addEventListener('pointermove', (event) => {
+            if (event.pointerType === 'mouse') { showWorkPreview(target, event.clientX, event.clientY); return; }
+            if (event.pointerType === 'touch') updateWorkPreviewPosition(event.clientX, event.clientY);
+          });
+
+          target.addEventListener('pointerleave', hideWorkPreview);
+
+          target.addEventListener('pointerdown', (event) => {
+            if (event.pointerType !== 'touch') return;
+            showWorkPreview(target, event.clientX, event.clientY);
+            window.clearTimeout(previewHideTimeout);
+            previewHideTimeout = window.setTimeout(hideWorkPreview, 1500); 
+          });
+        });
+
+        if (work) work.addEventListener('pointerleave', hideWorkPreview);
+
+        magneticButtons.forEach((button) => {
+          button.addEventListener('pointerleave', () => resetMagneticButton(button));
+        });
+
+        // --- Event Listeners for Custom Hover & Mouse Parallax ---
+        document.querySelectorAll('a, button, .work-preview-hotspot, .approach-stack__rail span, .magnetic-button').forEach(el => {
+          el.addEventListener('pointerenter', () => cursor.classList.add('is-hovering'));
+          el.addEventListener('pointerleave', () => cursor.classList.remove('is-hovering'));
+        });
+
+        window.addEventListener('pointermove', (event) => {
+          if (event.pointerType && event.pointerType !== 'mouse') return;
+          
+          // Cursor follow logic
+          if (!cursorVisible) {
+            cursor.style.opacity = 1;
+            cursorVisible = true;
+          }
+          cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+
+          updateMagneticButtons(event.clientX, event.clientY);
+          
+          // Mouse Tracking for 3D Parallax
+          mouseNormalizedX = (event.clientX / window.innerWidth) * 2 - 1;
+          mouseNormalizedY = (event.clientY / window.innerHeight) * 2 - 1;
+        }, { passive: true });
+
+        window.addEventListener('blur', () => { magneticButtons.forEach(resetMagneticButton); });
+
+        shell.addEventListener('scroll', () => {
+          hideWorkPreview();
+          magneticButtons.forEach(resetMagneticButton);
+          updateScene();
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+          hideWorkPreview();
+          magneticButtons.forEach(resetMagneticButton);
+          resizeGlobe();
+          updateScene();
+        });
+
         window.addEventListener('beforeunload', () => {
           window.cancelAnimationFrame(rafId);
+          window.clearTimeout(previewHideTimeout);
         });
 
         rafId = window.requestAnimationFrame(animateLines);
@@ -1513,6 +2254,7 @@
           sceneReady = true;
           introStartedAt = performance.now();
           body.classList.add('is-entered');
+          resizeGlobe();
           updateScene();
         }, 160);
       })();
